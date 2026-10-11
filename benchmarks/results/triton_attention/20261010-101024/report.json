@@ -1,0 +1,622 @@
+{
+  "experiment": "triton_flash_attention_fwd",
+  "env": {
+    "captured_at": "2026-10-10T10:10:38+0000",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "cpu_count": 12,
+    "colab": true,
+    "gpus": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "driver_version": "580.82.07",
+        "memory.total": "40960 MiB",
+        "pcie.link.gen.current": "4",
+        "pcie.link.width.current": "16",
+        "clocks.max.sm": "1410 MHz",
+        "power.limit": "400.00 W"
+      }
+    ],
+    "cuda": {
+      "torch_cuda": "13.0",
+      "available": true,
+      "device_count": 1,
+      "capability": [
+        8,
+        0
+      ]
+    },
+    "nvidia_smi_topology": "\u001b[4mGPU0\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \t0-11\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks",
+    "packages": {
+      "torch": "2.13.0",
+      "vllm": "0.31.0",
+      "transformers": "5.17.0",
+      "triton": "3.7.1",
+      "peft": "0.21.1",
+      "accelerate": "1.15.0",
+      "flashinfer-python": "0.7.0.post1",
+      "fastapi": "0.136.3",
+      "httpx": "0.28.1",
+      "numpy": "2.1.3"
+    },
+    "git_commit": null
+  },
+  "correctness": [
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.0,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 0.0,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        4,
+        127,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.0009565353393554688,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        4,
+        127,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 0.00028836727142333984,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        8,
+        512,
+        128
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.0009717941284179688,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        8,
+        512,
+        128
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 0.00015205144882202148,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        12,
+        1024,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.000997781753540039,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        12,
+        1024,
+        64
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 0.00015875697135925293,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        4,
+        2049,
+        128
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.0009267330169677734,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        4,
+        2049,
+        128
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 7.793307304382324e-05,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        4,
+        16,
+        333,
+        32
+      ],
+      "dtype": "torch.float16",
+      "causal": true,
+      "max_abs_err": 0.0011019706726074219,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        4,
+        16,
+        333,
+        32
+      ],
+      "dtype": "torch.float16",
+      "causal": false,
+      "max_abs_err": 0.000263214111328125,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.0,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        1,
+        1,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.0,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        4,
+        127,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.007614612579345703,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        4,
+        127,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.0022597908973693848,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        8,
+        512,
+        128
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.00742650032043457,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        8,
+        512,
+        128
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.0013968944549560547,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        12,
+        1024,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.00789022445678711,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        2,
+        12,
+        1024,
+        64
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.0010094642639160156,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        4,
+        2049,
+        128
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.006993293762207031,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        1,
+        4,
+        2049,
+        128
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.0006037056446075439,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        4,
+        16,
+        333,
+        32
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": true,
+      "max_abs_err": 0.007740020751953125,
+      "tol": 0.03,
+      "pass": true
+    },
+    {
+      "shape": [
+        4,
+        16,
+        333,
+        32
+      ],
+      "dtype": "torch.bfloat16",
+      "causal": false,
+      "max_abs_err": 0.002043783664703369,
+      "tol": 0.03,
+      "pass": true
+    }
+  ],
+  "all_correct": true,
+  "performance": [
+    {
+      "B": 1,
+      "H": 16,
+      "N": 1024,
+      "D": 64,
+      "causal": true,
+      "flops": 2147483648.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.11980800330638885,
+          "tflops": 17.924375573709973,
+          "pct_of_peak": 5.744992171060888
+        },
+        "torch_sdpa": {
+          "median_ms": 0.07680000364780426,
+          "tflops": 27.962025338541725,
+          "pct_of_peak": 8.962187608506964
+        },
+        "torch_naive": {
+          "median_ms": 0.7311360239982605,
+          "tflops": 2.937187578661983,
+          "pct_of_peak": 0.9414062752121739
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.6410256537820862
+    },
+    {
+      "B": 1,
+      "H": 16,
+      "N": 1024,
+      "D": 64,
+      "causal": false,
+      "flops": 4294967296.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.11980800330638885,
+          "tflops": 35.84875114741995,
+          "pct_of_peak": 11.489984342121776
+        },
+        "torch_sdpa": {
+          "median_ms": 0.0870399996638298,
+          "tflops": 49.34475313175822,
+          "pct_of_peak": 15.815626003768658
+        },
+        "torch_naive": {
+          "median_ms": 0.5488640069961548,
+          "tflops": 7.825193930106059,
+          "pct_of_peak": 2.508074977598096
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.7264957036404289
+    },
+    {
+      "B": 4,
+      "H": 16,
+      "N": 2048,
+      "D": 64,
+      "causal": true,
+      "flops": 34359738368.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.4618239998817444,
+          "tflops": 74.40007097248784,
+          "pct_of_peak": 23.8461765937461
+        },
+        "torch_sdpa": {
+          "median_ms": 0.35174399614334106,
+          "tflops": 97.6839370244656,
+          "pct_of_peak": 31.308954174508205
+        },
+        "torch_naive": {
+          "median_ms": 8.192512035369873,
+          "tflops": 4.194041854275865,
+          "pct_of_peak": 1.3442441840627772
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.7616407900702635
+    },
+    {
+      "B": 4,
+      "H": 16,
+      "N": 2048,
+      "D": 64,
+      "causal": false,
+      "flops": 68719476736.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.5058559775352478,
+          "tflops": 135.84790886692974,
+          "pct_of_peak": 43.54099643170825
+        },
+        "torch_sdpa": {
+          "median_ms": 0.43007999658584595,
+          "tflops": 159.78301079223357,
+          "pct_of_peak": 51.212503459049216
+        },
+        "torch_naive": {
+          "median_ms": 6.074368000030518,
+          "tflops": 11.313024949370002,
+          "pct_of_peak": 3.6259695350544883
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.8502024601575024
+    },
+    {
+      "B": 2,
+      "H": 16,
+      "N": 4096,
+      "D": 64,
+      "causal": true,
+      "flops": 68719476736.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.6548479795455933,
+          "tflops": 104.93958732786388,
+          "pct_of_peak": 33.63448311790509
+        },
+        "torch_sdpa": {
+          "median_ms": 0.5043200254440308,
+          "tflops": 136.26164591718452,
+          "pct_of_peak": 43.673604460636064
+        },
+        "torch_naive": {
+          "median_ms": 16.565248489379883,
+          "tflops": 4.14841206759178,
+          "pct_of_peak": 1.3296192524332628
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.77013297925113
+    },
+    {
+      "B": 2,
+      "H": 16,
+      "N": 4096,
+      "D": 64,
+      "causal": false,
+      "flops": 137438953472.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.9113600254058838,
+          "tflops": 150.80643175104166,
+          "pct_of_peak": 48.33539479200052
+        },
+        "torch_sdpa": {
+          "median_ms": 0.814079999923706,
+          "tflops": 168.82733083343223,
+          "pct_of_peak": 54.111323985074435
+        },
+        "torch_naive": {
+          "median_ms": 11.95622444152832,
+          "tflops": 11.49518011677871,
+          "pct_of_peak": 3.684352601531638
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.8932584019813102
+    },
+    {
+      "B": 1,
+      "H": 32,
+      "N": 8192,
+      "D": 128,
+      "causal": true,
+      "flops": 549755813888.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 8.595967769622803,
+          "tflops": 63.955080873008406,
+          "pct_of_peak": 20.49842335673346
+        },
+        "torch_sdpa": {
+          "median_ms": 3.008512020111084,
+          "tflops": 182.7334609976733,
+          "pct_of_peak": 58.568416986433746
+        },
+        "torch_naive": {
+          "median_ms": 68.70476531982422,
+          "tflops": 8.001713000966648,
+          "pct_of_peak": 2.564651602873926
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.34999107729822254
+    },
+    {
+      "B": 1,
+      "H": 32,
+      "N": 8192,
+      "D": 128,
+      "causal": false,
+      "flops": 1099511627776.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 11.995136260986328,
+          "tflops": 91.6631211061866,
+          "pct_of_peak": 29.37920548275212
+        },
+        "torch_sdpa": {
+          "median_ms": 5.277696132659912,
+          "tflops": 208.33174175601047,
+          "pct_of_peak": 66.77299415256746
+        },
+        "torch_naive": {
+          "median_ms": 49.49862480163574,
+          "tflops": 22.212973232736466,
+          "pct_of_peak": 7.11954270280015
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.43998634261666497
+    },
+    {
+      "B": 8,
+      "H": 12,
+      "N": 512,
+      "D": 64,
+      "causal": true,
+      "flops": 3221225472.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.09932799637317657,
+          "tflops": 32.430186751153364,
+          "pct_of_peak": 10.394290625369667
+        },
+        "torch_sdpa": {
+          "median_ms": 0.06809600070118904,
+          "tflops": 47.30417996403353,
+          "pct_of_peak": 15.161596142318439
+        },
+        "torch_naive": {
+          "median_ms": 0.9026560187339783,
+          "tflops": 3.568607980388737,
+          "pct_of_peak": 1.143784609098954
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.6855670424011321
+    },
+    {
+      "B": 8,
+      "H": 12,
+      "N": 512,
+      "D": 64,
+      "causal": false,
+      "flops": 6442450944.0,
+      "impls": {
+        "triton_flash": {
+          "median_ms": 0.10547199845314026,
+          "tflops": 61.08209798321297,
+          "pct_of_peak": 19.577595507440055
+        },
+        "torch_sdpa": {
+          "median_ms": 0.07577600330114365,
+          "tflops": 85.01967197183606,
+          "pct_of_peak": 27.24989486276797
+        },
+        "torch_naive": {
+          "median_ms": 0.6932479739189148,
+          "tflops": 9.29314067458571,
+          "pct_of_peak": 2.978570729033881
+        }
+      },
+      "triton_vs_sdpa_speedup": 0.7184466437773043
+    }
+  ],
+  "interpretation_hint": "SDPA on A100 uses a tuned FlashAttention-2 kernel; matching it is a good result, losing to it is expected and is a valid negative result. Naive OOM/slowdown at long N shows why tiling matters."
+}

@@ -1,0 +1,42 @@
+# Colab A100 config: gateway in front of vLLM replicas on the same GPU.
+# Single-replica experiments override backends with INFERSCALE_BACKENDS.
+gateway:
+  routing_policy: least_outstanding
+  global_max_inflight: 512
+  health_interval_s: 1.0
+  unhealthy_after_failures: 2
+  max_retries: 1
+  request_timeout_s: 600
+  upstream_read_timeout_s: 180   # generous: queued long prefills can be silent for a while on one GPU
+  inject_cache_salt: false   # toggled by the cache-isolation experiment
+  cache_salt_secret: colab-experiment-secret
+
+backends:
+  - {name: vllm-a, url: "http://127.0.0.1:8001", model: Qwen/Qwen2.5-1.5B-Instruct}
+  - {name: vllm-b, url: "http://127.0.0.1:8002", model: Qwen/Qwen2.5-1.5B-Instruct}
+
+tenants:
+  acme:
+    api_key: sk-dev-acme
+    allowed_models: ["*"]
+    requests_per_minute: 100000
+    burst: 2000
+    max_concurrent: 256
+    max_output_tokens: 1024
+    allowed_tools: [calculator, search_docs, memory_read, memory_write, python_exec]
+  globex:
+    api_key: sk-dev-globex
+    allowed_models: ["*"]
+    requests_per_minute: 100000
+    burst: 2000
+    max_concurrent: 256
+    max_output_tokens: 1024
+    allowed_tools: [calculator, search_docs]
+  freetier:
+    api_key: sk-dev-free
+    allowed_models: ["*"]
+    requests_per_minute: 60
+    burst: 5
+    max_concurrent: 2
+    max_output_tokens: 64
+    allowed_tools: [calculator]

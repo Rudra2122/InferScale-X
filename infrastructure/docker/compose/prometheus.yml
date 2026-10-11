@@ -1,0 +1,7 @@
+global: {scrape_interval: 5s}
+rule_files: [alerts.yml]
+scrape_configs:
+  - job_name: gateway
+    static_configs: [{targets: ["gateway:9000"]}]
+  - job_name: mock
+    static_configs: [{targets: ["mock-a:8000", "mock-b:8000"]}]

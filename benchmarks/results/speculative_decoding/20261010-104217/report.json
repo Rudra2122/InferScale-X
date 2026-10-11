@@ -1,0 +1,70 @@
+{
+  "experiment": "speculative_decoding",
+  "hf": {
+    "target": "Qwen/Qwen2.5-3B-Instruct",
+    "draft": "Qwen/Qwen2.5-0.5B-Instruct",
+    "max_new_tokens": 128,
+    "n_prompts": 30,
+    "tok_per_s_standard": {
+      "n": 29,
+      "mean": 25.907727900580905,
+      "std": 0.22217966592724864,
+      "cv": 0.008575806677445725,
+      "ci95": [
+        25.82166427955482,
+        25.99379152160699
+      ]
+    },
+    "tok_per_s_speculative": {
+      "n": 29,
+      "mean": 22.421606586061422,
+      "std": 2.4964813604490783,
+      "cv": 0.11134266185907644,
+      "ci95": [
+        21.454568379357433,
+        23.38864479276541
+      ]
+    },
+    "speedup": {
+      "baseline": {
+        "n": 29,
+        "mean": 4.940960843931015,
+        "std": 0.042280974460042704,
+        "cv": 0.008557237305771497,
+        "ci95": [
+          4.924582865562219,
+          4.957338822299811
+        ]
+      },
+      "candidate": {
+        "n": 29,
+        "mean": 5.789027076724214,
+        "std": 0.7624708959867064,
+        "cv": 0.13170967865262762,
+        "ci95": [
+          5.493675987947676,
+          6.084378165500751
+        ]
+      },
+      "relative_change": 0.17163994202360022,
+      "verdict": "regressed"
+    },
+    "mean_tokens_per_target_forward": 4.402478649300098,
+    "identical_output_rate": 0.2,
+    "note": "identical_output_rate < 1.0 can come from bf16 numerics differing between batch shapes; inspect rows."
+  },
+  "vllm": {
+    "standard": {
+      "error": "vLLM vllm-a failed to start; see logs/vllm-a.log",
+      "log_tail": "    ...<4 lines>...\n        renderer=renderer,\n        ^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/core_client.py\", line 674, in __init__\n    with launch_core_engines(\n         ~~~~~~~~~~~~~~~~~~~^\n        vllm_config, executor_class, log_stats, addresses\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ) as engine_launch:\n    ^\n  File \"/usr/lib/python3.13/contextlib.py\", line 148, in __exit__\n    next(self.gen)\n    ~~~~^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1268, in launch_core_engines\n    wait_for_engine_startup(\n    ~~~~~~~~~~~~~~~~~~~~~~~^\n        handshake_socket,\n        ^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        launch,\n        ^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1348, in wait_for_engine_startup\n    raise RuntimeError(\n    ...<8 lines>...\n    )\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    },
+    "draft_model_k4": {
+      "error": "vLLM vllm-a failed to start; see logs/vllm-a.log",
+      "log_tail": "    ...<4 lines>...\n        renderer=renderer,\n        ^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/core_client.py\", line 674, in __init__\n    with launch_core_engines(\n         ~~~~~~~~~~~~~~~~~~~^\n        vllm_config, executor_class, log_stats, addresses\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ) as engine_launch:\n    ^\n  File \"/usr/lib/python3.13/contextlib.py\", line 148, in __exit__\n    next(self.gen)\n    ~~~~^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1268, in launch_core_engines\n    wait_for_engine_startup(\n    ~~~~~~~~~~~~~~~~~~~~~~~^\n        handshake_socket,\n        ^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        launch,\n        ^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1348, in wait_for_engine_startup\n    raise RuntimeError(\n    ...<8 lines>...\n    )\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    },
+    "ngram_k4": {
+      "error": "vLLM vllm-a failed to start; see logs/vllm-a.log",
+      "log_tail": "    ...<4 lines>...\n        renderer=renderer,\n        ^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/core_client.py\", line 674, in __init__\n    with launch_core_engines(\n         ~~~~~~~~~~~~~~~~~~~^\n        vllm_config, executor_class, log_stats, addresses\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ) as engine_launch:\n    ^\n  File \"/usr/lib/python3.13/contextlib.py\", line 148, in __exit__\n    next(self.gen)\n    ~~~~^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1268, in launch_core_engines\n    wait_for_engine_startup(\n    ~~~~~~~~~~~~~~~~~~~~~~~^\n        handshake_socket,\n        ^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        launch,\n        ^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1348, in wait_for_engine_startup\n    raise RuntimeError(\n    ...<8 lines>...\n    )\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    }
+  }
+}

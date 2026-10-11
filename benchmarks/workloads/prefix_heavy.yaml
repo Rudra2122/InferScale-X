@@ -1,0 +1,11 @@
+# RAG-like: 80% of requests reuse one of 8 long shared prefixes (system prompt / document).
+name: prefix_heavy
+num_requests: 300
+warmup_requests: 8
+concurrency: 32
+input_tokens: 2200
+input_tokens_jitter: 0.05
+output_tokens: 64
+prefix_reuse: 0.8
+shared_prefix_tokens: 2000
+num_shared_prefixes: 8

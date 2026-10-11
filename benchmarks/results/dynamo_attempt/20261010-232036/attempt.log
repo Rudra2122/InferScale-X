@@ -1,0 +1,345 @@
+=== install ai-dynamo[vllm]
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.9/107.9 kB 11.0 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.9/87.9 kB 9.7 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.6/93.6 kB 9.8 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.0/50.0 kB 400.0 kB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.3/67.3 MB 10.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 314.5/314.5 MB 5.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 110.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.4/99.4 kB 10.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.7/211.7 kB 22.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.8/15.8 MB 124.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 420.2/420.2 kB 38.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 799.6/799.6 kB 64.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 322.7/322.7 kB 33.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 69.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.8/101.8 MB 25.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.0/111.0 kB 11.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.4/45.4 kB 4.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 82.2/82.2 MB 4.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.3/66.3 MB 4.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 121.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 782.6/782.6 kB 58.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 319.2/319.2 kB 33.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 102.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.2/43.2 MB 63.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 728.5/728.5 kB 55.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 143.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.5/50.5 MB 52.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 755.8/755.8 kB 59.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 526.6/526.6 MB 1.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.7/7.7 MB 139.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 178.4/178.4 kB 19.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 366.2/366.2 MB 3.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 15.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 107.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.5/88.5 MB 29.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.0/88.0 MB 30.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.0/206.0 MB 4.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 197.7/197.7 MB 13.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 2.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 772.4/772.4 kB 58.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 381.0/381.0 kB 38.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 94.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 230.5/230.5 kB 23.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 MB 32.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 111.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 88.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.5/117.5 kB 12.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 97.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 117.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 143.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.7/125.7 kB 13.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 136.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 112.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 8.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.1/140.1 kB 13.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 7.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.3/206.3 kB 22.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.0/64.0 kB 7.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 157.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 471.9/471.9 kB 42.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 99.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 650.4/650.4 kB 52.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 132.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.2/23.2 MB 106.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 121.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.0/10.0 MB 156.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 82.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 462.5/462.5 kB 41.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 149.9/149.9 kB 16.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 368.7/368.7 kB 35.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.1/69.1 kB 8.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 183.4/183.4 kB 21.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.7/95.7 kB 11.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 382.2/382.2 kB 38.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.6/807.6 kB 60.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 106.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 172.4/172.4 kB 19.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.6/56.6 kB 6.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 48.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 113.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 8.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.4/69.4 kB 8.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 320.7/320.7 kB 33.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.3/93.3 MB 28.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.3/29.3 MB 93.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.6/61.6 kB 6.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 342.8/342.8 kB 34.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 755.0/755.0 kB 59.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 144.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 354.8/354.8 kB 34.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.7/108.7 kB 11.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 137.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 141.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.0/196.0 kB 20.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 455.7/455.7 kB 39.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.0/140.0 kB 15.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 220.9/220.9 kB 25.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.0/16.0 MB 126.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.6/131.6 kB 16.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 928.0/928.0 kB 67.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 kB 10.3 MB/s eta 0:00:00
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+cuml-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.
+numba-cuda 0.28.2 requires cuda-core<1.0.0,>=0.5.1, but you have cuda-core 1.2.1 which is incompatible.
+inflect 7.5.0 requires typeguard>=4.0.1, but you have typeguard 2.13.3 which is incompatible.
+cudf-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.
+google-adk 2.7.1 requires opentelemetry-api<=1.42.1,>=1.39, but you have opentelemetry-api 1.45.1 which is incompatible.
+google-adk 2.7.1 requires opentelemetry-sdk<=1.42.1,>=1.39, but you have opentelemetry-sdk 1.45.1 which is incompatible.
+Name: ai-dynamo
+Version: 1.5.1
+Summary: Distributed Inference Framework
+Home-page: 
+Author: 
+Author-email: "NVIDIA Inc." <sw-dl-dynamo@nvidia.com>
+License: Apache-2.0
+Location: /usr/local/lib/python3.13/dist-packages
+Requires: ai-dynamo-runtime, aiohttp, aisimulate, kubernetes, msgspec, prometheus-client, pyzmq, tqdm, transformers, typing-extensions, zstandard
+Required-by: 
+=== fetch etcd v3.5.17 and nats-server v2.10.24
+=== start etcd + nats
+{"health":"true","reason":""}=== start dynamo frontend (python -m dynamo.frontend)
+=== start dynamo vllm worker (python -m dynamo.vllm)
+=== smoke request through Dynamo
+=== benchmark through Dynamo (same workload as vLLM baseline)
+[chat_short] rep 0: ok=300/300 tok/s=4948.5 ttft_p50=0.12986360849981793 tpot_p50=0.005219174826773334
+[chat_short] rep 1: ok=300/300 tok/s=5028.8 ttft_p50=0.1146796799994263 tpot_p50=0.005216481232281243
+{
+  "output_tok_per_s": {
+    "n": 2,
+    "mean": 4988.620426451336,
+    "std": 56.77009932007437,
+    "cv": 0.011379919590406256,
+    "ci95": [
+      4478.569539405347,
+      5498.671313497325
+    ]
+  },
+  "req_per_s": {
+    "n": 2,
+    "mean": 38.973597081651064,
+    "std": 0.44351640093808103,
+    "cv": 0.011379919590406256,
+    "ci95": [
+      34.988824526604276,
+      42.95836963669785
+    ]
+  },
+  "ttft_p50_s": {
+    "n": 2,
+    "mean": 0.12227164424962211,
+    "std": 0.010736658807678608,
+    "cv": 0.08780988326090813,
+    "ci95": [
+      0.025808146486634098,
+      0.21873514201261013
+    ]
+  },
+  "ttft_p95_s": {
+    "n": 2,
+    "mean": 0.1733446397002581,
+    "std": 0.002017416446776305,
+    "cv": 0.011638181891662503,
+    "ci95": [
+      0.15521916413224965,
+      0.19147011526826654
+    ]
+  },
+  "ttft_p99_s": {
+    "n": 2,
+    "mean": 0.18422584155011007,
+    "std": 0.007071874931480957,
+    "cv": 0.03838698671140217,
+    "ci95": [
+      0.12068858998492418,
+      0.24776309311529596
+    ]
+  },
+  "tpot_p50_s": {
+    "n": 2,
+    "mean": 0.0052178280295272885,
+    "std": 1.9046589311241138e-06,
+    "cv": 0.0003650290734661616,
+    "ci95": [
+      0.0052007156237190355,
+      0.0052349404353355415
+    ]
+  },
+  "tpot_p95_s": {
+    "n": 2,
+    "mean": 0.005608768686616664,
+    "std": 1.573748655579762e-05,
+    "cv": 0.00280587191861728,
+    "ci95": [
+      0.005467375258142944,
+      0.005750162115090384
+    ]
+  },
+  "e2e_p50_s": {
+    "n": 2,
+    "mean": 0.7862074442498397,
+    "std": 0.005150651707711868,
+    "cv": 0.00655126295913716,
+    "ci95": [
+      0.7399314203596645,
+      0.8324834681400148
+    ]
+  },
+  "e2e_p99_s": {
+    "n": 2,
+    "mean": 0.8248631554405756,
+    "std": 0.015540658458434492,
+    "cv": 0.018840286847500082,
+    "ci95": [
+      0.6852381287638938,
+      0.9644881821172575
+    ]
+  },
+  "error_rate": {
+    "n": 2,
+    "mean": 0.0,
+    "std": 0.0,
+    "cv": null,
+    "ci95": [
+      0.0,
+      0.0
+    ]
+  },
+  "cached_token_fraction": {
+    "n": 2,
+    "mean": 0.053416034269717055,
+    "std": 0.0004606610066501137,
+    "cv": 0.008624021100556963,
+    "ci95": [
+      0.04927722602587971,
+      0.0575548425135544
+    ]
+  },
+  "jain_fairness_weighted": {
+    "n": 0
+  },
+  "joules_per_output_token": {
+    "n": 2,
+    "mean": 0.05296356706021664,
+    "std": 0.0008746125554103866,
+    "cv": 0.016513475280394173,
+    "ci95": [
+      0.045105611639115535,
+      0.060821522481317745
+    ]
+  },
+  "avg_gpu_util_pct": {
+    "n": 2,
+    "mean": 89.03095238095239,
+    "std": 5.9834702388975956,
+    "cv": 0.06720662959208916,
+    "ci95": [
+      35.272471428571436,
+      142.78943333333333
+    ]
+  }
+}
+==> /content/InferScale-X/benchmarks/results/dynamo_attempt/20261010-232036/frontend.log <==
+[2m2026-10-10T23:29:57.956489Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m0fd7a68a-102f-4112-a536-07166f76a46e [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.956529Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m3 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m67d54e43-8519-4c3e-8dbd-ab5aae18f225 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.956667Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_unified[0m[2m:[0m unified parser path decision [3mtool_call_parser[0m[2m=[0mNone [3mreasoning_parser[0m[2m=[0mNone [3mconfigured[0m[2m=[0mNone [3mflag_on[0m[2m=[0mfalse [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m6643d11f-39dd-4f84-9abf-c71586ca3afa [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.957624Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_unified[0m[2m:[0m unified parser path decision [3mtool_call_parser[0m[2m=[0mNone [3mreasoning_parser[0m[2m=[0mNone [3mconfigured[0m[2m=[0mNone [3mflag_on[0m[2m=[0mfalse [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m730e35f1-a6fe-432b-ba77-82c247905f4c [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.957638Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_runtime::pipeline::network::egress::push_router[0m[2m:[0m Selected worker [3mrouter_mode[0m[2m=[0m"round-robin" [3mworker_id[0m[2m=[0m7587898140940372747 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0md6c74104-0079-4e9a-832c-89a5e4a2bc20 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.957664Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_unified[0m[2m:[0m unified parser path decision [3mtool_call_parser[0m[2m=[0mNone [3mreasoning_parser[0m[2m=[0mNone [3mconfigured[0m[2m=[0mNone [3mflag_on[0m[2m=[0mfalse [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0me7ef6d1a-ae62-4308-a0df-f6d07ad57906 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.957757Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m4 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0md6c74104-0079-4e9a-832c-89a5e4a2bc20 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.957774Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_unified[0m[2m:[0m unified parser path decision [3mtool_call_parser[0m[2m=[0mNone [3mreasoning_parser[0m[2m=[0mNone [3mconfigured[0m[2m=[0mNone [3mflag_on[0m[2m=[0mfalse [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.958785Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_runtime::pipeline::network::egress::push_router[0m[2m:[0m Selected worker [3mrouter_mode[0m[2m=[0m"round-robin" [3mworker_id[0m[2m=[0m7587898140940372747 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m6643d11f-39dd-4f84-9abf-c71586ca3afa [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.958876Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m4 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m6643d11f-39dd-4f84-9abf-c71586ca3afa [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.959215Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_runtime::pipeline::network::egress::push_router[0m[2m:[0m Selected worker [3mrouter_mode[0m[2m=[0m"round-robin" [3mworker_id[0m[2m=[0m7587898140940372747 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.959322Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m3 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.960830Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_runtime::pipeline::network::egress::push_router[0m[2m:[0m Selected worker [3mrouter_mode[0m[2m=[0m"round-robin" [3mworker_id[0m[2m=[0m7587898140940372747 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m730e35f1-a6fe-432b-ba77-82c247905f4c [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.960917Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m5 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m730e35f1-a6fe-432b-ba77-82c247905f4c [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.998317Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_runtime::pipeline::network::egress::push_router[0m[2m:[0m Selected worker [3mrouter_mode[0m[2m=[0m"round-robin" [3mworker_id[0m[2m=[0m7587898140940372747 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0me7ef6d1a-ae62-4308-a0df-f6d07ad57906 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:57.998482Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::service_v2[0m[2m:[0m http response sent [3mstatus[0m[2m=[0m200 [3mlatency_ms[0m[2m=[0m43 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0me7ef6d1a-ae62-4308-a0df-f6d07ad57906 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m
+[2m2026-10-10T23:29:58.482499Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m1d915dc6-004f-44db-b7e0-d5af1e7007f3 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m72813b12-3fa8-4f80-96d6-e7c1f9395895 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.482601Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m72813b12-3fa8-4f80-96d6-e7c1f9395895 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m617 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m1d915dc6-004f-44db-b7e0-d5af1e7007f3 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m239 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"34.13" [3mavg_itl_ms[0m[2m=[0m"4.59" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.486539Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mf367bdd1-3303-4973-9042-0d36f25275e4 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m2bca86dd-47f6-434f-9b79-6b358795106a [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.486674Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2bca86dd-47f6-434f-9b79-6b358795106a [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m613 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mf367bdd1-3303-4973-9042-0d36f25275e4 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m327 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"28.57" [3mavg_itl_ms[0m[2m=[0m"4.60" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.541566Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m97dc6100-5600-4262-86a2-ef4a25b98bf5 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m2f22c8dc-df8b-4c65-afeb-cf3f5353fc40 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.541699Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2f22c8dc-df8b-4c65-afeb-cf3f5353fc40 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m602 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m97dc6100-5600-4262-86a2-ef4a25b98bf5 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m339 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"44.94" [3mavg_itl_ms[0m[2m=[0m"4.38" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.545802Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0md6c74104-0079-4e9a-832c-89a5e4a2bc20 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.545945Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m592 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0md6c74104-0079-4e9a-832c-89a5e4a2bc20 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m314 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"50.38" [3mavg_itl_ms[0m[2m=[0m"4.26" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546352Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mfc16736e-7eeb-43f0-939a-897bda060eb4 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0md47d4b7a-fde1-45f9-a51a-9d4568e2f652 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546425Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m25d6edd8-352d-4b13-b669-50f9719db0c8 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0ma0c63200-a4a4-4580-b5db-09e7fba0c079 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546438Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m67d54e43-8519-4c3e-8dbd-ab5aae18f225 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m6f86f8f8-0c66-496a-a3c2-c225266259ec [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546454Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0md47d4b7a-fde1-45f9-a51a-9d4568e2f652 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m600 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mfc16736e-7eeb-43f0-939a-897bda060eb4 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m348 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"58.36" [3mavg_itl_ms[0m[2m=[0m"4.26" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546505Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mbc0d53f5-75af-41c2-ba40-3ee1dc9d376e [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m5152746c-59c9-418f-bedf-7376d43c02af [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546521Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0ma0c63200-a4a4-4580-b5db-09e7fba0c079 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m592 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m25d6edd8-352d-4b13-b669-50f9719db0c8 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m244 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"50.91" [3mavg_itl_ms[0m[2m=[0m"4.26" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546562Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m6f86f8f8-0c66-496a-a3c2-c225266259ec [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m592 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m67d54e43-8519-4c3e-8dbd-ab5aae18f225 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m337 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"50.55" [3mavg_itl_ms[0m[2m=[0m"4.26" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.546581Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m5152746c-59c9-418f-bedf-7376d43c02af [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m594 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0mbc0d53f5-75af-41c2-ba40-3ee1dc9d376e [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m240 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"52.02" [3mavg_itl_ms[0m[2m=[0m"4.26" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.549184Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0me7ef6d1a-ae62-4308-a0df-f6d07ad57906 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m67a869b9-2511-4844-bb9b-d134bb7f3894 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.549267Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m67a869b9-2511-4844-bb9b-d134bb7f3894 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m592 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0me7ef6d1a-ae62-4308-a0df-f6d07ad57906 [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m315 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"54.50" [3mavg_itl_ms[0m[2m=[0m"4.24" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.549814Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m6643d11f-39dd-4f84-9abf-c71586ca3afa [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m2c1d6fd5-5626-4432-9b62-a99ea8d86812 [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.549945Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2c1d6fd5-5626-4432-9b62-a99ea8d86812 [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m594 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m6643d11f-39dd-4f84-9abf-c71586ca3afa [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m367 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"55.38" [3mavg_itl_ms[0m[2m=[0m"4.24" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.550116Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m730e35f1-a6fe-432b-ba77-82c247905f4c [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m2dea947c-e452-4497-b7a3-85d97881defd [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.550194Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2dea947c-e452-4497-b7a3-85d97881defd [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m593 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m730e35f1-a6fe-432b-ba77-82c247905f4c [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m337 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"54.58" [3mavg_itl_ms[0m[2m=[0m"4.24" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.550195Z[0m [32m INFO[0m [1mhttp-request[0m:[1mrouter.route_request[0m: [2mrequest_span[0m[2m:[0m route request completed [3mrequest.outcome[0m[2m=[0m"success" [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct"[0m [2m[3motel.kind[0m[2m=[0m"client" [3mrequest_id[0m[2m=[0m0fd7a68a-102f-4112-a536-07166f76a46e [3mrouter_mode[0m[2m=[0mRoundRobin [3mworker_id[0m[2m=[0m7587898140940372747 [3mrequest.attempt[0m[2m=[0m0 [3mmigration.is_retry[0m[2m=[0mfalse [3mmigration.tokens_completed[0m[2m=[0m0 [3mrequest.outcome[0m[2m=[0m"success"[0m
+[2m2026-10-10T23:29:58.550295Z[0m [32m INFO[0m [1mhttp-request[0m: [2mdynamo_llm::http::service::metrics[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m0fd7a68a-102f-4112-a536-07166f76a46e [3mmodel[0m[2m=[0mQwen/Qwen2.5-1.5B-Instruct [3mendpoint[0m[2m=[0mchat_completions [3mrequest_type[0m[2m=[0mstream [3mstatus[0m[2m=[0msuccess [3melapsed_ms[0m[2m=[0m593 [2m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mrequest_id[0m[2m=[0m7b18dbbe-db26-4d8d-b1ff-803624bc49da [3mmodel[0m[2m=[0m"Qwen/Qwen2.5-1.5B-Instruct" [3minput_tokens[0m[2m=[0m344 [3moutput_tokens[0m[2m=[0m128 [3mimage_count[0m[2m=[0m0 [3mvideo_count[0m[2m=[0m0 [3maudio_count[0m[2m=[0m0 [3mttft_ms[0m[2m=[0m"54.33" [3mavg_itl_ms[0m[2m=[0m"4.24" [3mprefill_worker_id[0m[2m=[0m7587898140940372747 [3mdecode_worker_id[0m[2m=[0m7587898140940372747 [3mrequest.outcome[0m[2m=[0m"success"[0m
+
+==> /content/InferScale-X/benchmarks/results/dynamo_attempt/20261010-232036/worker.log <==
+[2m2026-10-10T23:29:57.929146Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0meba96f4a-016c-4b35-b4be-8403ae3e8250 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"eba96f4a-016c-4b35-b4be-8403ae3e8250" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929208Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0mab372796-6334-4358-bdea-adb8444e637f [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"ab372796-6334-4358-bdea-adb8444e637f" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929336Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0mfa78b41c-1986-4ecd-a879-ea84c0bc82df [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"fa78b41c-1986-4ecd-a879-ea84c0bc82df" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929375Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m79dde237-49e4-445d-ad0f-e8ba342181d0 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"79dde237-49e4-445d-ad0f-e8ba342181d0" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929390Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m1ed803bb-6a89-46dd-a0de-2e5300d6230e [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"1ed803bb-6a89-46dd-a0de-2e5300d6230e" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929432Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0mc9648203-8cc1-4383-9816-0ae3250423b4 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"c9648203-8cc1-4383-9816-0ae3250423b4" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.929668Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m47da2b52-0153-4ca8-9ea2-0781a430b0cf [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"47da2b52-0153-4ca8-9ea2-0781a430b0cf" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.932224Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0mff664dd8-ef4d-4fe6-91f0-832d9049ca62 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"ff664dd8-ef4d-4fe6-91f0-832d9049ca62" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.932447Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m3c783902-794b-4d51-b79a-e432d474d3b3 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"3c783902-794b-4d51-b79a-e432d474d3b3" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.933782Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m7c81f9d5-6085-4c0e-925e-bd6f8ca84302 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"7c81f9d5-6085-4c0e-925e-bd6f8ca84302" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.933794Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m522da643-8bb2-4904-84df-1fad1e1c3bf9 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"522da643-8bb2-4904-84df-1fad1e1c3bf9" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.933858Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m8b579e8a-f717-4cd3-9cef-b6e8e5ec704c [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"8b579e8a-f717-4cd3-9cef-b6e8e5ec704c" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.933880Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m4a43f3bb-6a4c-4e7a-b925-c7045050858f [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"4a43f3bb-6a4c-4e7a-b925-c7045050858f" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.933925Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0md02e16c5-e07b-4f0d-b4b4-59c2d55f67df [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"d02e16c5-e07b-4f0d-b4b4-59c2d55f67df" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.935332Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m69134ff9-cec9-43e4-96ae-cab4c4671214 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"69134ff9-cec9-43e4-96ae-cab4c4671214" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.936046Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m0eaf02d1-16d3-4f09-b765-c7e08493af7a [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"0eaf02d1-16d3-4f09-b765-c7e08493af7a" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.936204Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m1764dc74-ce5f-48ab-a2b4-925e571b7ffa [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"1764dc74-ce5f-48ab-a2b4-925e571b7ffa" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.936408Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m47326f14-e19a-44cb-b616-b4dae5fa2899 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"47326f14-e19a-44cb-b616-b4dae5fa2899" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.940844Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m2f22c8dc-df8b-4c65-afeb-cf3f5353fc40 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2f22c8dc-df8b-4c65-afeb-cf3f5353fc40" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.947732Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0md47d4b7a-fde1-45f9-a51a-9d4568e2f652 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"d47d4b7a-fde1-45f9-a51a-9d4568e2f652" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.953344Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m5152746c-59c9-418f-bedf-7376d43c02af [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"5152746c-59c9-418f-bedf-7376d43c02af" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.954829Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0ma0c63200-a4a4-4580-b5db-09e7fba0c079 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"a0c63200-a4a4-4580-b5db-09e7fba0c079" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.955376Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.955513Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m6f86f8f8-0c66-496a-a3c2-c225266259ec [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"6f86f8f8-0c66-496a-a3c2-c225266259ec" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.956984Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m2c1d6fd5-5626-4432-9b62-a99ea8d86812 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2c1d6fd5-5626-4432-9b62-a99ea8d86812" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.957901Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m2dea947c-e452-4497-b7a3-85d97881defd [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2dea947c-e452-4497-b7a3-85d97881defd" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.958039Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m67a869b9-2511-4844-bb9b-d134bb7f3894 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"67a869b9-2511-4844-bb9b-d134bb7f3894" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:57.958046Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request received [3mrequest_id[0m[2m=[0m0fd7a68a-102f-4112-a536-07166f76a46e [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"0fd7a68a-102f-4112-a536-07166f76a46e" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.482296Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m72813b12-3fa8-4f80-96d6-e7c1f9395895 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"72813b12-3fa8-4f80-96d6-e7c1f9395895" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.486432Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2bca86dd-47f6-434f-9b79-6b358795106a [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2bca86dd-47f6-434f-9b79-6b358795106a" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.541435Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2f22c8dc-df8b-4c65-afeb-cf3f5353fc40 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2f22c8dc-df8b-4c65-afeb-cf3f5353fc40" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.545667Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"030dc261-3ffd-4eb6-b3e0-58cfc54ab0d7" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.546241Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0md47d4b7a-fde1-45f9-a51a-9d4568e2f652 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"d47d4b7a-fde1-45f9-a51a-9d4568e2f652" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.546288Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m6f86f8f8-0c66-496a-a3c2-c225266259ec [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"6f86f8f8-0c66-496a-a3c2-c225266259ec" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.546310Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0ma0c63200-a4a4-4580-b5db-09e7fba0c079 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"a0c63200-a4a4-4580-b5db-09e7fba0c079" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.546341Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m5152746c-59c9-418f-bedf-7376d43c02af [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"5152746c-59c9-418f-bedf-7376d43c02af" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.549075Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m67a869b9-2511-4844-bb9b-d134bb7f3894 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"67a869b9-2511-4844-bb9b-d134bb7f3894" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.549703Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2c1d6fd5-5626-4432-9b62-a99ea8d86812 [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2c1d6fd5-5626-4432-9b62-a99ea8d86812" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.550014Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m2dea947c-e452-4497-b7a3-85d97881defd [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"2dea947c-e452-4497-b7a3-85d97881defd" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m
+[2m2026-10-10T23:29:58.550053Z[0m [32m INFO[0m [1mhandle_payload[0m: [2mdynamo_runtime::pipeline::network::ingress::push_handler[0m[2m:[0m request completed [3mrequest_id[0m[2m=[0m0fd7a68a-102f-4112-a536-07166f76a46e [2m[3motel.kind[0m[2m=[0m"server" [3mrequest_id[0m[2m=[0m"0fd7a68a-102f-4112-a536-07166f76a46e" [3mcomponent[0m[2m=[0m"backend" [3mendpoint[0m[2m=[0m"generate" [3mnamespace[0m[2m=[0m"dynamo" [3minstance_id[0m[2m=[0m7587898140940372747[0m

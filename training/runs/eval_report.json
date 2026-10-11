@@ -1,0 +1,421 @@
+{
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_eval": 200,
+  "results": {
+    "base": {
+      "n": 200,
+      "accuracy": 0.345,
+      "format_rate": 0.54,
+      "mean_output_tokens": 68.67,
+      "gen_wall_s": 19.315491246999954,
+      "gen_tok_per_s": 711.0355012137286,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 8,
+          "text": "Answer: 8"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 38,
+          "text": "Answer: 38"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 59,
+          "text": "To find out how many coins the third person has, we need to follow these steps:\n\n1. Calculate the number of coins the friend has.\n2. Use that information to calculate the number of coins the third person has.\n\nFirst, let's determine the number of coins the friend has:\n- The friend has 19 more coins "
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 17,
+          "text": "Answer: 17\n\nIvan initially had $4 \\times 35 = 140$ tickets. After losing 28 tickets, he has $140 - 28 = 112$ tickets remaining."
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 47,
+          "text": "Answer: 47"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 40,
+          "text": "Answer: 40"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 8,
+          "text": "To find out how many marbles the third person has, we need to follow these steps:\n\n1. Determine how many marbles the friend has.\n2. Use that information to calculate how many marbles the third person has.\n\nFirst, let's find out how many marbles the friend has:\n- The friend has 13 more marbles than F"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 81,
+          "text": "Answer: <number> 81 </number>"
+        }
+      ],
+      "run_meta": null,
+      "delta_accuracy_vs_base": 0.0,
+      "relative_serving_tokens_vs_base": 1.0
+    },
+    "training/runs/20261010-123142-sft/adapter": {
+      "n": 200,
+      "accuracy": 0.995,
+      "format_rate": 1.0,
+      "mean_output_tokens": 27.755,
+      "gen_wall_s": 3.8075213810002424,
+      "gen_tok_per_s": 1457.9038289055497,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 22,
+          "text": "11 + 13 = 24\n24 - 2 = 22\nAnswer: 22"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 71,
+          "text": "55 + 22 = 77\n77 - 6 = 71\nAnswer: 71"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 472,
+          "text": "40 + 19 = 59\n59 x 8 = 472\nAnswer: 472"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 112,
+          "text": "4 x 35 = 140\n140 - 28 = 112\nAnswer: 112"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 42,
+          "text": "2 x 25 = 50\n50 - 8 = 42\nAnswer: 42"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 45,
+          "text": "32 + 19 = 51\n51 - 6 = 45\nAnswer: 45"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 128,
+          "text": "3 + 13 = 16\n16 x 8 = 128\nAnswer: 128"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 50,
+          "text": "276 / 6 = 46\n46 + 4 = 50\nAnswer: 50"
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "max_steps": 300,
+        "lr": 0.0002,
+        "batch": 16,
+        "n": null,
+        "seed": 42,
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      },
+      "delta_accuracy_vs_base": 0.65,
+      "relative_serving_tokens_vs_base": 0.4041794087665647
+    },
+    "training/runs/20261010-123419-dpo/adapter": {
+      "n": 200,
+      "accuracy": 0.015,
+      "format_rate": 0.705,
+      "mean_output_tokens": 28.9,
+      "gen_wall_s": 18.823198873000365,
+      "gen_tok_per_s": 307.0678920728358,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 11,
+          "text": "Final answer: 11"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 8,
+          "text": "55+22-6=8\u4e5d"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 32,
+          "text": "Final answer: 32eight"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 17,
+          "text": "Final answer: 17-fourtons"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 52,
+          "text": "Final answer: 52"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 3,
+          "text": "Final answer: 3\u4e94\u4e5d\u4e94-one Five-seven One-One Two-two Four-four Six-six Seven-seven Eight-eleven Nine-nin\u4e5d\u5341 Ten-tent\u5341\u4e8c\u5341\u4e8c Thirteen-Thirteen Fourteen Fourteen Five-Five Six-Six Seven-seven Eight-Eight Nine-Nine Ten-Ten Twelve- Twelve\u5341\u56db Twelve-twelve Twelve-twenty Twelve-twenty-two Twelve-twenty-four Fourt"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 24,
+          "text": "Final answer: 24\u516b\u4e2a"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 4,
+          "text": "Final answer: 4"
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "init_adapter": null,
+        "max_steps": 200,
+        "lr": 5e-05,
+        "beta": 0.1,
+        "batch": 8,
+        "seed": 42,
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      },
+      "delta_accuracy_vs_base": -0.32999999999999996,
+      "relative_serving_tokens_vs_base": 0.42085335663317314
+    },
+    "training/runs/20261010-130151-dpo-rpo/adapter": {
+      "n": 200,
+      "accuracy": 0.98,
+      "format_rate": 1.0,
+      "mean_output_tokens": 27.755,
+      "gen_wall_s": 3.7511622299998635,
+      "gen_tok_per_s": 1479.808032722755,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 22,
+          "text": "11 + 13 = 24\n24 - 2 = 22\nAnswer: 22"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 71,
+          "text": "55 + 22 = 77\n77 - 6 = 71\nAnswer: 71"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 472,
+          "text": "40 + 19 = 59\n59 x 8 = 472\nAnswer: 472"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 112,
+          "text": "4 x 35 = 140\n140 - 28 = 112\nAnswer: 112"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 42,
+          "text": "2 x 25 = 50\n50 - 8 = 42\nAnswer: 42"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 45,
+          "text": "32 + 19 = 51\n51 - 6 = 45\nAnswer: 45"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 128,
+          "text": "3 + 13 = 16\n16 x 8 = 128\nAnswer: 128"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 50,
+          "text": "276 / 6 = 46\n46 + 4 = 50\nAnswer: 50"
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "init_adapter": null,
+        "max_steps": 200,
+        "lr": 5e-05,
+        "beta": 0.1,
+        "batch": 8,
+        "seed": 42,
+        "sft_weight": 1.0,
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      },
+      "delta_accuracy_vs_base": 0.635,
+      "relative_serving_tokens_vs_base": 0.4041794087665647
+    },
+    "training/runs/20261010-123813-grpo/adapter": {
+      "n": 200,
+      "accuracy": 0.005,
+      "format_rate": 1.0,
+      "mean_output_tokens": 4.0,
+      "gen_wall_s": 0.6226807319999352,
+      "gen_tok_per_s": 1284.7675524350145,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 9,
+          "text": "Answer:9"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 9,
+          "text": "Answer:9"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 7,
+          "text": "Answer:7"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 9,
+          "text": "Answer:9"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 9,
+          "text": "Answer:9"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 7,
+          "text": "Answer:7"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 9,
+          "text": "Answer:9"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 9,
+          "text": "Answer:9"
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "max_steps": 150,
+        "lr": 5e-05,
+        "batch": 16,
+        "num_generations": 8,
+        "max_completion": 128,
+        "beta": 0.04,
+        "seed": 42,
+        "reward": "heuristic",
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      },
+      "delta_accuracy_vs_base": -0.33999999999999997,
+      "relative_serving_tokens_vs_base": 0.0582495995340032
+    },
+    "training/runs/20261010-124110-rlvr/adapter": {
+      "n": 200,
+      "accuracy": 0.955,
+      "format_rate": 1.0,
+      "mean_output_tokens": 53.285,
+      "gen_wall_s": 9.729399690999799,
+      "gen_tok_per_s": 1095.3399324172365,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 22,
+          "text": "Ben initially had 11 coins. He bought 13 more, so he had 11 + 13 = 24 coins. Then he gave away 2 coins, so he has 24 - 2 = 22 coins left. Answer: 22."
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 71,
+          "text": "Initially, Chen had 55 tickets. After buying 22 more, he had:\n\n55 + 22 = 77 tickets\n\nThen, he gave away 6 tickets:\n\n77 - 6 = 71 tickets\n\nAnswer: 71."
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 472,
+          "text": "The friend has 40 + 19 = 59 coins. The third person has 8 * 59 = 472 coins. Answer: 472."
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 112,
+          "text": "4 * 35 = 140 tickets in total.\n140 - 28 = 112 tickets remaining.\n\nAnswer: 112."
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 42,
+          "text": "Hana initially has 2 * 25 = 50 coins. After losing 8 coins, she has 50 - 8 = 42 coins remaining. Answer: 42."
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 45,
+          "text": "Eli initially had 32 apples. He bought 19 more, so he had:\n\n32 + 19 = 51 apples.\n\nThen, he gave away 6 apples, so he had:\n\n51 - 6 = 45 apples remaining.\n\nAnswer: 45."
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 128,
+          "text": "The friend has 3 + 13 = 16 marbles. The third person has 8 * 16 = 128 marbles. Answer: 128."
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 50,
+          "text": "First, we divide the total number of marbles by the number of friends: 276 / 6 = 46. Then, we add the additional marbles each friend receives: 46 + 4 = 50. Answer: 50."
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "max_steps": 150,
+        "lr": 5e-05,
+        "batch": 16,
+        "num_generations": 8,
+        "max_completion": 128,
+        "beta": 0.04,
+        "seed": 42,
+        "reward": "verifiable",
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      },
+      "delta_accuracy_vs_base": 0.61,
+      "relative_serving_tokens_vs_base": 0.7759574777923401
+    }
+  }
+}

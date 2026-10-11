@@ -1,0 +1,581 @@
+{
+  "experiment": "kubernetes_kind",
+  "label": "real Kubernetes, CPU mock backends (no GPUs)",
+  "tools": {
+    "docker": "29.8.2",
+    "kind": "kind v0.33.0 go1.27.1 darwin/arm64",
+    "kubectl": "v1.36.1",
+    "arch": "arm64"
+  },
+  "cluster": {
+    "created": false,
+    "ready_after_s": 1.7,
+    "nodes": 3
+  },
+  "ingress": {
+    "relay": "127.0.0.1:30901 -> inferscale-control-plane:30900 (NodePort)"
+  },
+  "deploy": {
+    "deploy_s": 7.1,
+    "smoke_status": 200,
+    "smoke_backend": "mock-0"
+  },
+  "scheduling": {
+    "pods": [
+      {
+        "name": "gateway-65b89c5f66-9h7mz",
+        "app": "gateway",
+        "node": "inferscale-worker2",
+        "phase": "Running",
+        "ready": true
+      },
+      {
+        "name": "gateway-65b89c5f66-9nqf7",
+        "app": "gateway",
+        "node": "inferscale-worker2",
+        "phase": "Running",
+        "ready": true
+      },
+      {
+        "name": "mock-0",
+        "app": "mock",
+        "node": "inferscale-worker2",
+        "phase": "Running",
+        "ready": true
+      },
+      {
+        "name": "mock-1",
+        "app": "mock",
+        "node": "inferscale-worker",
+        "phase": "Running",
+        "ready": true
+      }
+    ],
+    "mock_replicas_on_distinct_nodes": true,
+    "gateway_nodes": [
+      "inferscale-worker2",
+      "inferscale-worker2"
+    ],
+    "pass": true
+  },
+  "recovery": {
+    "events_relative_s": {
+      "kill_mock_1": 12.33,
+      "mock_1_pod_ready": 15.0,
+      "mock_1_readmitted": 15.0,
+      "kill_gateway_pod": 15.71
+    },
+    "mock_pod_recreated_ready_s": 2.6689839363098145,
+    "gateway_detect_s": null,
+    "readmit_after_kill_s": 2.66898512840271,
+    "windows": {
+      "before_kills": {
+        "requests": 305,
+        "failed": 0,
+        "errors": []
+      },
+      "mock_pod_down": {
+        "requests": 62,
+        "failed": 6,
+        "errors": [
+          "Internal Server Error",
+          "ReadTimeout: ",
+          "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}"
+        ]
+      },
+      "after_mock_recovery": {
+        "requests": 27,
+        "failed": 0,
+        "errors": []
+      },
+      "gateway_pod_kill": {
+        "requests": 731,
+        "failed": 1,
+        "errors": [
+          "ReadTimeout: "
+        ]
+      }
+    },
+    "summary": {
+      "workload": "k8s_recovery",
+      "n_requests": 1125,
+      "n_ok": 1118,
+      "error_rate": 0.00622222222222224,
+      "statuses": {
+        "200": 1122,
+        "500": 1,
+        "None": 2
+      },
+      "requests_by_backend": {
+        "mock-0": 725,
+        "mock-1": 397,
+        "None": 3
+      },
+      "wall_s": 617.6098501682281,
+      "req_per_s": 1.8102042894806045,
+      "output_tok_per_s": 57.926537263379345,
+      "ttft_s": {
+        "n": 1118,
+        "mean": 0.013102898487283087,
+        "std": 0.0015847608241141228,
+        "min": 0.010371500015025958,
+        "p50": 0.012861145500210114,
+        "p90": 0.014628395708859898,
+        "p95": 0.015114571343292476,
+        "p99": 0.017527261376380915,
+        "max": 0.03986220801016316
+      },
+      "tpot_s": {
+        "n": 1118,
+        "mean": 0.0023066302577536718,
+        "std": 7.583544849872021e-05,
+        "min": 0.0014307298387716254,
+        "p50": 0.00229650201612047,
+        "p90": 0.0023972817163373677,
+        "p95": 0.002423772520823179,
+        "p99": 0.0024847651730505594,
+        "max": 0.002800375000656312
+      },
+      "itl_s": {
+        "n": 34658,
+        "mean": 0.002290672853411126,
+        "std": 0.00047714515969269234,
+        "min": 6.999995093792677e-06,
+        "p50": 0.0022628544975304976,
+        "p90": 0.0025746662926394493,
+        "p95": 0.002734018758928869,
+        "p99": 0.003324889117502608,
+        "max": 0.03394774999469519
+      },
+      "e2e_s": {
+        "n": 1118,
+        "mean": 0.08460843647764692,
+        "std": 0.0025427731088032376,
+        "min": 0.07874974998412654,
+        "p50": 0.08436541650735307,
+        "p90": 0.0874875875102589,
+        "p95": 0.08846069820865522,
+        "p99": 0.09315768326894612,
+        "max": 0.09874358397792093
+      },
+      "mean_prompt_tokens": 65.6422182468694,
+      "cached_token_fraction": 0.0,
+      "per_tenant": {
+        "acme": {
+          "ok": 1118,
+          "output_tokens": 35776,
+          "tok_per_s": 57.926537263379345,
+          "ttft_s": {
+            "n": 1118,
+            "mean": 0.013102898487283087,
+            "std": 0.0015847608241141228,
+            "min": 0.010371500015025958,
+            "p50": 0.012861145500210114,
+            "p90": 0.014628395708859898,
+            "p95": 0.015114571343292476,
+            "p99": 0.017527261376380915,
+            "max": 0.03986220801016316
+          },
+          "weight": 1.0
+        }
+      },
+      "jain_fairness_weighted": null,
+      "errors_sample": [
+        "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}",
+        "ReadTimeout: ",
+        "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}",
+        "Internal Server Error",
+        "ReadTimeout: "
+      ]
+    },
+    "health_timeline": [
+      [
+        13.05,
+        {
+          "mock-0": true,
+          "mock-1": true
+        }
+      ],
+      [
+        14.28,
+        {
+          "mock-0": true,
+          "mock-1": true
+        }
+      ]
+    ],
+    "note": "Requests in flight on a killed pod fail (expected). Gateway-pod kill errors come from kube-proxy still routing to the terminating pod until endpoints update."
+  },
+  "hpa": {
+    "min_replicas": 2,
+    "max_replicas": 6,
+    "scale_up_detected_after_s": 18.2292160987854,
+    "peak_desired_replicas": 6,
+    "timeline": [
+      {
+        "t": 0.7,
+        "current_replicas": 2,
+        "desired_replicas": 2,
+        "cpu_util_pct": 7
+      },
+      {
+        "t": 6.5,
+        "current_replicas": 2,
+        "desired_replicas": 2,
+        "cpu_util_pct": 7
+      },
+      {
+        "t": 12.3,
+        "current_replicas": 2,
+        "desired_replicas": 2,
+        "cpu_util_pct": 7
+      },
+      {
+        "t": 18.2,
+        "current_replicas": 2,
+        "desired_replicas": 4,
+        "cpu_util_pct": 217
+      },
+      {
+        "t": 24.1,
+        "current_replicas": 2,
+        "desired_replicas": 4,
+        "cpu_util_pct": 217
+      },
+      {
+        "t": 30.3,
+        "current_replicas": 4,
+        "desired_replicas": 6,
+        "cpu_util_pct": 361
+      },
+      {
+        "t": 36.5,
+        "current_replicas": 4,
+        "desired_replicas": 6,
+        "cpu_util_pct": 361
+      },
+      {
+        "t": 42.7,
+        "current_replicas": 4,
+        "desired_replicas": 6,
+        "cpu_util_pct": 361
+      },
+      {
+        "t": 48.9,
+        "current_replicas": 6,
+        "desired_replicas": 6,
+        "cpu_util_pct": 149
+      },
+      {
+        "t": 54.9,
+        "current_replicas": 6,
+        "desired_replicas": 6,
+        "cpu_util_pct": 149
+      },
+      {
+        "t": 61.0,
+        "current_replicas": 6,
+        "desired_replicas": 6,
+        "cpu_util_pct": 14
+      },
+      {
+        "t": 67.0,
+        "current_replicas": 6,
+        "desired_replicas": 6,
+        "cpu_util_pct": 14
+      }
+    ],
+    "pass": true,
+    "note": "Scale-down is not awaited (default 5-minute stabilisation window)."
+  },
+  "netpol": {
+    "attacker_to_mock_http": "000",
+    "attacker_to_gateway_http": "200",
+    "gateway_to_mock": "200",
+    "attacker_blocked_from_mock": true,
+    "gateway_allowed_to_mock": true,
+    "pass": true
+  },
+  "versions": {
+    "server": "{\n  \"clientVersion\": {\n    \"major\": \"1\",\n    \"minor\": \"36\",\n    \"gitVersion\": \"v1.36.1\",\n    \"gitCommit\": \"756939600b9a7180fc2df6550a4585b638875e67\",\n    \"gitTreeState\": \"clean\",\n    \"buildDate\": \"2026-05-12T09:54:35Z\",\n    \"goVersion\": \"go1.26.2\",\n    \"compiler\": \"gc\",\n    \"platform\": \"darwin/arm64\"\n  },\n  \"kustomizeVersion\": \"v5.8.1\",\n  \"serverVersion\": {\n    \"major\": \"1\",\n    \"minor\": \"37\",\n    \"emulationMajor\": \"1\",\n    \"emulationMinor\": \"37\",\n    \"minCompatibilityMajor\": \"1\",\n    \"minCompatibilityMinor\": \"36\",\n    \"gitVersion\": \"v1.37.0\",\n    \"gitCommit\": \"f54c212e3a2f75d674b717a9b29052b20b60aefc\",\n    \"gitTreeState\": \"clean\",\n    \"buildDate\": \"2026-08-26T10:44:25Z\",\n    \"goVersion\": \"go1.26.6\",\n    \"compiler\": \"gc\",\n    \"platform\": \"linux/arm64\"\n  }\n}"
+  },
+  "all_pass": true,
+  "command_log": [
+    {
+      "cmd": "docker info >/dev/null",
+      "rc": 0,
+      "s": 1.56,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker version --format '{{.Server.Version}}'",
+      "rc": 0,
+      "s": 0.66,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind version",
+      "rc": 0,
+      "s": 0.64,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl version --client -o json | python3 -c 'import json,sys;print(json.load(sys.stdin)[\"clientVersion\"][\"gitVersion\"])'",
+      "rc": 0,
+      "s": 0.8,
+      "stderr": ""
+    },
+    {
+      "cmd": "uname -m",
+      "rc": 0,
+      "s": 0.66,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind get clusters",
+      "rc": 0,
+      "s": 0.66,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale wait --for=condition=Ready nodes --all --timeout=600s",
+      "rc": 0,
+      "s": 0.98,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n kube-system rollout status deployment/metrics-server --timeout=300s",
+      "rc": 0,
+      "s": 0.69,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale get nodes -o json",
+      "rc": 0,
+      "s": 0.64,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker rm -f inferscale-ingress",
+      "rc": 0,
+      "s": 0.77,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker run -d --name inferscale-ingress --network kind -p 127.0.0.1:30901:30901 alpine/socat:1.8.0.0 TCP-LISTEN:30901,fork,reuseaddr TCP:inferscale-control-plane:30900",
+      "rc": 0,
+      "s": 0.95,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale apply -f infrastructure/kind/manifests.yaml",
+      "rc": 0,
+      "s": 0.97,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout restart deployment/gateway",
+      "rc": 0,
+      "s": 0.65,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status statefulset/mock --timeout=300s",
+      "rc": 0,
+      "s": 0.72,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status deployment/gateway --timeout=300s",
+      "rc": 0,
+      "s": 3.71,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pods -o json",
+      "rc": 0,
+      "s": 0.7,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pod mock-1 -o json",
+      "rc": 0,
+      "s": 1.07,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale delete pod mock-1 --grace-period=0 --force --wait=false",
+      "rc": 0,
+      "s": 0.71,
+      "stderr": "Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.\n"
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pod mock-1 -o json",
+      "rc": 0,
+      "s": 0.72,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pod mock-1 -o json",
+      "rc": 0,
+      "s": 0.71,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pods -o json",
+      "rc": 0,
+      "s": 0.71,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale delete pod gateway-65b89c5f66-9h7mz --grace-period=0 --force --wait=false",
+      "rc": 0,
+      "s": 0.7,
+      "stderr": "Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.\n"
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status deployment/gateway --timeout=120s",
+      "rc": 0,
+      "s": 1.14,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.63,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.67,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.86,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.81,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.89,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.9,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.11,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.26,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.19,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.18,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.0,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 1.07,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get hpa gateway -o json",
+      "rc": 0,
+      "s": 0.99,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale delete pod attacker --ignore-not-found --wait=true",
+      "rc": 0,
+      "s": 0.7,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale run attacker --image=curlimages/curl:8.10.1 --restart=Never --command -- sleep 600",
+      "rc": 0,
+      "s": 0.7,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale wait --for=condition=Ready pod/attacker --timeout=180s",
+      "rc": 0,
+      "s": 3.01,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale exec attacker -- curl -s -m 5 -o /dev/null -w '%{http_code}' http://mock-0.mock.inferscale.svc.cluster.local:8000/health",
+      "rc": 28,
+      "s": 5.76,
+      "stderr": "command terminated with exit code 28\n"
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale exec attacker -- curl -s -m 5 -o /dev/null -w '%{http_code}' http://gateway.inferscale.svc.cluster.local/health",
+      "rc": 0,
+      "s": 0.71,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get pods -o json",
+      "rc": 0,
+      "s": 0.69,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale exec gateway-65b89c5f66-6p7j8 -- python -c \"import urllib.request as u;print(u.urlopen('http://mock-0.mock.inferscale.svc.cluster.local:8000/health',timeout=5).status)\"",
+      "rc": 0,
+      "s": 0.87,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale delete pod attacker --wait=false",
+      "rc": 0,
+      "s": 0.68,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale version -o json",
+      "rc": 0,
+      "s": 0.65,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale get all,hpa,pdb,networkpolicy -o wide",
+      "rc": 0,
+      "s": 0.67,
+      "stderr": ""
+    }
+  ]
+}

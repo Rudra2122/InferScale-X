@@ -1,0 +1,41 @@
+# Local / CI config: gateway in front of two mock backends.
+# `api_key` entries are hashed at load time. Use `api_key_sha256` in real deployments
+# and keep raw keys in a secret manager. These dev keys are intentionally fake.
+gateway:
+  routing_policy: least_outstanding
+  global_max_inflight: 256
+  health_interval_s: 0.5
+  unhealthy_after_failures: 2
+  max_retries: 1
+  inject_cache_salt: true
+  cache_salt_secret: dev-only-secret
+
+backends:
+  - {name: replica-a, url: "http://127.0.0.1:8001", model: mock-model}
+  - {name: replica-b, url: "http://127.0.0.1:8002", model: mock-model}
+
+tenants:
+  acme:
+    api_key: sk-dev-acme
+    allowed_models: ["*"]
+    requests_per_minute: 6000
+    burst: 200
+    max_concurrent: 64
+    max_output_tokens: 512
+    allowed_tools: [calculator, search_docs, memory_read, memory_write]
+  globex:
+    api_key: sk-dev-globex
+    allowed_models: ["*"]
+    requests_per_minute: 6000
+    burst: 200
+    max_concurrent: 64
+    max_output_tokens: 512
+    allowed_tools: [calculator, search_docs]
+  freetier:
+    api_key: sk-dev-free
+    allowed_models: ["mock-model"]
+    requests_per_minute: 30
+    burst: 3
+    max_concurrent: 2
+    max_output_tokens: 64
+    allowed_tools: [calculator]

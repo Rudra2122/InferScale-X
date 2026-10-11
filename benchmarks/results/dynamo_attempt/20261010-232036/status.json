@@ -1,0 +1,11 @@
+{
+  "smoke_ok": true,
+  "etcd_up": true,
+  "nats_download": true,
+  "pip_install": true,
+  "frontend_serving": true,
+  "etcd_download": true,
+  "bench_ok": true,
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "label": "EXPERIMENTAL single-node Dynamo attempt on Colab"
+}

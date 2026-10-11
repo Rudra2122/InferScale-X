@@ -1,0 +1,10 @@
+# Core A100 experiments (gateway, vLLM, HF transformers, Triton kernel).
+# vLLM brings its own torch/triton/CUDA wheels - install in a FRESH Colab runtime and never
+# `import torch` in the notebook kernel before this (all experiments run as subprocesses).
+# After the first successful run, scripts/colab_setup.sh writes requirements/lock-colab.txt
+# (pip freeze) - that lockfile is the reproducibility artifact. Re-run with:
+#   pip install -r requirements/lock-colab.txt
+-r dev.txt
+vllm>=0.10.0
+transformers>=4.51
+accelerate>=1.0

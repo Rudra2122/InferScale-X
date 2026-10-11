@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use these benchmarks or tools, please cite them."
+title: "InferScale-X: an evidence-first LLM inference reference platform (single-A100 edition)"
+authors:
+  - family-names: Brahmbhatt
+    given-names: Rudra
+version: 2.0.0
+license: MIT
+repository-code: "https://github.com/Rudra2122/InferScale-X"

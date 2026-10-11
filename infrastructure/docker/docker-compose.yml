@@ -1,0 +1,36 @@
+# Laptop deployment (Mac M-series or Linux, no GPU): gateway + 2 mock replicas + Prometheus + Grafana.
+#   docker compose -f infrastructure/docker/docker-compose.yml up --build -d
+#   curl -H 'Authorization: Bearer sk-dev-acme' localhost:9000/v1/models
+#   Grafana: http://localhost:3000 (anonymous viewer)  Prometheus: http://localhost:9090
+# To front a REAL model instead of mocks, point INFERSCALE_BACKENDS at a vLLM URL (e.g. a Colab tunnel).
+name: inferscale
+services:
+  mock-a:
+    build: {context: ../.., dockerfile: infrastructure/docker/Dockerfile.mock}
+    image: inferscale-mock:dev
+    environment: {MOCK_TPOT_MS: "2"}
+    healthcheck: {test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/health')"], interval: 5s}
+  mock-b:
+    build: {context: ../.., dockerfile: infrastructure/docker/Dockerfile.mock}
+    image: inferscale-mock:dev
+    environment: {MOCK_TPOT_MS: "2"}
+  gateway:
+    build: {context: ../.., dockerfile: infrastructure/docker/Dockerfile.gateway}
+    image: inferscale-gateway:dev
+    environment:
+      INFERSCALE_GATEWAY_CONFIG: /app/configs/gateway.example.yaml
+      INFERSCALE_BACKENDS: ${INFERSCALE_BACKENDS:-replica-a=http://mock-a:8000,replica-b=http://mock-b:8000}
+    ports: ["9000:9000"]
+    depends_on: [mock-a, mock-b]
+  prometheus:
+    image: prom/prometheus:v2.53.2
+    volumes: ["./compose/prometheus.yml:/etc/prometheus/prometheus.yml:ro", "../monitoring/alerts.yml:/etc/prometheus/alerts.yml:ro"]
+    ports: ["9090:9090"]
+  grafana:
+    image: grafana/grafana:11.2.0
+    environment: {GF_AUTH_ANONYMOUS_ENABLED: "true", GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer}
+    volumes:
+      - ./compose/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/inferscale.json:ro
+    ports: ["3000:3000"]
+    depends_on: [prometheus]

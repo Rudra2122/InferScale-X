@@ -1,0 +1,26 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.71%     111.084us        13.48%       2.119ms      21.194us       0.000us         0.00%       5.343ms      53.430us           100  
+                                         aten::_to_copy         2.82%     443.034us        12.77%       2.008ms      25.103us       0.000us         0.00%       5.343ms      66.788us            80  
+                                            aten::copy_         3.43%     538.809us         7.08%       1.114ms      13.923us       5.343ms        32.31%       5.343ms      66.788us            80  
+                                              aten::mul         2.92%     459.847us         4.63%     727.672us      18.192us       4.165ms        25.18%       4.165ms     104.118us            40  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       4.165ms        25.18%       4.165ms     104.118us            40  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       3.779ms        22.85%       3.779ms      62.987us            60  
+                                              aten::pow         2.20%     345.876us         3.44%     541.325us      27.066us       2.014ms        12.18%       2.014ms     100.704us            20  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       2.014ms        12.18%       2.014ms     100.704us            20  
+                              _fused_add_rmsnorm_kernel         0.00%       0.000us         0.00%       0.000us       0.000us       1.979ms        11.97%       1.979ms      98.944us            20  
+                                              aten::add         4.41%     694.013us         6.60%       1.038ms      25.945us       1.651ms         9.98%       1.651ms      41.263us            40  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       1.596ms         9.65%       1.596ms      79.776us            20  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       1.564ms         9.46%       1.564ms      78.192us            20  
+                                             aten::mean         2.36%     370.596us         3.34%     524.457us      26.223us       1.341ms         8.11%       1.341ms      67.037us            20  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       1.341ms         8.11%       1.341ms      67.037us            20  
+                                       cuLaunchKernelEx         1.51%     238.162us         1.51%     238.162us      11.908us      78.432us         0.47%      78.432us       3.922us            20  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      55.008us         0.33%      55.008us       2.750us            20  
+                                            aten::rsqrt         1.36%     213.549us         2.22%     348.948us      17.447us      44.800us         0.27%      44.800us       2.240us            20  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      44.800us         0.27%      44.800us       2.240us            20  
+                                          aten::reshape         0.40%      62.865us         1.12%     175.676us       4.392us       0.000us         0.00%       0.000us       0.000us            40  
+                                             aten::view         1.45%     227.607us         1.45%     227.607us       2.845us       0.000us         0.00%       0.000us       0.000us            80  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 15.724ms
+Self CUDA time total: 16.537ms

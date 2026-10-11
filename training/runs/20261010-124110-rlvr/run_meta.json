@@ -1,0 +1,102 @@
+{
+  "method": "rlvr",
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "config": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "max_steps": 150,
+    "lr": 5e-05,
+    "batch": 16,
+    "num_generations": 8,
+    "max_completion": 128,
+    "beta": 0.04,
+    "seed": 42,
+    "reward": "verifiable",
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+  },
+  "data_lineage": {
+    "generator": "arith-v1",
+    "seed_ranges": {
+      "sft": [
+        0,
+        6000
+      ],
+      "dpo": [
+        200000,
+        203000
+      ],
+      "rl": [
+        400000,
+        403000
+      ],
+      "eval": [
+        1000000,
+        1000200
+      ]
+    },
+    "counts": {
+      "sft.jsonl": 2000,
+      "dpo.jsonl": 1000,
+      "rl.jsonl": 1000,
+      "eval.jsonl": 200
+    },
+    "sha256": {
+      "sft.jsonl": "74c56fea2281c77339e78993366edf059cb01e43772b82f675078927fbcc60c6",
+      "dpo.jsonl": "1065add016cb47e480aba5fa20672d3fa7776d894b9cfc695c9b46a7cf48614e",
+      "rl.jsonl": "218e62942e94c1b6ae4af9e8541d59b08fef644f90e9e68db9ba27d4580d2e1a",
+      "eval.jsonl": "6db659fbb7fb9fc651ea663abc7948e146b2f217d86e626c680ce5b661c28b84"
+    },
+    "leakage_check": {
+      "train_eval_overlap": 0,
+      "pass": true
+    },
+    "note": "Arithmetic templates repeat structure; exact-question overlap is zero but templates are shared. Report results as in-distribution generalisation, not general reasoning."
+  },
+  "env": {
+    "captured_at": "2026-10-10T12:54:29+0000",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "cpu_count": 12,
+    "colab": true,
+    "gpus": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "driver_version": "580.82.07",
+        "memory.total": "40960 MiB",
+        "pcie.link.gen.current": "4",
+        "pcie.link.width.current": "16",
+        "clocks.max.sm": "1410 MHz",
+        "power.limit": "400.00 W"
+      }
+    ],
+    "cuda": {
+      "torch_cuda": "13.0",
+      "available": true,
+      "device_count": 1,
+      "capability": [
+        8,
+        0
+      ]
+    },
+    "nvidia_smi_topology": "\u001b[4mGPU0\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \t0-11\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks",
+    "packages": {
+      "torch": "2.11.0+cu130",
+      "transformers": "5.18.0",
+      "triton": "3.6.0",
+      "trl": "1.15.0",
+      "peft": "0.21.1",
+      "accelerate": "1.15.0",
+      "fastapi": "0.141.1",
+      "httpx": "0.28.1",
+      "numpy": "2.1.3"
+    },
+    "git_commit": null
+  },
+  "train_metrics": {
+    "train_runtime": 793.606,
+    "train_samples_per_second": 3.024,
+    "train_steps_per_second": 0.189,
+    "total_flos": 0.0,
+    "train_loss": -0.004038347969762981,
+    "epoch": 0.3
+  }
+}

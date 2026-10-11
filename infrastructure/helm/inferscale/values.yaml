@@ -1,0 +1,22 @@
+gateway:
+  image: ghcr.io/rudra2122/inferscale-gateway:2.0.0
+  replicas: 2
+  routingPolicy: prefix_affinity
+  injectCacheSalt: true
+  existingSecret: ""          # Secret with key gateway.yaml; if empty the chart renders one from `tenants`
+  tenants: {}                 # tenantId: {api_key_sha256: ..., max_concurrent: 64, requests_per_minute: 600, burst: 20}
+
+vllm:
+  image: vllm/vllm-openai:latest   # pin by digest
+  model: Qwen/Qwen2.5-7B-Instruct
+  replicas: 2
+  gpuMemoryUtilization: 0.9
+  maxModelLen: 8192
+  extraArgs: ["--enable-prefix-caching", "--enable-prompt-tokens-details"]
+  gpusPerReplica: 1
+  cacheSize: 100Gi
+  nodeSelector: {}            # e.g. nvidia.com/gpu.product: NVIDIA-A100-SXM4-80GB
+  tolerations: []
+
+monitoring:
+  podAnnotations: true

@@ -1,0 +1,13 @@
+# InferScale-X gateway image (CPU only). Not built or run on Colab (no Docker there);
+# used by the Kubernetes/Helm reference deployment and by CI.
+FROM python:3.11-slim AS base
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY requirements/gateway.txt /tmp/req.txt
+RUN pip install --no-cache-dir -r /tmp/req.txt && useradd -u 10001 -m isx
+COPY gateway/ gateway/
+COPY configs/ configs/
+USER 10001
+EXPOSE 9000
+HEALTHCHECK --interval=10s --timeout=3s CMD python -c "import urllib.request;urllib.request.urlopen('http://127.0.0.1:9000/health')"
+CMD ["uvicorn", "gateway.api.app:app", "--host", "0.0.0.0", "--port", "9000", "--workers", "1"]

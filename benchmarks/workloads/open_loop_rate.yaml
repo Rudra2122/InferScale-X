@@ -1,0 +1,8 @@
+# Open loop Poisson arrivals - used for overload/queueing tests.
+name: open_loop_rate
+num_requests: 400
+warmup_requests: 8
+concurrency: null
+request_rate: 20
+input_tokens: 512
+output_tokens: 128

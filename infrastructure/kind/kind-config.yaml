@@ -1,0 +1,16 @@
+# Local 3-node cluster for real Kubernetes evidence on a laptop (tested target: MacBook / Docker Desktop).
+# Default kindnet CNI does NOT enforce NetworkPolicy, so it is disabled and Calico is installed instead.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: inferscale
+networking:
+  disableDefaultCNI: true
+  podSubnet: 192.168.0.0/16
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - {containerPort: 30900, hostPort: 30900, protocol: TCP}   # gateway NodePort -> localhost:30900
+  - role: worker
+    labels: {inferscale/pool: replicas}
+  - role: worker
+    labels: {inferscale/pool: replicas}

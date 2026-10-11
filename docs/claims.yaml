@@ -1,0 +1,106 @@
+# Résumé / interview claims, each bound to an evidence file and the exact fields it quotes.
+# scripts/evidence_report.py renders these with the REAL numbers from your latest run.
+# If evidence is missing, the claim is printed as "NO EVIDENCE - do not use".
+# Never edit numbers into the templates by hand.
+claims:
+  - id: gateway_overhead
+    evidence: benchmarks/results/baseline/*/report.json
+    fields:
+      ttft_delta: gateway_overhead.ttft_p50.relative_change
+      verdict: gateway_overhead.ttft_p50.verdict
+      n: gateway_overhead.ttft_p50.candidate.n
+      tok_s: direct.output_tok_per_s.mean
+    template: "Built an OpenAI-compatible multi-tenant gateway (auth, rate limits, admission control, SSE streaming) over vLLM on an A100; measured p50 TTFT change vs direct vLLM: {ttft_delta:+.1%} ({verdict}, n={n} runs); baseline {tok_s:.0f} output tok/s."
+
+  - id: routing
+    evidence: benchmarks/results/routing/*/report.json
+    fields:
+      delta: runs.prefix_heavy.vs_round_robin.prefix_affinity.ttft_p50.relative_change
+      verdict: runs.prefix_heavy.vs_round_robin.prefix_affinity.ttft_p50.verdict
+    template: "Implemented KV-cache-aware (prefix-affinity) routing; on a RAG-style prefix-heavy workload across 2 vLLM replicas (sharing one A100) p50 TTFT changed {delta:+.1%} vs round-robin ({verdict})."
+
+  - id: prefix_cache
+    evidence: benchmarks/results/kv_cache/*/report.json
+    fields:
+      delta: reuse.ttft_p50.relative_change
+      verdict: reuse.ttft_p50.verdict
+    template: "Measured vLLM prefix caching on a prefix-heavy workload: p50 TTFT {delta:+.1%} vs caching disabled ({verdict})."
+
+  - id: cache_isolation
+    evidence: benchmarks/results/kv_cache/*/report.json
+    fields:
+      enforced: isolation.isolation_enforced
+      leak: isolation.leak_without_salt
+    template: "Demonstrated a cross-tenant prefix-cache timing/side-channel (leak observed without salting: {leak}) and closed it with per-tenant cache salts injected at the gateway (isolation enforced: {enforced})."
+
+  - id: failure_recovery
+    evidence: benchmarks/results/failure_injection/*vllm/crash_report.json
+    fields:
+      detect: time_to_detect_s
+      restart: backend_restart_s
+      failed: total_failed
+      total: total_requests
+    template: "Fault-injected a vLLM replica crash under load: detected in {detect:.2f}s, replica back in {restart:.0f}s; {failed}/{total} requests failed (in-flight streams on the killed replica)."
+
+  - id: kv_transfer
+    evidence: benchmarks/results/kv_transfer/*/report.json
+    fields:
+      h2d: bandwidth.h2d_pinned_GBps
+    template: "Measured KV-cache movement for real model caches (256-8K tokens) and fit a latency/bandwidth cost model (pinned H2D {h2d:.1f} GB/s) used for a disaggregation break-even analysis (single GPU, emulated)."
+
+  - id: triton_kernel
+    evidence: benchmarks/results/triton_kernel/*/report.json
+    fields:
+      ok: all_correct
+    template: "Wrote a fused residual-add + RMSNorm Triton kernel, verified against an fp32 reference across fp16/bf16/fp32 shapes (all correct: {ok}), and benchmarked effective HBM bandwidth vs torch.compile."
+
+  - id: agents_security
+    evidence: benchmarks/results/agents/*live/report.json
+    fields:
+      agent: functional.agent_success_rate
+      rag: functional.rag_success_rate
+      blocked: security_live_model.all_blocked
+    template: "Built a governed agent runtime (versioned skills, sandboxed tools, tenant-scoped memory, hash-chained audit log): task success {agent:.0%} vs {rag:.0%} for single-shot RAG; all injection / unauthorized-tool attacks blocked: {blocked}."
+
+  - id: model_customization
+    evidence: training/runs/eval_report.json
+    fields: {}
+    template: "Ran SFT, DPO, GRPO (heuristic reward) and RLVR (verifiable reward) LoRA experiments on a 0.5B model with dataset lineage and leakage checks; see training/runs/eval_report.json for held-out accuracy and serving-token cost per method."
+
+  - id: triton_attention
+    evidence: benchmarks/results/triton_attention/*/report.json
+    fields:
+      ok: all_correct
+      speedup: performance.2.triton_vs_sdpa_speedup  # row 2 = B4 H16 N2048 D64 causal
+    template: "Implemented a FlashAttention-style fused attention forward pass in Triton (online softmax, causal block skipping); correct vs an fp32 reference on all tested shapes ({ok}); at B=4,H=16,N=2048,D=64 causal it runs at {speedup:.2f}x the speed of PyTorch SDPA (FlashAttention-2) on an A100."
+
+  - id: kv_offload
+    evidence: benchmarks/results/kv_offload/*/report.json
+    fields:
+      impl: variants.hbm_cpu.impl
+      delta: variants.hbm_cpu.vs_hbm_only.ttft_p50.relative_change
+      verdict: variants.hbm_cpu.vs_hbm_only.ttft_p50.verdict
+    template: "Added a CPU-DRAM KV-cache tier ({impl}) behind vLLM's HBM prefix cache; with a working set 2.7x larger than HBM KV capacity, p50 TTFT changed {delta:+.1%} vs HBM-only ({verdict})."
+
+  - id: retrieval
+    evidence: benchmarks/results/retrieval/*/report.json
+    fields:
+      mrr: retrievers.bm25.aggregate.mrr@10
+      r5: retrievers.bm25.aggregate.recall@5
+      n: n_queries
+    template: "Built a labelled retrieval benchmark ({n} queries, document-level qrels): BM25 MRR@10 {mrr:.2f}, recall@5 {r5:.2f} (dense and hybrid RRF results in the same report when run)."
+
+  - id: kubernetes
+    evidence: benchmarks/results/k8s_kind/*/report.json
+    fields:
+      recreate: recovery.mock_pod_recreated_ready_s
+      down_failed: recovery.windows.mock_pod_down.failed
+      down_req: recovery.windows.mock_pod_down.requests
+      gw_failed: recovery.windows.gateway_pod_kill.failed
+      gw_req: recovery.windows.gateway_pod_kill.requests
+      ok: recovery.summary.n_ok
+      total: recovery.summary.n_requests
+      hpa: hpa.scale_up_detected_after_s
+      peak: hpa.peak_desired_replicas
+      netpol: netpol.pass
+    template: "Ran the gateway and replicas on a 3-node Kubernetes cluster (kind, Calico) with anti-affinity across nodes. Under ~25 req/s, a force-killed replica pod was back Ready in {recreate:.1f}s ({down_failed}/{down_req} requests failed in that window) and a killed gateway pod cost {gw_failed}/{gw_req}; {ok}/{total} succeeded overall. HPA scaled the gateway to {peak} replicas {hpa:.0f}s into a load spike, and a Calico NetworkPolicy blocked non-gateway pods from the replicas ({netpol}). CPU mock backends; no GPU scheduling claimed."

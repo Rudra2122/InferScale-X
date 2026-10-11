@@ -1,0 +1,126 @@
+# REFERENCE DEPLOYMENT - not executed in this project's Colab evidence runs.
+# Validated only for YAML syntax in CI (tests/unit/test_infra_yaml.py).
+# Target: a Kubernetes cluster with the NVIDIA GPU Operator installed.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: inferscale
+  labels: {pod-security.kubernetes.io/enforce: baseline}
+---
+apiVersion: v1
+kind: Secret
+metadata: {name: gateway-config, namespace: inferscale}
+type: Opaque
+stringData:
+  gateway.yaml: |
+    gateway:
+      routing_policy: prefix_affinity
+      global_max_inflight: 1024
+      inject_cache_salt: true
+      cache_salt_secret: REPLACE_WITH_RANDOM_SECRET
+    backends:
+      - {name: vllm-0, url: "http://vllm-0.vllm.inferscale.svc.cluster.local:8000", model: Qwen/Qwen2.5-7B-Instruct}
+      - {name: vllm-1, url: "http://vllm-1.vllm.inferscale.svc.cluster.local:8000", model: Qwen/Qwen2.5-7B-Instruct}
+    tenants:
+      acme: {api_key_sha256: REPLACE_WITH_SHA256, max_concurrent: 128, requests_per_minute: 6000, burst: 200}
+---
+apiVersion: apps/v1
+kind: StatefulSet   # stable per-replica DNS names so the gateway can do prefix-affinity routing
+metadata: {name: vllm, namespace: inferscale}
+spec:
+  serviceName: vllm
+  replicas: 2
+  podManagementPolicy: Parallel
+  selector: {matchLabels: {app: vllm}}
+  template:
+    metadata:
+      labels: {app: vllm}
+      annotations: {prometheus.io/scrape: "true", prometheus.io/port: "8000"}
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+        - name: vllm
+          image: vllm/vllm-openai:latest   # PIN a digest before production use
+          args: ["--model", "Qwen/Qwen2.5-7B-Instruct", "--port", "8000", "--gpu-memory-utilization", "0.9",
+                 "--enable-prefix-caching", "--enable-prompt-tokens-details"]
+          ports: [{containerPort: 8000, name: http}]
+          resources:
+            limits: {nvidia.com/gpu: 1, memory: 48Gi}
+            requests: {nvidia.com/gpu: 1, cpu: "8", memory: 32Gi}
+          readinessProbe: {httpGet: {path: /health, port: 8000}, periodSeconds: 5, failureThreshold: 3}
+          livenessProbe: {httpGet: {path: /health, port: 8000}, initialDelaySeconds: 300, periodSeconds: 10}
+          startupProbe: {httpGet: {path: /health, port: 8000}, periodSeconds: 10, failureThreshold: 90}
+          volumeMounts: [{name: hf-cache, mountPath: /root/.cache/huggingface}, {name: shm, mountPath: /dev/shm}]
+      volumes:
+        - {name: shm, emptyDir: {medium: Memory, sizeLimit: 8Gi}}
+  volumeClaimTemplates:
+    - metadata: {name: hf-cache}
+      spec: {accessModes: [ReadWriteOnce], resources: {requests: {storage: 100Gi}}}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: vllm, namespace: inferscale}
+spec:
+  clusterIP: None
+  selector: {app: vllm}
+  ports: [{port: 8000, name: http}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  replicas: 2
+  selector: {matchLabels: {app: gateway}}
+  template:
+    metadata:
+      labels: {app: gateway}
+      annotations: {prometheus.io/scrape: "true", prometheus.io/port: "9000"}
+    spec:
+      securityContext: {runAsNonRoot: true, runAsUser: 10001}
+      containers:
+        - name: gateway
+          image: ghcr.io/rudra2122/inferscale-gateway:2.0.0
+          env: [{name: INFERSCALE_GATEWAY_CONFIG, value: /etc/inferscale/gateway.yaml}]
+          ports: [{containerPort: 9000}]
+          readinessProbe: {httpGet: {path: /ready, port: 9000}, periodSeconds: 5}
+          livenessProbe: {httpGet: {path: /health, port: 9000}, periodSeconds: 10}
+          resources: {requests: {cpu: "1", memory: 512Mi}, limits: {cpu: "2", memory: 1Gi}}
+          securityContext: {readOnlyRootFilesystem: true, allowPrivilegeEscalation: false}
+          volumeMounts: [{name: cfg, mountPath: /etc/inferscale, readOnly: true}]
+      volumes: [{name: cfg, secret: {secretName: gateway-config}}]
+---
+apiVersion: v1
+kind: Service
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  selector: {app: gateway}
+  ports: [{port: 80, targetPort: 9000}]
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: {name: vllm-pdb, namespace: inferscale}
+spec:
+  minAvailable: 1
+  selector: {matchLabels: {app: vllm}}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: vllm-only-from-gateway, namespace: inferscale}
+spec:
+  podSelector: {matchLabels: {app: vllm}}
+  policyTypes: [Ingress]
+  ingress:
+    - from: [{podSelector: {matchLabels: {app: gateway}}}, {namespaceSelector: {matchLabels: {name: monitoring}}}]
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: gateway}
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource: {name: cpu, target: {type: Utilization, averageUtilization: 70}}
+# GPU replica autoscaling on queue depth (vllm:num_requests_waiting) needs prometheus-adapter or KEDA;
+# see docs/capacity-planning/README.md. Not included because it was not tested.

@@ -1,0 +1,18 @@
+name: c16
+model: Qwen/Qwen2.5-3B-Instruct
+num_requests: 96
+warmup_requests: 2
+concurrency: 16
+request_rate: null
+input_tokens: 256
+input_tokens_jitter: 0.25
+output_tokens: 256
+ignore_eos: true
+prefix_reuse: 0.0
+shared_prefix_tokens: 0
+num_shared_prefixes: 1
+tenants:
+  default: 1.0
+temperature: 0.0
+seed: 0
+timeout_s: 600.0

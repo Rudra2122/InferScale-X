@@ -1,0 +1,35 @@
+NAME                           READY   STATUS        RESTARTS   AGE   IP               NODE                 NOMINATED NODE   READINESS GATES
+pod/attacker                   1/1     Terminating   0          13s   192.168.33.139   inferscale-worker2   <none>           <none>
+pod/gateway-65b89c5f66-6p7j8   1/1     Running       0          53s   192.168.33.138   inferscale-worker2   <none>           <none>
+pod/gateway-65b89c5f66-7q4h8   1/1     Running       0          11m   192.168.204.75   inferscale-worker    <none>           <none>
+pod/gateway-65b89c5f66-86fbv   1/1     Running       0          68s   192.168.33.137   inferscale-worker2   <none>           <none>
+pod/gateway-65b89c5f66-9dpnf   1/1     Running       0          53s   192.168.204.77   inferscale-worker    <none>           <none>
+pod/gateway-65b89c5f66-9nqf7   1/1     Running       0          11m   192.168.33.135   inferscale-worker2   <none>           <none>
+pod/gateway-65b89c5f66-cngmg   1/1     Running       0          68s   192.168.204.76   inferscale-worker    <none>           <none>
+pod/mock-0                     1/1     Running       0          24m   192.168.33.130   inferscale-worker2   <none>           <none>
+pod/mock-1                     1/1     Running       0          11m   192.168.204.74   inferscale-worker    <none>           <none>
+
+NAME              TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+service/gateway   NodePort    10.96.17.51   <none>        80:30900/TCP   24m   app=gateway
+service/mock      ClusterIP   None          <none>        8000/TCP       24m   app=mock
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                   SELECTOR
+deployment.apps/gateway   6/6     6            6           24m   gateway      inferscale-gateway:dev   app=gateway
+
+NAME                                 DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES                   SELECTOR
+replicaset.apps/gateway-544657b688   0         0         0       24m   gateway      inferscale-gateway:dev   app=gateway,pod-template-hash=544657b688
+replicaset.apps/gateway-65b89c5f66   6         6         6       11m   gateway      inferscale-gateway:dev   app=gateway,pod-template-hash=65b89c5f66
+replicaset.apps/gateway-7489c7844c   0         0         0       17m   gateway      inferscale-gateway:dev   app=gateway,pod-template-hash=7489c7844c
+replicaset.apps/gateway-fcf5bc9f     0         0         0       24m   gateway      inferscale-gateway:dev   app=gateway,pod-template-hash=fcf5bc9f
+
+NAME                    READY   AGE   CONTAINERS   IMAGES
+statefulset.apps/mock   2/2     24m   mock         inferscale-mock:dev
+
+NAME                                          REFERENCE            TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/gateway   Deployment/gateway   cpu: 18%/50%   2         6         6          24m
+
+NAME                                  MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+poddisruptionbudget.policy/mock-pdb   1               N/A               1                     24m
+
+NAME                                                     POD-SELECTOR   AGE
+networkpolicy.networking.k8s.io/mock-only-from-gateway   app=mock       17m

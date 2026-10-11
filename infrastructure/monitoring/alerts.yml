@@ -1,0 +1,23 @@
+groups:
+  - name: inferscale
+    rules:
+      - alert: BackendDown
+        expr: inferscale_backend_healthy == 0
+        for: 30s
+        labels: {severity: page}
+        annotations: {summary: "Inference backend {{ $labels.backend }} unhealthy", runbook: "docs/incident-runbooks/backend-down.md"}
+      - alert: HighTTFT
+        expr: histogram_quantile(0.95, sum(rate(inferscale_ttft_seconds_bucket[5m])) by (le)) > 2
+        for: 5m
+        labels: {severity: ticket}
+        annotations: {summary: "p95 TTFT above 2s", runbook: "docs/incident-runbooks/latency-regression.md"}
+      - alert: RejectionsSpike
+        expr: sum(rate(inferscale_rejections_total{reason="global_overload"}[5m])) > 1
+        for: 5m
+        labels: {severity: page}
+        annotations: {summary: "Gateway shedding load (global overload)", runbook: "docs/incident-runbooks/overload.md"}
+      - alert: KVCachePressure
+        expr: rate(vllm:num_preemptions_total[5m]) > 0.5
+        for: 10m
+        labels: {severity: ticket}
+        annotations: {summary: "vLLM preempting sequences - KV cache exhausted", runbook: "docs/incident-runbooks/kv-pressure.md"}

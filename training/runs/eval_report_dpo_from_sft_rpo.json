@@ -1,0 +1,75 @@
+{
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_eval": 200,
+  "results": {
+    "training/runs/20261010-130343-dpo-from-sft-rpo/adapter": {
+      "n": 200,
+      "accuracy": 0.97,
+      "format_rate": 0.995,
+      "mean_output_tokens": 27.725,
+      "gen_wall_s": 4.253066678999858,
+      "gen_tok_per_s": 1303.765122559506,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 22,
+          "text": "11 + 13 = 24\n24 - 2 = 22\nAnswer: 22"
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 71,
+          "text": "55 + 22 = 77\n77 - 6 = 71\nAnswer: 71"
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 432,
+          "text": "40 + 19 = 59\n59 x 8 = 432\nAnswer: 432"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 112,
+          "text": "4 x 35 = 140\n140 - 28 = 112\nAnswer: 112"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 42,
+          "text": "2 x 25 = 50\n50 - 8 = 42\nAnswer: 42"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 45,
+          "text": "32 + 19 = 51\n51 - 6 = 45\nAnswer: 45"
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 128,
+          "text": "3 + 13 = 16\n16 x 8 = 128\nAnswer: 128"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 50,
+          "text": "276 / 6 = 46\n46 + 4 = 50\nAnswer: 50"
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "init_adapter": "training/runs/20261010-123142-sft/adapter",
+        "max_steps": 200,
+        "lr": 5e-05,
+        "beta": 0.1,
+        "batch": 8,
+        "seed": 42,
+        "sft_weight": 1.0,
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      }
+    }
+  }
+}

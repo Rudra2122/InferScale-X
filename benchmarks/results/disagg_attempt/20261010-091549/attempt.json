@@ -1,0 +1,17 @@
+{
+  "label": "EXPERIMENTAL single-GPU disaggregation attempt",
+  "attempts": [
+    {
+      "connector": "NixlConnector",
+      "ok": false,
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: 'vllm'",
+      "traceback": "Traceback (most recent call last):\n  File \"/content/InferScale-X/disaggregation/decode/vllm_disagg_attempt.py\", line 63, in main\n    p = serverctl.start(\"prefill\", serverctl.vllm_cmd(MODEL, 8101, 0.4, 4096,\n                        f\"--kv-transfer-config '{json.dumps(pcfg)}'\"), 8101, timeout=900,\n                        env={\"VLLM_NIXL_SIDE_CHANNEL_PORT\": \"5600\", \"UCX_TLS\": \"all\"})\n  File \"/content/InferScale-X/scripts/serverctl.py\", line 58, in start\n    p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, cwd=ROOT, env=full_env, start_new_session=True)\n  File \"/usr/lib/python3.13/subprocess.py\", line 1039, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                        pass_fds, cwd, env,\n                        ^^^^^^^^^^^^^^^^^^^\n    ...<5 lines>...\n                        gid, gids, uid, umask,\n                        ^^^^^^^^^^^^^^^^^^^^^^\n                        start_new_session, process_group)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 1991, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'vllm'\n"
+    },
+    {
+      "connector": "P2pNcclConnector",
+      "ok": false,
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: 'vllm'",
+      "traceback": "Traceback (most recent call last):\n  File \"/content/InferScale-X/disaggregation/decode/vllm_disagg_attempt.py\", line 63, in main\n    p = serverctl.start(\"prefill\", serverctl.vllm_cmd(MODEL, 8101, 0.4, 4096,\n                        f\"--kv-transfer-config '{json.dumps(pcfg)}'\"), 8101, timeout=900,\n                        env={\"VLLM_NIXL_SIDE_CHANNEL_PORT\": \"5600\", \"UCX_TLS\": \"all\"})\n  File \"/content/InferScale-X/scripts/serverctl.py\", line 58, in start\n    p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, cwd=ROOT, env=full_env, start_new_session=True)\n  File \"/usr/lib/python3.13/subprocess.py\", line 1039, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                        pass_fds, cwd, env,\n                        ^^^^^^^^^^^^^^^^^^^\n    ...<5 lines>...\n                        gid, gids, uid, umask,\n                        ^^^^^^^^^^^^^^^^^^^^^^\n                        start_new_session, process_group)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 1991, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'vllm'\n"
+    }
+  ]
+}

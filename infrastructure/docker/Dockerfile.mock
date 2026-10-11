@@ -1,0 +1,11 @@
+# CPU mock OpenAI-compatible backend (stands in for vLLM in the kind cluster and in docker-compose).
+FROM python:3.11-slim
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+WORKDIR /app
+RUN pip install --no-cache-dir "fastapi>=0.110" "uvicorn>=0.29" && useradd -u 10001 -m isx
+COPY inference/__init__.py inference/__init__.py
+COPY inference/mock/ inference/mock/
+USER 10001
+EXPOSE 8000
+ENTRYPOINT ["python", "-m", "inference.mock.mock_server"]
+CMD ["--host", "0.0.0.0", "--port", "8000"]

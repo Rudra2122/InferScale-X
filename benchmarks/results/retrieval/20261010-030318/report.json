@@ -1,0 +1,607 @@
+{
+  "experiment": "retrieval_eval",
+  "n_queries": 32,
+  "n_docs": 22,
+  "n_chunks": 57,
+  "relevance": "document-level, hand-labelled",
+  "retrievers": {
+    "bm25": {
+      "aggregate": {
+        "hit@1": 0.90625,
+        "recall@3": 0.921875,
+        "recall@5": 0.984375,
+        "mrr@10": 0.9385416666666667,
+        "ndcg@5": 0.9330778117013832,
+        "latency_ms_p50": 0.036708006518892944
+      },
+      "per_query": [
+        {
+          "id": "q01",
+          "query": "what happens to streams already in progress when a replica dies",
+          "relevant": [
+            "docs/incident-runbooks/backend-down.md",
+            "docs/architecture/README.md"
+          ],
+          "top3": [
+            "docs/incident-runbooks/backend-down.md",
+            "docs/architecture/README.md",
+            "docs/security-threat-model.md"
+          ],
+          "latency_ms": 0.053750001825392246,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q02",
+          "query": "why reject requests early instead of queueing them in the gateway",
+          "relevant": [
+            "docs/decisions/ADR-002-gateway-design.md",
+            "docs/incident-runbooks/overload.md"
+          ],
+          "top3": [
+            "docs/decisions/ADR-002-gateway-design.md",
+            "docs/partner-deployment-guide.md",
+            "docs/incident-runbooks/latency-regression.md"
+          ],
+          "latency_ms": 0.043374981032684445,
+          "hit@1": 1.0,
+          "recall@3": 0.5,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 0.8772153153380493
+        },
+        {
+          "id": "q03",
+          "query": "when is it worth separating prefill and decode, break-even",
+          "relevant": [
+            "docs/decisions/ADR-003-disaggregation.md"
+          ],
+          "top3": [
+            "docs/architecture/README.md",
+            "docs/capacity-planning/README.md",
+            "docs/decisions/ADR-003-disaggregation.md"
+          ],
+          "latency_ms": 0.03491700044833124,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 0.3333333333333333,
+          "ndcg@5": 0.5
+        },
+        {
+          "id": "q04",
+          "query": "how do we stop one tenant learning another tenant's prompt through cache timing",
+          "relevant": [
+            "docs/security-threat-model.md",
+            "docs/decisions/ADR-002-gateway-design.md"
+          ],
+          "top3": [
+            "docs/security-threat-model.md",
+            "docs/architecture/README.md",
+            "docs/decisions/ADR-004-agent-governance.md"
+          ],
+          "latency_ms": 0.06412499351426959,
+          "hit@1": 1.0,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr@10": 1.0,
+          "ndcg@5": 0.6131471927654584
+        },
+        {
+          "id": "q05",
+          "query": "can the python sandbox be escaped and what should production use instead",
+          "relevant": [
+            "docs/security-threat-model.md"
+          ],
+          "top3": [
+            "docs/security-threat-model.md",
+            "infrastructure/grove-experiments/README.md",
+            "agents/retrieval/corpus/community_post_injected.md"
+          ],
+          "latency_ms": 0.03675001789815724,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q06",
+          "query": "how many bytes of KV cache per token does Qwen2.5-1.5B need",
+          "relevant": [
+            "docs/capacity-planning/README.md"
+          ],
+          "top3": [
+            "docs/capacity-planning/README.md",
+            "docs/RUNNING_ON_COLAB.md",
+            "docs/decisions/ADR-003-disaggregation.md"
+          ],
+          "latency_ms": 0.07679100963287055,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q07",
+          "query": "sequences being preempted because KV blocks ran out",
+          "relevant": [
+            "docs/incident-runbooks/kv-pressure.md"
+          ],
+          "top3": [
+            "docs/incident-runbooks/kv-pressure.md",
+            "docs/decisions/ADR-001-single-gpu-scope.md",
+            "docs/compatibility-matrix.md"
+          ],
+          "latency_ms": 0.0362499849870801,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q08",
+          "query": "p95 time to first token alert fired, is it queueing or compute",
+          "relevant": [
+            "docs/incident-runbooks/latency-regression.md"
+          ],
+          "top3": [
+            "docs/incident-runbooks/latency-regression.md",
+            "docs/incident-runbooks/backend-down.md",
+            "docs/decisions/ADR-002-gateway-design.md"
+          ],
+          "latency_ms": 0.040166982216760516,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q09",
+          "query": "one customer is getting lots of 429 responses",
+          "relevant": [
+            "docs/incident-runbooks/overload.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/orbit_changelog.md",
+            "docs/partner-deployment-guide.md",
+            "docs/architecture/README.md"
+          ],
+          "latency_ms": 0.027542002499103546,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 1.0,
+          "mrr@10": 0.2,
+          "ndcg@5": 0.38685280723454163
+        },
+        {
+          "id": "q10",
+          "query": "install the reference deployment with helm on the customer's cluster",
+          "relevant": [
+            "docs/partner-deployment-guide.md"
+          ],
+          "top3": [
+            "docs/partner-deployment-guide.md",
+            "docs/decisions/ADR-001-single-gpu-scope.md",
+            "docs/compatibility-matrix.md"
+          ],
+          "latency_ms": 0.03850000211969018,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q11",
+          "query": "Triton Inference Server model repository using the vLLM backend",
+          "relevant": [
+            "inference/README.md"
+          ],
+          "top3": [
+            "inference/README.md",
+            "docs/compatibility-matrix.md",
+            "docs/incident-runbooks/backend-down.md"
+          ],
+          "latency_ms": 0.050583999836817384,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q12",
+          "query": "Grove gang scheduling of prefill and decode groups",
+          "relevant": [
+            "infrastructure/grove-experiments/README.md"
+          ],
+          "top3": [
+            "infrastructure/grove-experiments/README.md",
+            "docs/decisions/ADR-003-disaggregation.md",
+            "docs/capacity-planning/README.md"
+          ],
+          "latency_ms": 0.02762500662356615,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q13",
+          "query": "has Dynamo with etcd and NATS been tested here",
+          "relevant": [
+            "docs/compatibility-matrix.md"
+          ],
+          "top3": [
+            "inference/README.md",
+            "docs/compatibility-matrix.md",
+            "docs/capacity-planning/README.md"
+          ],
+          "latency_ms": 0.030166003853082657,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 0.5,
+          "ndcg@5": 0.6309297535714575
+        },
+        {
+          "id": "q14",
+          "query": "why does the notebook run every experiment as a subprocess and never import torch",
+          "relevant": [
+            "docs/RUNNING_ON_COLAB.md"
+          ],
+          "top3": [
+            "docs/RUNNING_ON_COLAB.md",
+            "docs/compatibility-matrix.md",
+            "docs/decisions/ADR-004-agent-governance.md"
+          ],
+          "latency_ms": 0.04704197635874152,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q15",
+          "query": "colab disconnected in the middle of the run, how do I resume",
+          "relevant": [
+            "docs/RUNNING_ON_COLAB.md"
+          ],
+          "top3": [
+            "docs/RUNNING_ON_COLAB.md",
+            "docs/decisions/ADR-004-agent-governance.md",
+            "inference/README.md"
+          ],
+          "latency_ms": 0.038416008464992046,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q16",
+          "query": "who decides whether an agent tool call is allowed",
+          "relevant": [
+            "docs/decisions/ADR-004-agent-governance.md"
+          ],
+          "top3": [
+            "docs/decisions/ADR-004-agent-governance.md",
+            "agents/retrieval/corpus/community_post_injected.md",
+            "docs/security-threat-model.md"
+          ],
+          "latency_ms": 0.0262079993262887,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q17",
+          "query": "heuristic reward versus verifiable reward with the same hyper-parameters",
+          "relevant": [
+            "docs/decisions/ADR-005-customization-track.md"
+          ],
+          "top3": [
+            "docs/decisions/ADR-005-customization-track.md",
+            "docs/decisions/ADR-004-agent-governance.md",
+            "inference/README.md"
+          ],
+          "latency_ms": 0.027750007575377822,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q18",
+          "query": "which results are measured, emulated, simulated or extrapolated and why",
+          "relevant": [
+            "docs/decisions/ADR-001-single-gpu-scope.md"
+          ],
+          "top3": [
+            "docs/decisions/ADR-001-single-gpu-scope.md",
+            "docs/negative-results.md",
+            "docs/capacity-planning/README.md"
+          ],
+          "latency_ms": 0.03666599513962865,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q19",
+          "query": "optimisations that are predicted not to help such as FP8 on A100",
+          "relevant": [
+            "docs/negative-results.md"
+          ],
+          "top3": [
+            "docs/negative-results.md",
+            "inference/README.md",
+            "docs/architecture/README.md"
+          ],
+          "latency_ms": 0.03329198807477951,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q20",
+          "query": "API key rotation and mutual TLS",
+          "relevant": [
+            "docs/security-threat-model.md"
+          ],
+          "top3": [
+            "docs/security-threat-model.md",
+            "docs/architecture/README.md",
+            "docs/partner-deployment-guide.md"
+          ],
+          "latency_ms": 0.022791005903854966,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q21",
+          "query": "cost per million output tokens with headroom for a sizing conversation",
+          "relevant": [
+            "docs/partner-deployment-guide.md",
+            "docs/capacity-planning/README.md"
+          ],
+          "top3": [
+            "docs/partner-deployment-guide.md",
+            "docs/decisions/ADR-003-disaggregation.md",
+            "docs/decisions/ADR-005-customization-track.md"
+          ],
+          "latency_ms": 0.041332998080179095,
+          "hit@1": 1.0,
+          "recall@3": 0.5,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 0.8503449055347546
+        },
+        {
+          "id": "q22",
+          "query": "SGLang needs its own runtime because of conflicting torch pins",
+          "relevant": [
+            "docs/compatibility-matrix.md",
+            "inference/README.md"
+          ],
+          "top3": [
+            "docs/compatibility-matrix.md",
+            "inference/README.md",
+            "docs/RUNNING_ON_COLAB.md"
+          ],
+          "latency_ms": 0.03245798870921135,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q23",
+          "query": "detect tampering with the audit trail",
+          "relevant": [
+            "docs/security-threat-model.md"
+          ],
+          "top3": [
+            "docs/security-threat-model.md",
+            "docs/incident-runbooks/backend-down.md",
+            "docs/decisions/ADR-004-agent-governance.md"
+          ],
+          "latency_ms": 0.016874982975423336,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q24",
+          "query": "nvidia-smi Xid errors or CUDA out of memory at engine startup",
+          "relevant": [
+            "docs/incident-runbooks/backend-down.md"
+          ],
+          "top3": [
+            "docs/incident-runbooks/backend-down.md",
+            "docs/RUNNING_ON_COLAB.md",
+            "docs/incident-runbooks/kv-pressure.md"
+          ],
+          "latency_ms": 0.039624981582164764,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q25",
+          "query": "reduce max-num-batched-tokens or send long prompts to dedicated replicas",
+          "relevant": [
+            "docs/incident-runbooks/latency-regression.md"
+          ],
+          "top3": [
+            "docs/incident-runbooks/latency-regression.md",
+            "docs/incident-runbooks/kv-pressure.md",
+            "docs/decisions/ADR-003-disaggregation.md"
+          ],
+          "latency_ms": 0.045666994992643595,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q26",
+          "query": "prefill pool is compute-bound while decode pool is bandwidth-bound",
+          "relevant": [
+            "docs/architecture/README.md",
+            "docs/capacity-planning/README.md"
+          ],
+          "top3": [
+            "docs/capacity-planning/README.md",
+            "docs/architecture/README.md",
+            "docs/decisions/ADR-003-disaggregation.md"
+          ],
+          "latency_ms": 0.041457999031990767,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q27",
+          "query": "how much does the Orbit Pro plan cost per seat",
+          "relevant": [
+            "agents/retrieval/corpus/orbit_overview.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/orbit_overview.md",
+            "agents/retrieval/corpus/orbit_regions.md",
+            "docs/decisions/ADR-005-customization-track.md"
+          ],
+          "latency_ms": 0.04287500632926822,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q28",
+          "query": "which Orbit region has the largest GPU pool",
+          "relevant": [
+            "agents/retrieval/corpus/orbit_regions.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/orbit_regions.md",
+            "docs/capacity-planning/README.md",
+            "agents/retrieval/corpus/orbit_changelog.md"
+          ],
+          "latency_ms": 0.03604200901463628,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q29",
+          "query": "Orbit version that introduced the cache-aware router",
+          "relevant": [
+            "agents/retrieval/corpus/orbit_changelog.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/orbit_changelog.md",
+            "agents/retrieval/corpus/orbit_regions.md",
+            "agents/retrieval/corpus/orbit_overview.md"
+          ],
+          "latency_ms": 0.03137500607408583,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q30",
+          "query": "maximum number of labels per Orbit deployment",
+          "relevant": [
+            "agents/retrieval/corpus/community_post_injected.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/community_post_injected.md",
+            "agents/retrieval/corpus/orbit_overview.md",
+            "agents/retrieval/corpus/orbit_regions.md"
+          ],
+          "latency_ms": 0.032167008612304926,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q31",
+          "query": "what does the gateway do with a client supplied cache_salt",
+          "relevant": [
+            "docs/architecture/README.md",
+            "docs/decisions/ADR-002-gateway-design.md",
+            "docs/security-threat-model.md"
+          ],
+          "top3": [
+            "docs/decisions/ADR-002-gateway-design.md",
+            "docs/architecture/README.md",
+            "docs/security-threat-model.md"
+          ],
+          "latency_ms": 0.04320798325352371,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        },
+        {
+          "id": "q32",
+          "query": "support response time for Standard customers",
+          "relevant": [
+            "agents/retrieval/corpus/orbit_regions.md"
+          ],
+          "top3": [
+            "agents/retrieval/corpus/orbit_regions.md",
+            "agents/retrieval/corpus/orbit_changelog.md",
+            "docs/incident-runbooks/kv-pressure.md"
+          ],
+          "latency_ms": 0.024416978703811765,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@5": 1.0
+        }
+      ],
+      "failures": []
+    }
+  },
+  "dense_skipped": "ModuleNotFoundError: No module named 'sentence_transformers'"
+}

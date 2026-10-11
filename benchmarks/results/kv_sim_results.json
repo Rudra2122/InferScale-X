@@ -1,0 +1,712 @@
+{
+  "label": "SIMULATED - policy comparison on synthetic traces, priced with measured costs",
+  "cost_model": {
+    "block_bytes": 458752,
+    "h2d_gbps": 12.351352701332047,
+    "prefill_s_per_block": 0.0001
+  },
+  "runs": [
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.11105882352941177,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.8889411764705882,
+      "evictions_hbm": 180832,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 18.134399999971077,
+      "total_cost_s": 18.134399999971077,
+      "per_tenant_hit_rate": {
+        "globex": 0.11363285471668982,
+        "acme": 0.10840108401084012
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.23968627450980393,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.760313725490196,
+      "evictions_hbm": 154592,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 15.51039999997719,
+      "total_cost_s": 15.51039999997719,
+      "per_tenant_hit_rate": {
+        "globex": 0.22850084915856106,
+        "acme": 0.2512354535310059
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.08094117647058824,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9190588235294118,
+      "evictions_hbm": 186976,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 18.748799999969645,
+      "total_cost_s": 18.748799999969645,
+      "per_tenant_hit_rate": {
+        "globex": 0.08645978076269878,
+        "acme": 0.0752431053722302
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.11105882352941177,
+      "cpu_hit_rate": 0.4103529411764706,
+      "miss_rate": 0.47858823529411765,
+      "evictions_hbm": 180832,
+      "evictions_cpu": 93024,
+      "transfer_s": 9.825651653110981,
+      "recompute_s": 9.763199999990585,
+      "total_cost_s": 19.588851653101564,
+      "per_tenant_hit_rate": {
+        "globex": 0.4989964489732901,
+        "acme": 0.5445560337956321
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.23968627450980393,
+      "cpu_hit_rate": 0.288,
+      "miss_rate": 0.47231372549019607,
+      "evictions_hbm": 154592,
+      "evictions_cpu": 91744,
+      "transfer_s": 7.923989303410053,
+      "recompute_s": 9.635199999990883,
+      "total_cost_s": 17.559189303400935,
+      "per_tenant_hit_rate": {
+        "globex": 0.4989964489732901,
+        "acme": 0.5573091025027898
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.08094117647058824,
+      "cpu_hit_rate": 0.43807843137254904,
+      "miss_rate": 0.4809803921568627,
+      "evictions_hbm": 186976,
+      "evictions_cpu": 93384,
+      "transfer_s": 10.263925397768617,
+      "recompute_s": 9.811999999990471,
+      "total_cost_s": 20.075925397759086,
+      "per_tenant_hit_rate": {
+        "globex": 0.4965261695229273,
+        "acme": 0.5422445400924597
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.22901960784313727,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.7709803921568628,
+      "evictions_hbm": 156256,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 15.727999999976683,
+      "total_cost_s": 15.727999999976683,
+      "per_tenant_hit_rate": {
+        "globex": 0.23591168750964953,
+        "acme": 0.22190339550454327
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.3243921568627451,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.6756078431372549,
+      "evictions_hbm": 136800,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 13.782399999981218,
+      "total_cost_s": 13.782399999981218,
+      "per_tenant_hit_rate": {
+        "globex": 0.3779527559055118,
+        "acme": 0.2690897497210266
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.2064313725490196,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.7935686274509804,
+      "evictions_hbm": 160864,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 16.18879999997561,
+      "total_cost_s": 16.18879999997561,
+      "per_tenant_hit_rate": {
+        "globex": 0.2112088930060213,
+        "acme": 0.20149848557309102
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.22901960784313727,
+      "cpu_hit_rate": 0.30870588235294116,
+      "miss_rate": 0.4622745098039216,
+      "evictions_hbm": 156256,
+      "evictions_cpu": 89184,
+      "transfer_s": 8.14268047362566,
+      "recompute_s": 9.43039999999136,
+      "total_cost_s": 17.57308047361702,
+      "per_tenant_hit_rate": {
+        "globex": 0.513818125675467,
+        "acme": 0.5624103299856528
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.3243921568627451,
+      "cpu_hit_rate": 0.23027450980392156,
+      "miss_rate": 0.44533333333333336,
+      "evictions_hbm": 136800,
+      "evictions_cpu": 85728,
+      "transfer_s": 6.8257792964577675,
+      "recompute_s": 9.084799999992166,
+      "total_cost_s": 15.910579296449933,
+      "per_tenant_hit_rate": {
+        "globex": 0.5335803612783696,
+        "acme": 0.5764387055635263
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.2064313725490196,
+      "cpu_hit_rate": 0.32941176470588235,
+      "miss_rate": 0.46415686274509804,
+      "evictions_hbm": 160864,
+      "evictions_cpu": 89568,
+      "transfer_s": 8.47071722894907,
+      "recompute_s": 9.46879999999127,
+      "total_cost_s": 17.93951722894034,
+      "per_tenant_hit_rate": {
+        "globex": 0.5125829859502856,
+        "acme": 0.5598597162442213
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.3676862745098039,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.632313725490196,
+      "evictions_hbm": 126944,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 12.899199999983276,
+      "total_cost_s": 12.899199999983276,
+      "per_tenant_hit_rate": {
+        "globex": 0.36930677782924193,
+        "acme": 0.3660130718954248
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.4912941176470588,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.5087058823529412,
+      "evictions_hbm": 101728,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 10.377599999989153,
+      "total_cost_s": 10.377599999989153,
+      "per_tenant_hit_rate": {
+        "globex": 0.5051721475991972,
+        "acme": 0.47696476964769646
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.375843137254902,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.6241568627450981,
+      "evictions_hbm": 125280,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 12.732799999983664,
+      "total_cost_s": 12.732799999983664,
+      "per_tenant_hit_rate": {
+        "globex": 0.37301219700478616,
+        "acme": 0.3787661406025825
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.3676862745098039,
+      "cpu_hit_rate": 0.2007843137254902,
+      "miss_rate": 0.4315294117647059,
+      "evictions_hbm": 126944,
+      "evictions_cpu": 81888,
+      "transfer_s": 6.23626396805048,
+      "recompute_s": 8.803199999992822,
+      "total_cost_s": 15.039463968043302,
+      "per_tenant_hit_rate": {
+        "globex": 0.5434614790798209,
+        "acme": 0.5942930017535469
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.4912941176470588,
+      "cpu_hit_rate": 0.10917647058823529,
+      "miss_rate": 0.39952941176470586,
+      "evictions_hbm": 101728,
+      "evictions_cpu": 75360,
+      "transfer_s": 4.605588503181934,
+      "recompute_s": 8.150399999994344,
+      "total_cost_s": 12.755988503176278,
+      "per_tenant_hit_rate": {
+        "globex": 0.5780453913849004,
+        "acme": 0.6236250597800096
+      }
+    },
+    {
+      "trace": "fair",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.375843137254902,
+      "cpu_hit_rate": 0.19325490196078432,
+      "miss_rate": 0.4309019607843137,
+      "evictions_hbm": 125280,
+      "evictions_cpu": 81760,
+      "transfer_s": 6.117410071194172,
+      "recompute_s": 8.790399999992852,
+      "total_cost_s": 14.907810071187024,
+      "per_tenant_hit_rate": {
+        "globex": 0.5422263393546395,
+        "acme": 0.5968436154949784
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.010666666666666666,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9893333333333333,
+      "evictions_hbm": 201312,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 20.182399999966304,
+      "total_cost_s": 20.182399999966304,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.035650623885918005,
+        "globex": 0.025339366515837104
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.046431372549019606,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9535686274509804,
+      "evictions_hbm": 194016,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 19.452799999968004,
+      "total_cost_s": 19.452799999968004,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.0855614973262032,
+        "globex": 0.18099547511312217
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.02384313725490196,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.976156862745098,
+      "evictions_hbm": 198624,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 19.91359999996693,
+      "total_cost_s": 19.91359999996693,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.0748663101604278,
+        "globex": 0.06153846153846154
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.010666666666666666,
+      "cpu_hit_rate": 0.08972549019607844,
+      "miss_rate": 0.899607843137255,
+      "evictions_hbm": 201312,
+      "evictions_cpu": 178912,
+      "transfer_s": 8.156942941248417,
+      "recompute_s": 18.35199999997057,
+      "total_cost_s": 26.508942941218987,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.30303030303030304,
+        "globex": 0.27149321266968324
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.046431372549019606,
+      "cpu_hit_rate": 0.07027450980392157,
+      "miss_rate": 0.8832941176470588,
+      "evictions_hbm": 194016,
+      "evictions_cpu": 175584,
+      "transfer_s": 7.738577224314213,
+      "recompute_s": 18.019199999971345,
+      "total_cost_s": 25.757777224285558,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.34581105169340465,
+        "globex": 0.3221719457013575
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 512,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.02384313725490196,
+      "cpu_hit_rate": 0.08269607843137255,
+      "miss_rate": 0.8934607843137254,
+      "evictions_hbm": 198624,
+      "evictions_cpu": 177553,
+      "transfer_s": 8.003844265360385,
+      "recompute_s": 18.226599999970862,
+      "total_cost_s": 26.230444265331247,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.3201314616755793,
+        "globex": 0.2895927601809955
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.02447058823529412,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9755294117647059,
+      "evictions_hbm": 197984,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 19.90079999996696,
+      "total_cost_s": 19.90079999996696,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.0748663101604278,
+        "globex": 0.06515837104072399
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.11670588235294117,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.8832941176470588,
+      "evictions_hbm": 179168,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 18.019199999971345,
+      "total_cost_s": 18.019199999971345,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.31016042780748665,
+        "globex": 0.3583710407239819
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.042666666666666665,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9573333333333334,
+      "evictions_hbm": 194272,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 19.529599999967825,
+      "total_cost_s": 19.529599999967825,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.12477718360071301,
+        "globex": 0.11945701357466064
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.02447058823529412,
+      "cpu_hit_rate": 0.08345098039215686,
+      "miss_rate": 0.892078431372549,
+      "evictions_hbm": 197984,
+      "evictions_cpu": 176864,
+      "transfer_s": 7.985793329775333,
+      "recompute_s": 18.198399999970928,
+      "total_cost_s": 26.18419332974626,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.3315508021390374,
+        "globex": 0.285972850678733
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.11670588235294117,
+      "cpu_hit_rate": 0.03137254901960784,
+      "miss_rate": 0.8519215686274509,
+      "evictions_hbm": 179168,
+      "evictions_cpu": 168672,
+      "transfer_s": 6.8923374786973,
+      "recompute_s": 17.379199999972837,
+      "total_cost_s": 24.271537478670137,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.43493761140819964,
+        "globex": 0.41266968325791853
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 1024,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.042666666666666665,
+      "cpu_hit_rate": 0.07123039215686275,
+      "miss_rate": 0.8861029411764706,
+      "evictions_hbm": 194272,
+      "evictions_cpu": 175539,
+      "transfer_s": 7.755328195402399,
+      "recompute_s": 18.07649999997121,
+      "total_cost_s": 25.83182819537361,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.34411207664884136,
+        "globex": 0.3076923076923077
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.05270588235294118,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9472941176470588,
+      "evictions_hbm": 191200,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 19.324799999968302,
+      "total_cost_s": 19.324799999968302,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.16042780748663102,
+        "globex": 0.1411764705882353
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.13992156862745098,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.860078431372549,
+      "evictions_hbm": 173408,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 17.54559999997245,
+      "total_cost_s": 17.54559999997245,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.43137254901960786,
+        "globex": 0.36923076923076925
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 0,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.09349019607843137,
+      "cpu_hit_rate": 0.0,
+      "miss_rate": 0.9065098039215687,
+      "evictions_hbm": 182880,
+      "evictions_cpu": 0,
+      "transfer_s": 0.0,
+      "recompute_s": 18.49279999997024,
+      "total_cost_s": 18.49279999997024,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.29233511586452765,
+        "globex": 0.2425339366515837
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "lru",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.05270588235294118,
+      "cpu_hit_rate": 0.06776470588235294,
+      "miss_rate": 0.8795294117647059,
+      "evictions_hbm": 191200,
+      "evictions_cpu": 173280,
+      "transfer_s": 7.6149691715836525,
+      "recompute_s": 17.942399999971524,
+      "total_cost_s": 25.557369171555177,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.35650623885918004,
+        "globex": 0.3330316742081448
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "lfu",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.13992156862745098,
+      "cpu_hit_rate": 0.02196078431372549,
+      "miss_rate": 0.8381176470588235,
+      "evictions_hbm": 173408,
+      "evictions_cpu": 164832,
+      "transfer_s": 6.607088126242161,
+      "recompute_s": 17.097599999973493,
+      "total_cost_s": 23.704688126215654,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.49554367201426025,
+        "globex": 0.4307692307692308
+      }
+    },
+    {
+      "trace": "noisy_neighbour",
+      "hbm_blocks": 2048,
+      "cpu_blocks": 4096,
+      "policy": "tenant_fair",
+      "lookups": 204000,
+      "hbm_hit_rate": 0.09349019607843137,
+      "cpu_hit_rate": 0.04454901960784314,
+      "miss_rate": 0.8619607843137255,
+      "evictions_hbm": 182880,
+      "evictions_cpu": 169696,
+      "transfer_s": 7.130045272409916,
+      "recompute_s": 17.58399999997236,
+      "total_cost_s": 24.714045272382275,
+      "per_tenant_hit_rate": {
+        "freetier": 0.0,
+        "acme": 0.41711229946524064,
+        "globex": 0.3728506787330317
+      }
+    }
+  ]
+}

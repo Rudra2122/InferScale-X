@@ -1,0 +1,616 @@
+{
+  "experiment": "kv_transfer",
+  "env": {
+    "captured_at": "2026-10-10T10:36:50+0000",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "cpu_count": 12,
+    "colab": true,
+    "gpus": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "driver_version": "580.82.07",
+        "memory.total": "40960 MiB",
+        "pcie.link.gen.current": "4",
+        "pcie.link.width.current": "16",
+        "clocks.max.sm": "1410 MHz",
+        "power.limit": "400.00 W"
+      }
+    ],
+    "cuda": {
+      "torch_cuda": "13.0",
+      "available": true,
+      "device_count": 1,
+      "capability": [
+        8,
+        0
+      ]
+    },
+    "nvidia_smi_topology": "\u001b[4mGPU0\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \t0-11\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks",
+    "packages": {
+      "torch": "2.13.0",
+      "vllm": "0.31.0",
+      "transformers": "5.17.0",
+      "triton": "3.7.1",
+      "peft": "0.21.1",
+      "accelerate": "1.15.0",
+      "flashinfer-python": "0.7.0.post1",
+      "fastapi": "0.136.3",
+      "httpx": "0.28.1",
+      "numpy": "2.1.3"
+    },
+    "git_commit": null
+  },
+  "bandwidth": {
+    "points": [
+      {
+        "path": "d2d",
+        "bytes": 1048576,
+        "median_s": 2.457600086927414e-05,
+        "GBps": 42.66666515751023
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 1048576,
+        "median_s": 9.612800180912018e-05,
+        "GBps": 10.90812229803903
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 1048576,
+        "median_s": 8.791999891400338e-05,
+        "GBps": 11.926478764241534
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 1048576,
+        "median_s": 0.0002764640003442764,
+        "GBps": 3.7928120793095097
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 1048576,
+        "median_s": 0.0003273919969797134,
+        "GBps": 3.20281500364523
+      },
+      {
+        "path": "d2d",
+        "bytes": 4194304,
+        "median_s": 2.406400069594383e-05,
+        "GBps": 174.29786729963743
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 4194304,
+        "median_s": 0.0003514399975538254,
+        "GBps": 11.934623347354234
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 4194304,
+        "median_s": 0.0003271199911832809,
+        "GBps": 12.821912793614587
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 4194304,
+        "median_s": 0.0007281439900398254,
+        "GBps": 5.760267278688374
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 4194304,
+        "median_s": 0.0009561919867992401,
+        "GBps": 4.386466376945937
+      },
+      {
+        "path": "d2d",
+        "bytes": 16777216,
+        "median_s": 3.225599974393845e-05,
+        "GBps": 520.1269882559686
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 16777216,
+        "median_s": 0.0013702239990234376,
+        "GBps": 12.244141112662724
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 16777216,
+        "median_s": 0.0012812479734420775,
+        "GBps": 13.094433199318901
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 16777216,
+        "median_s": 0.002522735953330994,
+        "GBps": 6.650405080185876
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 16777216,
+        "median_s": 0.0034659199714660643,
+        "GBps": 4.840624174280439
+      },
+      {
+        "path": "d2d",
+        "bytes": 67108864,
+        "median_s": 0.00010956799983978272,
+        "GBps": 612.4859822040271
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 67108864,
+        "median_s": 0.005445760011672973,
+        "GBps": 12.323140178074743
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 67108864,
+        "median_s": 0.005117248058319092,
+        "GBps": 13.114248759330977
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 67108864,
+        "median_s": 0.0097675518989563,
+        "GBps": 6.870592006495593
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 67108864,
+        "median_s": 0.013407455921173095,
+        "GBps": 5.005339148198987
+      },
+      {
+        "path": "d2d",
+        "bytes": 268435456,
+        "median_s": 0.00040140798687934875,
+        "GBps": 668.734715736196
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 268435456,
+        "median_s": 0.021745808601379396,
+        "GBps": 12.344238879347646
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 268435456,
+        "median_s": 0.02036511993408203,
+        "GBps": 13.181137988328762
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 268435456,
+        "median_s": 0.03924374389648437,
+        "GBps": 6.840210167206999
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 268435456,
+        "median_s": 0.05426281547546387,
+        "GBps": 4.946950386704115
+      },
+      {
+        "path": "d2d",
+        "bytes": 1073741824,
+        "median_s": 0.0015697920322418214,
+        "GBps": 684.0025952142133
+      },
+      {
+        "path": "h2d_pinned",
+        "bytes": 1073741824,
+        "median_s": 0.08692609405517579,
+        "GBps": 12.352353291273495
+      },
+      {
+        "path": "d2h_pinned",
+        "bytes": 1073741824,
+        "median_s": 0.08138199996948242,
+        "GBps": 13.193849062478733
+      },
+      {
+        "path": "h2d_pageable",
+        "bytes": 1073741824,
+        "median_s": 0.1562357940673828,
+        "GBps": 6.872572513933054
+      },
+      {
+        "path": "d2h_pageable",
+        "bytes": 1073741824,
+        "median_s": 0.2165307388305664,
+        "GBps": 4.958842471046084
+      }
+    ],
+    "fit": {
+      "d2h_pageable": {
+        "alpha_s": 6.465335879843326e-05,
+        "beta_GBps": 4.96012397176085
+      },
+      "d2h_pinned": {
+        "alpha_s": 1.592683171295836e-05,
+        "beta_GBps": 13.196007811137997
+      },
+      "h2d_pageable": {
+        "alpha_s": 0.00010397121186875302,
+        "beta_GBps": 6.876301077494518
+      },
+      "h2d_pinned": {
+        "alpha_s": 1.3039963576995384e-05,
+        "beta_GBps": 12.354053577231522
+      },
+      "d2d": {
+        "alpha_s": 1.5033714186880333e-05,
+        "beta_GBps": 690.9643638177877
+      }
+    },
+    "peak_GBps": {
+      "d2d": 684.0025952142133,
+      "h2d_pinned": 12.352353291273495,
+      "d2h_pinned": 13.193849062478733,
+      "h2d_pageable": 6.872572513933054,
+      "d2h_pageable": 4.958842471046084
+    },
+    "h2d_pinned_GBps": 12.352353291273495
+  },
+  "kv": {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "config": {
+      "layers": 28,
+      "kv_heads": 2,
+      "hidden": 1536
+    },
+    "rows": [
+      {
+        "seq_len": 256,
+        "kv_bytes_measured": 7340032,
+        "kv_bytes_theory": 7340032,
+        "n_tensors": 56,
+        "prefill_s": {
+          "median": 0.031386624336242674,
+          "stdev": 0.0005876387829082094
+        },
+        "decode_step_s": {
+          "median": 0.029038591384887694,
+          "stdev": 0.0002891474504741833
+        },
+        "transfer_s": {
+          "d2d": {
+            "median": 0.0004331520050764084,
+            "stdev": 6.361999657519314e-06
+          },
+          "host_roundtrip_pinned": {
+            "median": 0.0014518240094184877,
+            "stdev": 4.8942355497557505e-06
+          },
+          "serialize_torch_save": {
+            "median": 0.01838355255126953,
+            "stdev": 0.00022694329945796747
+          }
+        },
+        "predicted_transfer_s": {
+          "d2d": 0.0008525108751583696,
+          "host_roundtrip_pinned": 0.00277251135582868
+        },
+        "prediction_error_pct": {
+          "d2d": -49.19102879526992,
+          "host_roundtrip_pinned": -47.635056341020835
+        },
+        "ttft_colocated_s": 0.06042521572113037,
+        "ttft_disagg_s": {
+          "d2d": 0.06085836772620678,
+          "host_roundtrip_pinned": 0.06187703973054885,
+          "serialize_torch_save": 0.0788087682723999
+        },
+        "transfer_overhead_pct_of_ttft": {
+          "d2d": 0.7168398158071242,
+          "host_roundtrip_pinned": 2.402679067161017,
+          "serialize_torch_save": 30.423644056335412
+        },
+        "nixl": {
+          "available": false,
+          "reason": "import failed: ModuleNotFoundError: No module named 'nixl'"
+        }
+      },
+      {
+        "seq_len": 1024,
+        "kv_bytes_measured": 29360128,
+        "kv_bytes_theory": 29360128,
+        "n_tensors": 56,
+        "prefill_s": {
+          "median": 0.031111167907714843,
+          "stdev": 0.0007341723731485417
+        },
+        "decode_step_s": {
+          "median": 0.028929536819458007,
+          "stdev": 0.0002251713387318074
+        },
+        "transfer_s": {
+          "d2d": {
+            "median": 0.00042956800758838653,
+            "stdev": 8.794484192314002e-06
+          },
+          "host_roundtrip_pinned": {
+            "median": 0.004907567977905274,
+            "stdev": 4.783534797370725e-06
+          },
+          "serialize_torch_save": {
+            "median": 0.07351471710205078,
+            "stdev": 0.005783417392287597
+          }
+        },
+        "predicted_transfer_s": {
+          "d2d": 0.0008843795172375823,
+          "host_roundtrip_pinned": 0.006223623814602491
+        },
+        "prediction_error_pct": {
+          "d2d": -51.42718717297179,
+          "host_roundtrip_pinned": -21.146134083640376
+        },
+        "ttft_colocated_s": 0.06004070472717285,
+        "ttft_disagg_s": {
+          "d2d": 0.060470272734761236,
+          "host_roundtrip_pinned": 0.06494827270507812,
+          "serialize_torch_save": 0.13355542182922364
+        },
+        "transfer_overhead_pct_of_ttft": {
+          "d2d": 0.7154613016958399,
+          "host_roundtrip_pinned": 8.173734802423525,
+          "serialize_torch_save": 122.44146273116601
+        }
+      },
+      {
+        "seq_len": 2048,
+        "kv_bytes_measured": 58720256,
+        "kv_bytes_theory": 58720256,
+        "n_tensors": 56,
+        "prefill_s": {
+          "median": 0.04504985618591309,
+          "stdev": 7.134632197788362e-05
+        },
+        "decode_step_s": {
+          "median": 0.028785663604736327,
+          "stdev": 0.0006982552331160546
+        },
+        "transfer_s": {
+          "d2d": {
+            "median": 0.00043212799727916716,
+            "stdev": 8.503512389937848e-06
+          },
+          "host_roundtrip_pinned": {
+            "median": 0.009517759799957275,
+            "stdev": 6.126049220469598e-06
+          },
+          "serialize_torch_save": {
+            "median": 0.15183555603027343,
+            "stdev": 0.00022680937000371556
+          }
+        },
+        "predicted_transfer_s": {
+          "d2d": 0.000926871040009866,
+          "host_roundtrip_pinned": 0.010825107092967572
+        },
+        "prediction_error_pct": {
+          "d2d": -53.3777646915619,
+          "host_roundtrip_pinned": -12.076991772761332
+        },
+        "ttft_colocated_s": 0.07383551979064942,
+        "ttft_disagg_s": {
+          "d2d": 0.07426764778792858,
+          "host_roundtrip_pinned": 0.08335327959060669,
+          "serialize_torch_save": 0.22567107582092286
+        },
+        "transfer_overhead_pct_of_ttft": {
+          "d2d": 0.5852576084036617,
+          "host_roundtrip_pinned": 12.89048932944955,
+          "serialize_torch_save": 205.64026157164264
+        }
+      },
+      {
+        "seq_len": 4096,
+        "kv_bytes_measured": 117440512,
+        "kv_bytes_theory": 117440512,
+        "n_tensors": 56,
+        "prefill_s": {
+          "median": 0.09028607940673829,
+          "stdev": 0.0003067212747820873
+        },
+        "decode_step_s": {
+          "median": 0.029625343322753905,
+          "stdev": 0.0008061238938318994
+        },
+        "transfer_s": {
+          "d2d": {
+            "median": 0.00042547199130058287,
+            "stdev": 6.126904913510869e-06
+          },
+          "host_roundtrip_pinned": {
+            "median": 0.018731247901916506,
+            "stdev": 1.362721081943877e-05
+          },
+          "serialize_torch_save": {
+            "median": 0.29117861938476564,
+            "stdev": 0.01891481673381201
+          }
+        },
+        "predicted_transfer_s": {
+          "d2d": 0.0010118540855544333,
+          "host_roundtrip_pinned": 0.020028073649697734
+        },
+        "prediction_error_pct": {
+          "d2d": -57.95125034579956,
+          "host_roundtrip_pinned": -6.475039838895335
+        },
+        "ttft_colocated_s": 0.11991142272949219,
+        "ttft_disagg_s": {
+          "d2d": 0.12033689472079277,
+          "host_roundtrip_pinned": 0.1386426706314087,
+          "serialize_torch_save": 0.4110900421142578
+        },
+        "transfer_overhead_pct_of_ttft": {
+          "d2d": 0.35482190238072964,
+          "host_roundtrip_pinned": 15.620903726721908,
+          "serialize_torch_save": 242.8280915669182
+        }
+      },
+      {
+        "seq_len": 8192,
+        "kv_bytes_measured": 234881024,
+        "kv_bytes_theory": 234881024,
+        "n_tensors": 56,
+        "prefill_s": {
+          "median": 0.18986444854736328,
+          "stdev": 0.0005213054221795911
+        },
+        "decode_step_s": {
+          "median": 0.02949836826324463,
+          "stdev": 0.0003116982008559737
+        },
+        "transfer_s": {
+          "d2d": {
+            "median": 0.0005166079998016358,
+            "stdev": 3.212170224470326e-06
+          },
+          "host_roundtrip_pinned": {
+            "median": 0.037124816894531246,
+            "stdev": 1.034837962871613e-05
+          },
+          "serialize_torch_save": {
+            "median": 0.6269034423828125,
+            "stdev": 0.00046303434416599575
+          }
+        },
+        "predicted_transfer_s": {
+          "d2d": 0.0011818201766435677,
+          "host_roundtrip_pinned": 0.03843400676315806
+        },
+        "prediction_error_pct": {
+          "d2d": -56.28708918569744,
+          "host_roundtrip_pinned": -3.40633199316021
+        },
+        "ttft_colocated_s": 0.21936281681060793,
+        "ttft_disagg_s": {
+          "d2d": 0.21987942481040956,
+          "host_roundtrip_pinned": 0.25648763370513916,
+          "serialize_torch_save": 0.8462662591934204
+        },
+        "transfer_overhead_pct_of_ttft": {
+          "d2d": 0.23550390504315116,
+          "host_roundtrip_pinned": 16.923933342168848,
+          "serialize_torch_save": 285.78382220723597
+        }
+      }
+    ]
+  },
+  "break_even": {
+    "label": "analytic; transfer costs for other fabrics are EXTRAPOLATED from bytes, not measured",
+    "fabrics_GBps_assumed": {
+      "pcie4_x16_measured_h2d": 12.352353291273495,
+      "nvlink3_a100_unidir": 300.0,
+      "ib_hdr_200g": 25.0,
+      "ib_ndr_400g": 50.0,
+      "ethernet_100g": 12.5
+    },
+    "by_seq_len": [
+      {
+        "seq_len": 256,
+        "kv_bytes": 7340032,
+        "measured_host_roundtrip_s": 0.0014518240094184877,
+        "extrapolated_transfer_s": {
+          "pcie4_x16_measured_h2d": 0.0005942213460803032,
+          "nvlink3_a100_unidir": 2.4466773333333334e-05,
+          "ib_hdr_200g": 0.00029360128,
+          "ib_ndr_400g": 0.00014680064,
+          "ethernet_100g": 0.00058720256
+        },
+        "min_output_tokens_to_break_even": {
+          "pcie4_x16_measured_h2d": 0.14497585926691542,
+          "nvlink3_a100_unidir": 0.005969310107902952,
+          "ib_hdr_200g": 0.07163172129483543,
+          "ib_ndr_400g": 0.035815860647417715,
+          "ethernet_100g": 0.14326344258967086
+        }
+      },
+      {
+        "seq_len": 1024,
+        "kv_bytes": 29360128,
+        "measured_host_roundtrip_s": 0.004907567977905274,
+        "extrapolated_transfer_s": {
+          "pcie4_x16_measured_h2d": 0.002376885384321213,
+          "nvlink3_a100_unidir": 9.786709333333333e-05,
+          "ib_hdr_200g": 0.00117440512,
+          "ib_ndr_400g": 0.00058720256,
+          "ethernet_100g": 0.00234881024
+        },
+        "min_output_tokens_to_break_even": {
+          "pcie4_x16_measured_h2d": 0.5799034370676617,
+          "nvlink3_a100_unidir": 0.023877240431611806,
+          "ib_hdr_200g": 0.2865268851793417,
+          "ib_ndr_400g": 0.14326344258967086,
+          "ethernet_100g": 0.5730537703586834
+        }
+      },
+      {
+        "seq_len": 2048,
+        "kv_bytes": 58720256,
+        "measured_host_roundtrip_s": 0.009517759799957275,
+        "extrapolated_transfer_s": {
+          "pcie4_x16_measured_h2d": 0.004753770768642426,
+          "nvlink3_a100_unidir": 0.00019573418666666667,
+          "ib_hdr_200g": 0.00234881024,
+          "ib_ndr_400g": 0.00117440512,
+          "ethernet_100g": 0.00469762048
+        },
+        "min_output_tokens_to_break_even": {
+          "pcie4_x16_measured_h2d": 1.1598068741353234,
+          "nvlink3_a100_unidir": 0.04775448086322361,
+          "ib_hdr_200g": 0.5730537703586834,
+          "ib_ndr_400g": 0.2865268851793417,
+          "ethernet_100g": 1.1461075407173669
+        }
+      },
+      {
+        "seq_len": 4096,
+        "kv_bytes": 117440512,
+        "measured_host_roundtrip_s": 0.018731247901916506,
+        "extrapolated_transfer_s": {
+          "pcie4_x16_measured_h2d": 0.009507541537284852,
+          "nvlink3_a100_unidir": 0.00039146837333333334,
+          "ib_hdr_200g": 0.00469762048,
+          "ib_ndr_400g": 0.00234881024,
+          "ethernet_100g": 0.00939524096
+        },
+        "min_output_tokens_to_break_even": {
+          "pcie4_x16_measured_h2d": 2.3196137482706467,
+          "nvlink3_a100_unidir": 0.09550896172644723,
+          "ib_hdr_200g": 1.1461075407173669,
+          "ib_ndr_400g": 0.5730537703586834,
+          "ethernet_100g": 2.2922150814347337
+        }
+      },
+      {
+        "seq_len": 8192,
+        "kv_bytes": 234881024,
+        "measured_host_roundtrip_s": 0.037124816894531246,
+        "extrapolated_transfer_s": {
+          "pcie4_x16_measured_h2d": 0.019015083074569703,
+          "nvlink3_a100_unidir": 0.0007829367466666667,
+          "ib_hdr_200g": 0.00939524096,
+          "ib_ndr_400g": 0.00469762048,
+          "ethernet_100g": 0.01879048192
+        },
+        "min_output_tokens_to_break_even": {
+          "pcie4_x16_measured_h2d": 4.639227496541293,
+          "nvlink3_a100_unidir": 0.19101792345289445,
+          "ib_hdr_200g": 2.2922150814347337,
+          "ib_ndr_400g": 1.1461075407173669,
+          "ethernet_100g": 4.5844301628694675
+        }
+      }
+    ],
+    "measured_delta_tpot_s": 0.004098760642530705
+  },
+  "caveat": "Single GPU. 'host_roundtrip_pinned' is a proxy for a cross-node hop. No physical disaggregation."
+}

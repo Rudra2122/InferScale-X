@@ -1,0 +1,8 @@
+# Model-customisation track (separate runtime from vLLM to avoid torch pin conflicts).
+-r dev.txt
+torch>=2.4
+transformers>=4.51
+trl>=0.19
+peft>=0.13
+datasets>=3.0
+accelerate>=1.0

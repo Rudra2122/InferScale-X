@@ -1,0 +1,7 @@
+# Baseline chat workload: short prompts, medium outputs, closed loop.
+name: chat_short
+num_requests: 300
+warmup_requests: 16
+concurrency: 32
+input_tokens: 256
+output_tokens: 128

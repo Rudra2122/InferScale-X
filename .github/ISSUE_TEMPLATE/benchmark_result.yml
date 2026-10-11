@@ -1,0 +1,28 @@
+name: Benchmark result
+description: Submit a reproducible benchmark run (including ones where the optimisation lost)
+labels: [benchmark]
+body:
+  - type: input
+    id: experiment
+    attributes: {label: Experiment, placeholder: "routing / kv_cache / quantization / ..."}
+    validations: {required: true}
+  - type: textarea
+    id: env
+    attributes: {label: env.json (paste), description: "GPU, driver, CUDA and package versions exactly as captured", render: json}
+    validations: {required: true}
+  - type: textarea
+    id: command
+    attributes: {label: Exact command, render: shell}
+    validations: {required: true}
+  - type: textarea
+    id: result
+    attributes: {label: report.json / aggregate.json (key fields), render: json}
+    validations: {required: true}
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - {label: "--repeats >= 3", required: true}
+        - {label: "Raw per-request JSONL attached or linked", required: true}
+        - {label: "Result is labelled measured / emulated / simulated / extrapolated", required: true}

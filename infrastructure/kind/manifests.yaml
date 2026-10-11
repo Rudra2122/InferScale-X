@@ -1,0 +1,131 @@
+# Kind (laptop) deployment: real gateway + CPU mock "model" replicas. Same topology as the GPU
+# reference in infrastructure/kubernetes/, minus GPUs. Applied by infrastructure/kind/k8s_evidence.py.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: inferscale
+  labels: {name: inferscale}
+---
+apiVersion: v1
+kind: Secret
+metadata: {name: gateway-config, namespace: inferscale}
+type: Opaque
+stringData:
+  gateway.yaml: |
+    gateway:
+      routing_policy: least_outstanding
+      global_max_inflight: 512
+      health_interval_s: 0.5
+      unhealthy_after_failures: 2
+      max_retries: 1
+      inject_cache_salt: true
+      cache_salt_secret: kind-local-only
+    backends:
+      - {name: mock-0, url: "http://mock-0.mock.inferscale.svc.cluster.local:8000", model: mock-model}
+      - {name: mock-1, url: "http://mock-1.mock.inferscale.svc.cluster.local:8000", model: mock-model}
+    tenants:
+      acme: {api_key: sk-dev-acme, requests_per_minute: 600000, burst: 5000, max_concurrent: 512, max_output_tokens: 512, allowed_tools: [calculator]}
+      freetier: {api_key: sk-dev-free, requests_per_minute: 30, burst: 3, max_concurrent: 2, max_output_tokens: 64, allowed_models: [mock-model]}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: mock, namespace: inferscale}
+spec:
+  clusterIP: None
+  selector: {app: mock}
+  ports: [{port: 8000, name: http}]
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata: {name: mock, namespace: inferscale}
+spec:
+  serviceName: mock
+  replicas: 2
+  podManagementPolicy: Parallel
+  selector: {matchLabels: {app: mock}}
+  template:
+    metadata: {labels: {app: mock}}
+    spec:
+      terminationGracePeriodSeconds: 5
+      affinity:
+        podAntiAffinity:   # one replica per worker node = separate failure domains
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector: {matchLabels: {app: mock}}
+              topologyKey: kubernetes.io/hostname
+      nodeSelector: {inferscale/pool: replicas}
+      containers:
+        - name: mock
+          image: inferscale-mock:dev
+          imagePullPolicy: Never
+          args: ["--host", "0.0.0.0", "--port", "8000"]
+          env:
+            - {name: MOCK_TPOT_MS, value: "2"}
+            - {name: MOCK_TTFT_BASE_MS, value: "5"}
+          ports: [{containerPort: 8000}]
+          readinessProbe: {httpGet: {path: /health, port: 8000}, periodSeconds: 2, failureThreshold: 2}
+          livenessProbe: {httpGet: {path: /health, port: 8000}, periodSeconds: 5, failureThreshold: 3}
+          resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: "1", memory: 256Mi}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  replicas: 2
+  selector: {matchLabels: {app: gateway}}
+  template:
+    metadata: {labels: {app: gateway}}
+    spec:
+      terminationGracePeriodSeconds: 5
+      securityContext: {runAsNonRoot: true, runAsUser: 10001}
+      topologySpreadConstraints:
+        - {maxSkew: 1, topologyKey: kubernetes.io/hostname, whenUnsatisfiable: ScheduleAnyway, labelSelector: {matchLabels: {app: gateway}}}
+      containers:
+        - name: gateway
+          image: inferscale-gateway:dev
+          imagePullPolicy: Never
+          env: [{name: INFERSCALE_GATEWAY_CONFIG, value: /etc/inferscale/gateway.yaml}]
+          ports: [{containerPort: 9000}]
+          readinessProbe: {httpGet: {path: /ready, port: 9000}, periodSeconds: 2}
+          livenessProbe: {httpGet: {path: /health, port: 9000}, periodSeconds: 5}
+          resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: 500m, memory: 512Mi}}
+          securityContext: {readOnlyRootFilesystem: true, allowPrivilegeEscalation: false}
+          volumeMounts: [{name: cfg, mountPath: /etc/inferscale, readOnly: true}]
+      volumes: [{name: cfg, secret: {secretName: gateway-config}}]
+---
+apiVersion: v1
+kind: Service
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  type: NodePort
+  selector: {app: gateway}
+  ports: [{port: 80, targetPort: 9000, nodePort: 30900}]
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: {name: gateway, namespace: inferscale}
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: gateway}
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource: {name: cpu, target: {type: Utilization, averageUtilization: 50}}
+  behavior:
+    scaleUp: {stabilizationWindowSeconds: 0, policies: [{type: Pods, value: 2, periodSeconds: 15}]}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: {name: mock-pdb, namespace: inferscale}
+spec:
+  minAvailable: 1
+  selector: {matchLabels: {app: mock}}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: mock-only-from-gateway, namespace: inferscale}
+spec:
+  podSelector: {matchLabels: {app: mock}}
+  policyTypes: [Ingress]
+  ingress:
+    - from: [{podSelector: {matchLabels: {app: gateway}}}]
+      ports: [{port: 8000, protocol: TCP}]

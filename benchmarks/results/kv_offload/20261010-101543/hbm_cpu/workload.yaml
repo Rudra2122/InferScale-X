@@ -1,0 +1,18 @@
+name: offload_working_set
+model: Qwen/Qwen2.5-1.5B-Instruct
+num_requests: 256
+warmup_requests: 32
+concurrency: 8
+request_rate: null
+input_tokens: 2100
+input_tokens_jitter: 0.02
+output_tokens: 32
+ignore_eos: true
+prefix_reuse: 1.0
+shared_prefix_tokens: 2000
+num_shared_prefixes: 32
+tenants:
+  default: 1.0
+temperature: 0.0
+seed: 0
+timeout_s: 600.0

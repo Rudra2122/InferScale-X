@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.run/
+logs/
+.bin/
+training/data/
+training/runs/*/ckpt/
+.pytest_cache/
+.ruff_cache/
+benchmarks/results/demo-mock/
+*.egg-info/
+configs/gateway.public.yaml
+.venv/
+venv/
+.DS_Store
+.env

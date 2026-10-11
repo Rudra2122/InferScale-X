@@ -1,0 +1,95 @@
+{
+  "experiment": "kubernetes_kind",
+  "label": "real Kubernetes, CPU mock backends (no GPUs)",
+  "tools": {
+    "docker": "29.8.2",
+    "kind": "kind v0.33.0 go1.27.1 darwin/arm64",
+    "kubectl": "v1.36.1",
+    "arch": "arm64"
+  },
+  "cluster": {
+    "created": false,
+    "ready_after_s": 1.7,
+    "nodes": 3
+  },
+  "command_log": [
+    {
+      "cmd": "docker info >/dev/null",
+      "rc": 0,
+      "s": 1.55,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker version --format '{{.Server.Version}}'",
+      "rc": 0,
+      "s": 0.63,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind version",
+      "rc": 0,
+      "s": 0.64,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl version --client -o json | python3 -c 'import json,sys;print(json.load(sys.stdin)[\"clientVersion\"][\"gitVersion\"])'",
+      "rc": 0,
+      "s": 0.78,
+      "stderr": ""
+    },
+    {
+      "cmd": "uname -m",
+      "rc": 0,
+      "s": 0.67,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind get clusters",
+      "rc": 0,
+      "s": 0.66,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale wait --for=condition=Ready nodes --all --timeout=600s",
+      "rc": 0,
+      "s": 0.96,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n kube-system rollout status deployment/metrics-server --timeout=300s",
+      "rc": 0,
+      "s": 0.74,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale get nodes -o json",
+      "rc": 0,
+      "s": 0.92,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale apply -f infrastructure/kind/manifests.yaml",
+      "rc": 0,
+      "s": 0.98,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout restart deployment/gateway",
+      "rc": 0,
+      "s": 0.7,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status statefulset/mock --timeout=300s",
+      "rc": 0,
+      "s": 0.76,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status deployment/gateway --timeout=300s",
+      "rc": 0,
+      "s": 5.6,
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+# NVIDIA JD keyword -> deliverable. `scope` is what the CODE provides (fixed, honest); `evidence` is what
+# scripts/evidence_report.py looks for to mark the keyword EVIDENCED. Rendered to docs/jd-coverage.md.
+# scope values: built | attempted | emulated | partial | design_only | not_done
+keywords:
+  - {keyword: NVIDIA Dynamo, scope: attempted,
+     deliverable: "Single-node Dynamo attempt (etcd/NATS as binaries); KV-aware routing implemented in our gateway as the measured stand-in",
+     code: [inference/dynamo/try_dynamo.sh, gateway/api/router.py],
+     evidence: [{glob: "benchmarks/results/dynamo_attempt/*/status.json", field: frontend_serving, equals: true}],
+     limits: "No multi-node Dynamo; routing results come from our router, not Dynamo's"}
+  - {keyword: TensorRT-LLM, scope: attempted, deliverable: "trtllm-serve benchmarked on the same workloads in its own runtime",
+     code: [inference/exp_engines.py], evidence: [{glob: "benchmarks/results/engines/*-trtllm/report.json", field: startup.healthy, equals: true}]}
+  - {keyword: Triton Inference Server, scope: design_only, deliverable: "Reference model repository (vLLM backend); needs Docker + NGC image",
+     code: [inference/README.md], evidence: [], limits: "Not runnable on Colab; run on a Docker GPU host to evidence"}
+  - {keyword: vLLM, scope: built, deliverable: "Primary backend: continuous batching, paged KV, prefix cache, chunked prefill measured",
+     code: [benchmarks/runners/exp_baseline.py], evidence: [{glob: "benchmarks/results/baseline/*/report.json"}]}
+  - {keyword: SGLang, scope: built, deliverable: "Same workloads vs vLLM, separate runtime",
+     code: [inference/exp_engines.py], evidence: [{glob: "benchmarks/results/engines/*-sglang/report.json", field: startup.healthy, equals: true}]}
+  - {keyword: Disaggregated inference, scope: emulated,
+     deliverable: "Prefill->decode interference measured; emulated split TTFT; vLLM KV-connector P/D attempt on one GPU; break-even model",
+     code: [disaggregation/prefill/exp_interference.py, disaggregation/decode/vllm_disagg_attempt.py, disaggregation/nixl-benchmarks/kv_transfer_bench.py],
+     evidence: [{glob: "benchmarks/results/interference/*/report.json"}, {glob: "benchmarks/results/kv_transfer/*/report.json"}],
+     limits: "No separate prefill/decode GPUs"}
+  - {keyword: NIXL, scope: attempted, deliverable: "NIXL loopback transfer + vLLM NixlConnector attempt; measured transfer cost model",
+     code: [disaggregation/nixl-benchmarks/kv_transfer_bench.py, disaggregation/decode/vllm_disagg_attempt.py],
+     evidence: [{glob: "benchmarks/results/kv_transfer/*/report.json", field: kv.rows.0.nixl.ok, equals: true}],
+     limits: "Loopback only; no RDMA hop"}
+  - {keyword: Multi-tier KV caching, scope: built,
+     deliverable: "HBM prefix cache + REAL CPU DRAM tier (vLLM offloading / LMCache) + localhost remote tier; eviction-policy simulator",
+     code: [disaggregation/kv-cache/exp_kv_offload.py, disaggregation/kv-cache/exp_prefix_cache.py, disaggregation/kv-cache/kv_sim.py],
+     evidence: [{glob: "benchmarks/results/kv_offload/*/report.json", field: cpu_tier_working, equals: true}],
+     limits: "Remote tier runs on localhost"}
+  - {keyword: Speculative decoding, scope: built, deliverable: "HF draft/verify lossless check + vLLM draft-model and n-gram at c=1/16",
+     code: [optimization/speculative-decoding/exp_specdec.py], evidence: [{glob: "benchmarks/results/speculative_decoding/*/report.json"}]}
+  - {keyword: Quantization, scope: built, deliverable: "BF16 vs AWQ-INT4 vs GPTQ-INT8 vs FP8 weight-only: memory, speed, quality",
+     code: [optimization/quantization/exp_quant.py], evidence: [{glob: "benchmarks/results/quantization/*/report.json"}],
+     limits: "A100 lacks FP8 tensor cores"}
+  - {keyword: Custom kernels, scope: built, deliverable: "Triton FlashAttention-style forward + fused add/RMSNorm, correctness + roofline-style benchmarks",
+     code: [optimization/triton-kernels/flash_attention.py, optimization/triton-kernels/fused_add_rmsnorm.py],
+     evidence: [{glob: "benchmarks/results/triton_attention/*/report.json", field: all_correct, equals: true},
+                {glob: "benchmarks/results/triton_kernel/*/report.json", field: all_correct, equals: true}]}
+  - {keyword: Kubernetes, scope: built, deliverable: "kind cluster: anti-affinity scheduling, pod-kill recovery under load, HPA scale-up, NetworkPolicy",
+     code: [infrastructure/kind/k8s_evidence.py, infrastructure/kind/manifests.yaml, infrastructure/kubernetes/inferscale.yaml, infrastructure/helm/inferscale],
+     evidence: [{glob: "benchmarks/results/k8s_kind/*/report.json", field: all_pass, equals: true}],
+     limits: "CPU mock backends; GPU scheduling (GPU Operator) is reference only"}
+  - {keyword: Compute fabrics (RDMA/InfiniBand), scope: design_only,
+     deliverable: "Fabric-aware sizing: measured PCIe alpha/beta, NVLink/IB extrapolated break-even, cluster reference design",
+     code: [docs/capacity-planning/README.md, disaggregation/nixl-benchmarks/kv_transfer_bench.py], evidence: [],
+     limits: "No RDMA/IB hardware; no nccl-tests diagnostics"}
+  - {keyword: Agent design, scope: built, deliverable: "RAG + tools + memory + multi-step JSON-action loop through the gateway",
+     code: [agents/agent.py], evidence: [{glob: "benchmarks/results/agents/*live/report.json"}]}
+  - {keyword: Sandboxing, scope: built, deliverable: "Process isolation, rlimits, PEP 578 audit hooks, escape suite",
+     code: [agents/sandbox/sandbox.py], evidence: [{glob: "benchmarks/results/agents/*/report.json", field: security_adversarial_scripted.all_blocked, equals: true}],
+     limits: "Not gVisor/Firecracker"}
+  - {keyword: Evaluation, scope: built, deliverable: "Retrieval (recall@k, MRR, nDCG), agent task success vs RAG, latency, safety suites",
+     code: [agents/eval/retrieval_eval.py, agents/eval/run_eval.py],
+     evidence: [{glob: "benchmarks/results/retrieval/*/report.json"}, {glob: "benchmarks/results/agents/*live/report.json"}]}
+  - {keyword: Skills and governance, scope: built, deliverable: "Versioned hash-locked skills, permission engine, taint tracking, hash-chained audit",
+     code: [agents/skills/registry.py, agents/governance/policy.py], evidence: [{glob: "tests/results/junit-unit.xml"}]}
+  - {keyword: "SFT, DPO, GRPO, RLVR", scope: built, deliverable: "LoRA runs on Qwen2.5-0.5B with held-out eval and serving-token cost",
+     code: [training/], evidence: [{glob: "training/runs/eval_report.json"}]}
+  - {keyword: Data curation, scope: partial, deliverable: "Dedup, train/eval leakage check, lineage hashes (synthetic verifiable data)",
+     code: [training/data-curation/build_datasets.py], evidence: [{glob: "training/data/lineage.json", field: leakage_check.pass, equals: true}],
+     limits: "No real-world noisy data / quality classifiers"}
+  - {keyword: Grove, scope: design_only, deliverable: "Evaluation plan for gang-scheduled prefill/decode groups",
+     code: [infrastructure/grove-experiments/README.md], evidence: [], limits: "Needs a GPU K8s cluster"}
+  - {keyword: Solutions architecture, scope: built, deliverable: "ADRs, deployment guide, runbooks, capacity/cost model, workshop + exec briefing, public demo endpoint",
+     code: [docs/partner-deployment-guide.md, docs/decisions/, demos/, scripts/colab_public_endpoint.sh],
+     evidence: [{file_contains: docs/CLAIMS.md, text: "evidence: `benchmarks/results/baseline"}]}
+  - {keyword: Open source, scope: partial, deliverable: "Public-repo scaffolding, published results page, upstream contribution tracker",
+     code: [CONTRIBUTING.md, docs/upstream-contributions.md, scripts/publish_results.py],
+     evidence: [{file_contains: docs/RESULTS.md, text: "source: `"}, {file_contains: docs/upstream-contributions.md, text: "| merged |"}],
+     limits: "Contributions themselves are yours to make"}

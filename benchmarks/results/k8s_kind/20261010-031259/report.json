@@ -1,0 +1,140 @@
+{
+  "experiment": "kubernetes_kind",
+  "label": "real Kubernetes, CPU mock backends (no GPUs)",
+  "tools": {
+    "docker": "29.8.2",
+    "kind": "kind v0.33.0 go1.27.1 darwin/arm64",
+    "kubectl": "v1.36.1",
+    "arch": "arm64"
+  },
+  "cluster": {
+    "created": true,
+    "ready_after_s": 141.7,
+    "nodes": 3
+  },
+  "images": {
+    "build_and_load_s": 7.9
+  },
+  "command_log": [
+    {
+      "cmd": "docker info >/dev/null",
+      "rc": 0,
+      "s": 2.76,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker version --format '{{.Server.Version}}'",
+      "rc": 0,
+      "s": 0.62,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind version",
+      "rc": 0,
+      "s": 0.99,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl version --client -o json | python3 -c 'import json,sys;print(json.load(sys.stdin)[\"clientVersion\"][\"gitVersion\"])'",
+      "rc": 0,
+      "s": 0.77,
+      "stderr": ""
+    },
+    {
+      "cmd": "uname -m",
+      "rc": 0,
+      "s": 0.59,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind get clusters",
+      "rc": 0,
+      "s": 0.62,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind create cluster --config infrastructure/kind/kind-config.yaml --wait 0s",
+      "rc": 0,
+      "s": 58.27,
+      "stderr": "on \ud83d\udcdc\n \u2022 Starting control-plane \ud83d\udd79\ufe0f  ...\n \u2713 Starting control-plane \ud83d\udd79\ufe0f\n \u2022 Installing StorageClass \ud83d\udcbe  ...\n \u2713 Installing StorageClass \ud83d\udcbe\n \u2022 Joining worker nodes \ud83d\ude9c  ...\n \u2713 Joining worker nodes \ud83d\ude9c\nSet kubectl context to \"kind-inferscale\"\nYou can now use your cluster with:\n\nkubectl cluster-info --context kind-inferscale\n\nNot sure what to do next? \ud83d\ude05  Check out https://kind.sigs.k8s.io/docs/user/quick-start/\n"
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/calico.yaml",
+      "rc": 0,
+      "s": 2.03,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.7.2/components.yaml",
+      "rc": 0,
+      "s": 1.15,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n kube-system patch deployment metrics-server --type=json -p='[{\"op\":\"add\",\"path\":\"/spec/template/spec/containers/0/args/-\",\"value\":\"--kubelet-insecure-tls\"}]'",
+      "rc": 0,
+      "s": 0.72,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale wait --for=condition=Ready nodes --all --timeout=600s",
+      "rc": 0,
+      "s": 26.22,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n kube-system rollout status deployment/metrics-server --timeout=300s",
+      "rc": 0,
+      "s": 53.3,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale get nodes -o json",
+      "rc": 0,
+      "s": 1.14,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker build -q -f infrastructure/docker/Dockerfile.gateway -t inferscale-gateway:dev .",
+      "rc": 0,
+      "s": 1.57,
+      "stderr": ""
+    },
+    {
+      "cmd": "docker build -q -f infrastructure/docker/Dockerfile.mock -t inferscale-mock:dev .",
+      "rc": 0,
+      "s": 1.06,
+      "stderr": ""
+    },
+    {
+      "cmd": "kind load docker-image inferscale-gateway:dev inferscale-mock:dev --name inferscale",
+      "rc": 0,
+      "s": 5.23,
+      "stderr": "\" not yet present on node \"inferscale-worker\", loading...\nImage: \"inferscale-mock:dev\" with ID \"sha256:13fbbae6d7210d08c5b50e51bc026829f034c33f928ebd6cba0415ce142b7335\" not yet present on node \"inferscale-worker2\", loading...\nImage: \"inferscale-mock:dev\" with ID \"sha256:13fbbae6d7210d08c5b50e51bc026829f034c33f928ebd6cba0415ce142b7335\" not yet present on node \"inferscale-control-plane\", loading...\n"
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale apply -f infrastructure/kind/manifests.yaml",
+      "rc": 0,
+      "s": 0.92,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout restart deployment/gateway",
+      "rc": 0,
+      "s": 0.84,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status statefulset/mock --timeout=300s",
+      "rc": 0,
+      "s": 1.28,
+      "stderr": ""
+    },
+    {
+      "cmd": "kubectl --context kind-inferscale -n inferscale rollout status deployment/gateway --timeout=300s",
+      "rc": 0,
+      "s": 3.02,
+      "stderr": ""
+    }
+  ]
+}

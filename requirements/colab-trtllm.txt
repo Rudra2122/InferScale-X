@@ -1,0 +1,3 @@
+# TensorRT-LLM (experimental on Colab: large download, strict CUDA/driver requirements). FRESH runtime.
+-r dev.txt
+tensorrt_llm

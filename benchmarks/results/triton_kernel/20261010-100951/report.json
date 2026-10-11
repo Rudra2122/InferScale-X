@@ -1,0 +1,477 @@
+{
+  "experiment": "triton_fused_add_rmsnorm",
+  "env": {
+    "captured_at": "2026-10-10T10:10:03+0000",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "cpu_count": 12,
+    "colab": true,
+    "gpus": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "driver_version": "580.82.07",
+        "memory.total": "40960 MiB",
+        "pcie.link.gen.current": "4",
+        "pcie.link.width.current": "16",
+        "clocks.max.sm": "1410 MHz",
+        "power.limit": "400.00 W"
+      }
+    ],
+    "cuda": {
+      "torch_cuda": "13.0",
+      "available": true,
+      "device_count": 1,
+      "capability": [
+        8,
+        0
+      ]
+    },
+    "nvidia_smi_topology": "\u001b[4mGPU0\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \t0-11\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks",
+    "packages": {
+      "torch": "2.13.0",
+      "vllm": "0.31.0",
+      "transformers": "5.17.0",
+      "triton": "3.7.1",
+      "peft": "0.21.1",
+      "accelerate": "1.15.0",
+      "flashinfer-python": "0.7.0.post1",
+      "fastapi": "0.136.3",
+      "httpx": "0.28.1",
+      "numpy": "2.1.3"
+    },
+    "git_commit": null
+  },
+  "correctness": [
+    {
+      "dtype": "torch.float16",
+      "M": 1,
+      "N": 1536,
+      "max_abs_err_y": 0.0017633438110351562,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 7,
+      "N": 1536,
+      "max_abs_err_y": 0.0019097328186035156,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 128,
+      "N": 3584,
+      "max_abs_err_y": 0.003856658935546875,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 4096,
+      "N": 4096,
+      "max_abs_err_y": 0.003902435302734375,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 333,
+      "N": 5120,
+      "max_abs_err_y": 0.00388336181640625,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 16,
+      "N": 8192,
+      "max_abs_err_y": 0.003459930419921875,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float16",
+      "M": 3,
+      "N": 1000,
+      "max_abs_err_y": 0.0019173622131347656,
+      "max_abs_err_residual": 0.001953125,
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 1,
+      "N": 1536,
+      "max_abs_err_y": 0.013247489929199219,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 7,
+      "N": 1536,
+      "max_abs_err_y": 0.015621185302734375,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 128,
+      "N": 3584,
+      "max_abs_err_y": 0.03098773956298828,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 4096,
+      "N": 4096,
+      "max_abs_err_y": 0.031167030334472656,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 333,
+      "N": 5120,
+      "max_abs_err_y": 0.031095504760742188,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 16,
+      "N": 8192,
+      "max_abs_err_y": 0.03063488006591797,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "M": 3,
+      "N": 1000,
+      "max_abs_err_y": 0.012663841247558594,
+      "max_abs_err_residual": 0.015625,
+      "tol": 0.06,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 1,
+      "N": 1536,
+      "max_abs_err_y": 9.5367431640625e-07,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 7,
+      "N": 1536,
+      "max_abs_err_y": 9.5367431640625e-07,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 128,
+      "N": 3584,
+      "max_abs_err_y": 1.9073486328125e-06,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 4096,
+      "N": 4096,
+      "max_abs_err_y": 1.9073486328125e-06,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 333,
+      "N": 5120,
+      "max_abs_err_y": 1.9073486328125e-06,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 16,
+      "N": 8192,
+      "max_abs_err_y": 9.5367431640625e-07,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "dtype": "torch.float32",
+      "M": 3,
+      "N": 1000,
+      "max_abs_err_y": 9.5367431640625e-07,
+      "max_abs_err_residual": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    }
+  ],
+  "all_correct": true,
+  "performance": [
+    {
+      "M": 1,
+      "N": 1536,
+      "bytes_min": 15360,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 84.99199897050858,
+          "p90_us": 99.32799637317657,
+          "effective_GBps": 0.180722893755326,
+          "pct_of_peak": 0.011622051045358586
+        },
+        "torch_eager": {
+          "median_us": 169.98399794101715,
+          "p90_us": 185.34399569034576,
+          "effective_GBps": 0.090361446877663,
+          "pct_of_peak": 0.005811025522679293
+        },
+        "torch_compile": {
+          "median_us": 107.51999914646149,
+          "p90_us": 131.071999669075,
+          "effective_GBps": 0.14285714399120233,
+          "pct_of_peak": 0.009186954597504973
+        },
+        "vllm_cuda_fused": {
+          "median_us": 58.36800113320351,
+          "p90_us": 69.63200122117996,
+          "effective_GBps": 0.2631578896276822,
+          "pct_of_peak": 0.0169233369535487
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.2650602462447074
+    },
+    {
+      "M": 32,
+      "N": 1536,
+      "bytes_min": 396288,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 84.99199897050858,
+          "p90_us": 101.3759970664978,
+          "effective_GBps": 4.6626506588874115,
+          "pct_of_peak": 0.2998489169702515
+        },
+        "torch_eager": {
+          "median_us": 167.93599724769592,
+          "p90_us": 197.63199985027313,
+          "effective_GBps": 2.3597561362350326,
+          "pct_of_peak": 0.15175280618874806
+        },
+        "torch_compile": {
+          "median_us": 119.80800330638885,
+          "p90_us": 145.4080045223236,
+          "effective_GBps": 3.3076922164086144,
+          "pct_of_peak": 0.21271332581405883
+        },
+        "vllm_cuda_fused": {
+          "median_us": 58.36800113320351,
+          "p90_us": 66.56000018119812,
+          "effective_GBps": 6.7894735523942025,
+          "pct_of_peak": 0.4366220934015564
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.4096386101938974
+    },
+    {
+      "M": 512,
+      "N": 1536,
+      "bytes_min": 6294528,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 87.0399996638298,
+          "p90_us": 106.49599879980087,
+          "effective_GBps": 72.31764733813232,
+          "pct_of_peak": 4.65065256193777
+        },
+        "torch_eager": {
+          "median_us": 169.98399794101715,
+          "p90_us": 198.65599274635315,
+          "effective_GBps": 37.0301209304663,
+          "pct_of_peak": 2.3813582591939744
+        },
+        "torch_compile": {
+          "median_us": 118.78400295972824,
+          "p90_us": 145.4080045223236,
+          "effective_GBps": 52.99137798996433,
+          "pct_of_peak": 3.4078056585186065
+        },
+        "vllm_cuda_fused": {
+          "median_us": 58.36800113320351,
+          "p90_us": 68.60800087451935,
+          "effective_GBps": 107.84210316942418,
+          "pct_of_peak": 6.935183483564256
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.3647059216280066
+    },
+    {
+      "M": 4096,
+      "N": 1536,
+      "bytes_min": 50334720,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 97.28000313043594,
+          "p90_us": 109.56799983978271,
+          "effective_GBps": 517.4210359811533,
+          "pct_of_peak": 33.27466469332175
+        },
+        "torch_eager": {
+          "median_us": 313.34400177001953,
+          "p90_us": 317.440003156662,
+          "effective_GBps": 160.63725399455205,
+          "pct_of_peak": 10.33037003180399
+        },
+        "torch_compile": {
+          "median_us": 122.8799968957901,
+          "p90_us": 144.3839967250824,
+          "effective_GBps": 409.62501034799817,
+          "pct_of_peak": 26.342444395369657
+        },
+        "vllm_cuda_fused": {
+          "median_us": 78.84799689054489,
+          "p90_us": 83.96799862384796,
+          "effective_GBps": 638.3766485516884,
+          "pct_of_peak": 41.05316067856517
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.2631578221788184
+    },
+    {
+      "M": 16384,
+      "N": 1536,
+      "bytes_min": 201329664,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 207.87200331687927,
+          "p90_us": 222.20799326896667,
+          "effective_GBps": 968.527078141898,
+          "pct_of_peak": 62.2846995589645
+        },
+        "torch_eager": {
+          "median_us": 1079.2959928512573,
+          "p90_us": 1089.5359516143799,
+          "effective_GBps": 186.5379518996752,
+          "pct_of_peak": 11.996009768467859
+        },
+        "torch_compile": {
+          "median_us": 239.6160066127777,
+          "p90_us": 248.8320022821426,
+          "effective_GBps": 840.2179255301218,
+          "pct_of_peak": 54.033307108046415
+        },
+        "vllm_cuda_fused": {
+          "median_us": 321.53600454330444,
+          "p90_us": 323.5839903354645,
+          "effective_GBps": 626.1496726811661,
+          "pct_of_peak": 40.26685997949621
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.1527093730246492
+    },
+    {
+      "M": 4096,
+      "N": 4096,
+      "bytes_min": 134225920,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 157.69599378108978,
+          "p90_us": 168.96000504493713,
+          "effective_GBps": 851.1688647355845,
+          "pct_of_peak": 54.73754757142022
+        },
+        "torch_eager": {
+          "median_us": 743.9360022544861,
+          "p90_us": 747.5200295448303,
+          "effective_GBps": 180.4267028255529,
+          "pct_of_peak": 11.603003397141665
+        },
+        "torch_compile": {
+          "median_us": 219.13599967956543,
+          "p90_us": 225.2800017595291,
+          "effective_GBps": 612.5233653816518,
+          "pct_of_peak": 39.39057012100655
+        },
+        "vllm_cuda_fused": {
+          "median_us": 224.2559939622879,
+          "p90_us": 228.35199534893036,
+          "effective_GBps": 598.53882890003,
+          "pct_of_peak": 38.491243016079096
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.3896104423791853
+    },
+    {
+      "M": 8192,
+      "N": 8192,
+      "bytes_min": 536887296,
+      "hbm_peak_GBps": 1555.0,
+      "impls": {
+        "triton_fused": {
+          "median_us": 455.6800127029419,
+          "p90_us": 462.8480076789856,
+          "effective_GBps": 1178.2112031101904,
+          "pct_of_peak": 75.76920920322767
+        },
+        "torch_eager": {
+          "median_us": 2739.2001152038574,
+          "p90_us": 2745.3439235687256,
+          "effective_GBps": 196.00148708377358,
+          "pct_of_peak": 12.604597240114058
+        },
+        "torch_compile": {
+          "median_us": 570.3679919242859,
+          "p90_us": 589.8240208625793,
+          "effective_GBps": 941.2998337944422,
+          "pct_of_peak": 60.533751369417494
+        },
+        "vllm_cuda_fused": {
+          "median_us": 819.1999793052673,
+          "p90_us": 824.3200182914734,
+          "effective_GBps": 655.3800165562917,
+          "pct_of_peak": 42.14662485892552
+        }
+      },
+      "note": "vllm op timing includes 2 clones (it is in-place); compare with care",
+      "triton_speedup_vs_torch_compile": 1.2516853406429944
+    }
+  ],
+  "interpretation_hint": "Small M is launch-bound (all impls ~equal); large M is HBM-bound. If torch.compile matches Triton, report that as a negative result."
+}

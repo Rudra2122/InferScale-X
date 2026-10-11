@@ -1,0 +1,59 @@
+# Retrieval relevance labels (document level). Written from the documents' content.
+# If you edit a doc so a query's answer moves, update the label - never edit labels to raise a score.
+corpus:
+  - docs/architecture/README.md
+  - docs/compatibility-matrix.md
+  - docs/decisions/ADR-001-single-gpu-scope.md
+  - docs/decisions/ADR-002-gateway-design.md
+  - docs/decisions/ADR-003-disaggregation.md
+  - docs/decisions/ADR-004-agent-governance.md
+  - docs/decisions/ADR-005-customization-track.md
+  - docs/security-threat-model.md
+  - docs/capacity-planning/README.md
+  - docs/partner-deployment-guide.md
+  - docs/incident-runbooks/backend-down.md
+  - docs/incident-runbooks/overload.md
+  - docs/incident-runbooks/latency-regression.md
+  - docs/incident-runbooks/kv-pressure.md
+  - docs/negative-results.md
+  - docs/RUNNING_ON_COLAB.md
+  - inference/README.md
+  - infrastructure/grove-experiments/README.md
+  - agents/retrieval/corpus/orbit_overview.md
+  - agents/retrieval/corpus/orbit_regions.md
+  - agents/retrieval/corpus/orbit_changelog.md
+  - agents/retrieval/corpus/community_post_injected.md
+
+queries:
+  - {id: q01, query: "what happens to streams already in progress when a replica dies", relevant: [docs/incident-runbooks/backend-down.md, docs/architecture/README.md]}
+  - {id: q02, query: "why reject requests early instead of queueing them in the gateway", relevant: [docs/decisions/ADR-002-gateway-design.md, docs/incident-runbooks/overload.md]}
+  - {id: q03, query: "when is it worth separating prefill and decode, break-even", relevant: [docs/decisions/ADR-003-disaggregation.md]}
+  - {id: q04, query: "how do we stop one tenant learning another tenant's prompt through cache timing", relevant: [docs/security-threat-model.md, docs/decisions/ADR-002-gateway-design.md]}
+  - {id: q05, query: "can the python sandbox be escaped and what should production use instead", relevant: [docs/security-threat-model.md]}
+  - {id: q06, query: "how many bytes of KV cache per token does Qwen2.5-1.5B need", relevant: [docs/capacity-planning/README.md]}
+  - {id: q07, query: "sequences being preempted because KV blocks ran out", relevant: [docs/incident-runbooks/kv-pressure.md]}
+  - {id: q08, query: "p95 time to first token alert fired, is it queueing or compute", relevant: [docs/incident-runbooks/latency-regression.md]}
+  - {id: q09, query: "one customer is getting lots of 429 responses", relevant: [docs/incident-runbooks/overload.md]}
+  - {id: q10, query: "install the reference deployment with helm on the customer's cluster", relevant: [docs/partner-deployment-guide.md]}
+  - {id: q11, query: "Triton Inference Server model repository using the vLLM backend", relevant: [inference/README.md]}
+  - {id: q12, query: "Grove gang scheduling of prefill and decode groups", relevant: [infrastructure/grove-experiments/README.md]}
+  - {id: q13, query: "has Dynamo with etcd and NATS been tested here", relevant: [docs/compatibility-matrix.md]}
+  - {id: q14, query: "why does the notebook run every experiment as a subprocess and never import torch", relevant: [docs/RUNNING_ON_COLAB.md]}
+  - {id: q15, query: "colab disconnected in the middle of the run, how do I resume", relevant: [docs/RUNNING_ON_COLAB.md]}
+  - {id: q16, query: "who decides whether an agent tool call is allowed", relevant: [docs/decisions/ADR-004-agent-governance.md]}
+  - {id: q17, query: "heuristic reward versus verifiable reward with the same hyper-parameters", relevant: [docs/decisions/ADR-005-customization-track.md]}
+  - {id: q18, query: "which results are measured, emulated, simulated or extrapolated and why", relevant: [docs/decisions/ADR-001-single-gpu-scope.md]}
+  - {id: q19, query: "optimisations that are predicted not to help such as FP8 on A100", relevant: [docs/negative-results.md]}
+  - {id: q20, query: "API key rotation and mutual TLS", relevant: [docs/security-threat-model.md]}
+  - {id: q21, query: "cost per million output tokens with headroom for a sizing conversation", relevant: [docs/partner-deployment-guide.md, docs/capacity-planning/README.md]}
+  - {id: q22, query: "SGLang needs its own runtime because of conflicting torch pins", relevant: [docs/compatibility-matrix.md, inference/README.md]}
+  - {id: q23, query: "detect tampering with the audit trail", relevant: [docs/security-threat-model.md]}
+  - {id: q24, query: "nvidia-smi Xid errors or CUDA out of memory at engine startup", relevant: [docs/incident-runbooks/backend-down.md]}
+  - {id: q25, query: "reduce max-num-batched-tokens or send long prompts to dedicated replicas", relevant: [docs/incident-runbooks/latency-regression.md]}
+  - {id: q26, query: "prefill pool is compute-bound while decode pool is bandwidth-bound", relevant: [docs/architecture/README.md, docs/capacity-planning/README.md]}
+  - {id: q27, query: "how much does the Orbit Pro plan cost per seat", relevant: [agents/retrieval/corpus/orbit_overview.md]}
+  - {id: q28, query: "which Orbit region has the largest GPU pool", relevant: [agents/retrieval/corpus/orbit_regions.md]}
+  - {id: q29, query: "Orbit version that introduced the cache-aware router", relevant: [agents/retrieval/corpus/orbit_changelog.md]}
+  - {id: q30, query: "maximum number of labels per Orbit deployment", relevant: [agents/retrieval/corpus/community_post_injected.md]}
+  - {id: q31, query: "what does the gateway do with a client supplied cache_salt", relevant: [docs/architecture/README.md, docs/decisions/ADR-002-gateway-design.md, docs/security-threat-model.md]}
+  - {id: q32, query: "support response time for Standard customers", relevant: [agents/retrieval/corpus/orbit_regions.md]}

@@ -1,0 +1,74 @@
+{
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_eval": 200,
+  "results": {
+    "training/runs/20261010-123611-dpo-from-sft/adapter": {
+      "n": 200,
+      "accuracy": 0.325,
+      "format_rate": 0.0,
+      "mean_output_tokens": 34.665,
+      "gen_wall_s": 19.24391535099994,
+      "gen_tok_per_s": 360.2697202489904,
+      "samples": [
+        {
+          "id": "arith-1000000",
+          "answer": 22,
+          "pred": 22,
+          "text": "11 + 13 = 24\n24 - 2 = 22\n\"\n\"Answer 22\""
+        },
+        {
+          "id": "arith-1000001",
+          "answer": 71,
+          "pred": 71,
+          "text": "55 + 22 = 77\n77 - 6 = 71\n\"\n\n71\n\""
+        },
+        {
+          "id": "arith-1000002",
+          "answer": 472,
+          "pred": 5,
+          "text": "40 + 19 = 5\u4e5d\n"
+        },
+        {
+          "id": "arith-1000003",
+          "answer": 112,
+          "pred": 112,
+          "text": "4 x 35 = 140\n140 - 28 = 112\n"
+        },
+        {
+          "id": "arith-1000004",
+          "answer": 42,
+          "pred": 42,
+          "text": "2 x 25 = 50\n50 - 8 = 42\n\"\n\"Answer %d\"\n\"42\"\n"
+        },
+        {
+          "id": "arith-1000005",
+          "answer": 45,
+          "pred": 45,
+          "text": "32 + 19 = 51\n51 - 6 = 45\n\"\n\"45\""
+        },
+        {
+          "id": "arith-1000006",
+          "answer": 128,
+          "pred": 128,
+          "text": "3 + 13 = 16\n16 x 8 = 128\n"
+        },
+        {
+          "id": "arith-1000007",
+          "answer": 50,
+          "pred": 42,
+          "text": "276 / 6 = 41\n41 + 4 = \u56db\u5341\u4e8c\n\n\"\n42\n\""
+        }
+      ],
+      "run_meta": {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "init_adapter": "training/runs/20261010-123142-sft/adapter",
+        "max_steps": 200,
+        "lr": 5e-05,
+        "beta": 0.1,
+        "batch": 8,
+        "seed": 42,
+        "base_model": "Qwen/Qwen2.5-0.5B-Instruct"
+      }
+    }
+  }
+}

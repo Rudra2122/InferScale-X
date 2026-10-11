@@ -1,0 +1,15 @@
+# Prometheus scrape config. On Colab, run with:  ./prometheus --config.file=infrastructure/monitoring/prometheus.yml
+# (scripts/colab_monitoring.sh downloads the binary). In Kubernetes use the pod annotations instead.
+global:
+  scrape_interval: 5s
+  evaluation_interval: 15s
+rule_files: [alerts.yml]
+scrape_configs:
+  - job_name: gateway
+    static_configs: [{targets: ["127.0.0.1:9000"]}]
+  - job_name: vllm
+    static_configs: [{targets: ["127.0.0.1:8001", "127.0.0.1:8002"]}]
+  - job_name: dcgm   # NVIDIA DCGM exporter; usually NOT runnable on Colab (needs host DCGM). Kubernetes: GPU Operator.
+    static_configs: [{targets: ["127.0.0.1:9400"]}]
+  - job_name: nvidia_smi_exporter   # Colab-friendly fallback: scripts/gpu_exporter.py
+    static_configs: [{targets: ["127.0.0.1:9401"]}]

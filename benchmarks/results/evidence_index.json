@@ -1,0 +1,922 @@
+{
+  "checks": [
+    {
+      "test": "Reproducibility",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/dynamo_attempt/20261010-232036/bench/env.json",
+        "requirements/lock-colab.txt",
+        "benchmarks/results/baseline/20261010-092402/report.json"
+      ],
+      "note": "Needs env capture + pinned lockfile from the run + a baseline report. Fresh-runtime rerun is a manual step."
+    },
+    {
+      "test": "Correctness",
+      "status": "VERIFIED",
+      "evidence": [
+        "tests/results/junit-unit.xml (73 tests, 0 failed, 10 skipped)",
+        "tests/results/junit-live.xml (8 tests, 0 failed, 0 skipped)"
+      ],
+      "note": "Live = streaming/non-streaming parity, determinism, usage, limits against real vLLM."
+    },
+    {
+      "test": "Performance",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/baseline/20261010-092402/report.json"
+      ],
+      "note": "repeats=3; every experiment reports mean, std and 95% CI across repeats."
+    },
+    {
+      "test": "Disaggregation",
+      "status": "PARTIAL",
+      "evidence": [
+        "benchmarks/results/interference/20261010-102752/report.json",
+        "benchmarks/results/kv_transfer/20261010-103616/report.json",
+        "benchmarks/results/disagg_attempt/20261010-095606/attempt.json"
+      ],
+      "note": "Single GPU: interference measured + emulated disaggregated TTFT; real vLLM P/D connector attempt ok=False. Cannot be VERIFIED without separate prefill/decode GPUs."
+    },
+    {
+      "test": "KV movement",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/kv_transfer/20261010-103616/report.json"
+      ],
+      "note": "cost-model error per size (host round trip, %): [-47.6, -21.1, -12.1, -6.5, -3.4]"
+    },
+    {
+      "test": "Reliability",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/failure_injection/20261010-093547-vllm/crash_report.json",
+        "benchmarks/results/failure_injection/20261010-093547-vllm/overload_report.json"
+      ],
+      "note": "Crash/restart timings + overload shedding with real vLLM."
+    },
+    {
+      "test": "Isolation",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/kv_cache/20261010-093938/report.json",
+        "benchmarks/results/agents/20261010-101332-live/report.json",
+        "tests/unit/test_gateway.py"
+      ],
+      "note": "KV cache salt enforced=True; memory cross-tenant blocked=True"
+    },
+    {
+      "test": "Security",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/agents/20261010-101332-live/report.json",
+        "benchmarks/results/agents/20261010-101332-live/report.json"
+      ],
+      "note": "Prompt-injection + unauthorized-tool + sandbox-escape suites (scripted adversary and live model)."
+    },
+    {
+      "test": "Scaling",
+      "status": "VERIFIED",
+      "evidence": [
+        "benchmarks/results/routing/20261010-092925/report.json",
+        "docs/capacity-planning/README.md"
+      ],
+      "note": "Measured: 1 GPU, 2 replicas. Everything above that is labelled EXTRAPOLATED by capacity_model.py."
+    },
+    {
+      "test": "Customer readiness",
+      "status": "VERIFIED",
+      "evidence": [
+        "docs/partner-deployment-guide.md",
+        "docs/capacity-planning/capacity_model.py",
+        "docs/incident-runbooks/backend-down.md",
+        "docs/architecture/README.md"
+      ],
+      "note": "Docs exist; a real partner walkthrough is still a human activity."
+    },
+    {
+      "test": "Traceability",
+      "status": "VERIFIED",
+      "evidence": [
+        "docs/CLAIMS.md"
+      ],
+      "note": "13/13 claims backed by evidence files."
+    },
+    {
+      "test": "Negative results",
+      "status": "VERIFIED",
+      "evidence": [
+        "docs/negative-results.md",
+        "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+        "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+        "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+        "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+        "benchmarks/results/speculative_decoding/20261010-104217/report.json"
+      ],
+      "note": "41 non-improving comparisons found in reports; explain at least one in docs/negative-results.md."
+    }
+  ],
+  "claims": [
+    {
+      "id": "gateway_overhead",
+      "text": "Built an OpenAI-compatible multi-tenant gateway (auth, rate limits, admission control, SSE streaming) over vLLM on an A100; measured p50 TTFT change vs direct vLLM: +6.3% (no_significant_difference, n=3 runs); baseline 5078 output tok/s.",
+      "evidence": "benchmarks/results/baseline/20261010-092402/report.json",
+      "values": {
+        "ttft_delta": 0.06250134407098279,
+        "verdict": "no_significant_difference",
+        "n": 3,
+        "tok_s": 5078.421874619901
+      }
+    },
+    {
+      "id": "routing",
+      "text": "Implemented KV-cache-aware (prefix-affinity) routing; on a RAG-style prefix-heavy workload across 2 vLLM replicas (sharing one A100) p50 TTFT changed +51.7% vs round-robin (no_significant_difference).",
+      "evidence": "benchmarks/results/routing/20261010-092925/report.json",
+      "values": {
+        "delta": 0.5172796185364111,
+        "verdict": "no_significant_difference"
+      }
+    },
+    {
+      "id": "prefix_cache",
+      "text": "Measured vLLM prefix caching on a prefix-heavy workload: p50 TTFT -34.2% vs caching disabled (no_significant_difference).",
+      "evidence": "benchmarks/results/kv_cache/20261010-093938/report.json",
+      "values": {
+        "delta": -0.3419356885595729,
+        "verdict": "no_significant_difference"
+      }
+    },
+    {
+      "id": "cache_isolation",
+      "text": "Demonstrated a cross-tenant prefix-cache timing/side-channel (leak observed without salting: True) and closed it with per-tenant cache salts injected at the gateway (isolation enforced: True).",
+      "evidence": "benchmarks/results/kv_cache/20261010-093938/report.json",
+      "values": {
+        "enforced": true,
+        "leak": true
+      }
+    },
+    {
+      "id": "failure_recovery",
+      "text": "Fault-injected a vLLM replica crash under load: detected in 0.23s, replica back in 56s; 3/720 requests failed (in-flight streams on the killed replica).",
+      "evidence": "benchmarks/results/failure_injection/20261010-093547-vllm/crash_report.json",
+      "values": {
+        "detect": 0.23264288902282715,
+        "restart": 55.638216733932495,
+        "failed": 3,
+        "total": 720
+      }
+    },
+    {
+      "id": "kv_transfer",
+      "text": "Measured KV-cache movement for real model caches (256-8K tokens) and fit a latency/bandwidth cost model (pinned H2D 12.4 GB/s) used for a disaggregation break-even analysis (single GPU, emulated).",
+      "evidence": "benchmarks/results/kv_transfer/20261010-103616/report.json",
+      "values": {
+        "h2d": 12.352353291273495
+      }
+    },
+    {
+      "id": "triton_kernel",
+      "text": "Wrote a fused residual-add + RMSNorm Triton kernel, verified against an fp32 reference across fp16/bf16/fp32 shapes (all correct: True), and benchmarked effective HBM bandwidth vs torch.compile.",
+      "evidence": "benchmarks/results/triton_kernel/20261010-100951/report.json",
+      "values": {
+        "ok": true
+      }
+    },
+    {
+      "id": "agents_security",
+      "text": "Built a governed agent runtime (versioned skills, sandboxed tools, tenant-scoped memory, hash-chained audit log): task success 83% vs 83% for single-shot RAG; all injection / unauthorized-tool attacks blocked: True.",
+      "evidence": "benchmarks/results/agents/20261010-101332-live/report.json",
+      "values": {
+        "agent": 0.8333333333333334,
+        "rag": 0.8333333333333334,
+        "blocked": true
+      }
+    },
+    {
+      "id": "model_customization",
+      "text": "Ran SFT, DPO, GRPO (heuristic reward) and RLVR (verifiable reward) LoRA experiments on a 0.5B model with dataset lineage and leakage checks; see training/runs/eval_report.json for held-out accuracy and serving-token cost per method.",
+      "evidence": "training/runs/eval_report.json",
+      "values": {}
+    },
+    {
+      "id": "triton_attention",
+      "text": "Implemented a FlashAttention-style fused attention forward pass in Triton (online softmax, causal block skipping); correct vs an fp32 reference on all tested shapes (True); at B=4,H=16,N=2048,D=64 causal it runs at 0.76x the speed of PyTorch SDPA (FlashAttention-2) on an A100.",
+      "evidence": "benchmarks/results/triton_attention/20261010-101024/report.json",
+      "values": {
+        "ok": true,
+        "speedup": 0.7616407900702635
+      }
+    },
+    {
+      "id": "kv_offload",
+      "text": "Added a CPU-DRAM KV-cache tier (vllm_native_offloading) behind vLLM's HBM prefix cache; with a working set 2.7x larger than HBM KV capacity, p50 TTFT changed -34.5% vs HBM-only (improved).",
+      "evidence": "benchmarks/results/kv_offload/20261010-101543/report.json",
+      "values": {
+        "impl": "vllm_native_offloading",
+        "delta": -0.34451243478179755,
+        "verdict": "improved"
+      }
+    },
+    {
+      "id": "retrieval",
+      "text": "Built a labelled retrieval benchmark (32 queries, document-level qrels): BM25 MRR@10 0.94, recall@5 0.98 (dense and hybrid RRF results in the same report when run).",
+      "evidence": "benchmarks/results/retrieval/20261010-101058/report.json",
+      "values": {
+        "mrr": 0.9385416666666667,
+        "r5": 0.984375,
+        "n": 32
+      }
+    },
+    {
+      "id": "kubernetes",
+      "text": "Ran the gateway and replicas on a 3-node Kubernetes cluster (kind, Calico) with anti-affinity across nodes. Under ~25 req/s, a force-killed replica pod was back Ready in 2.7s (2/131 requests failed in that window) and a killed gateway pod cost 4/677; 1119/1125 succeeded overall. HPA scaled the gateway to 6 replicas 18s into a load spike, and a Calico NetworkPolicy blocked non-gateway pods from the replicas (True). CPU mock backends; no GPU scheduling claimed.",
+      "evidence": "benchmarks/results/k8s_kind/20261010-034938/report.json",
+      "values": {
+        "recreate": 2.6837780475616455,
+        "down_failed": 2,
+        "down_req": 131,
+        "gw_failed": 4,
+        "gw_req": 677,
+        "ok": 1119,
+        "total": 1125,
+        "hpa": 18.344784021377563,
+        "peak": 6,
+        "netpol": true
+      }
+    }
+  ],
+  "negative": [
+    {
+      "source": "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+      "path": "vllm.draft_model_k4.vs_standard.c1",
+      "verdict": "regressed",
+      "relative_change": 2.4176821869937273
+    },
+    {
+      "source": "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+      "path": "vllm.draft_model_k4.vs_standard.c16",
+      "verdict": "regressed",
+      "relative_change": 2.4572095590097742
+    },
+    {
+      "source": "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+      "path": "vllm.ngram_k4.vs_standard.c1",
+      "verdict": "regressed",
+      "relative_change": 0.9415188055746346
+    },
+    {
+      "source": "benchmarks/results/speculative_decoding/20261010-105841/report.json",
+      "path": "vllm.ngram_k4.vs_standard.c16",
+      "verdict": "regressed",
+      "relative_change": 0.9892283465806162
+    },
+    {
+      "source": "benchmarks/results/speculative_decoding/20261010-104217/report.json",
+      "path": "hf.speedup",
+      "verdict": "regressed",
+      "relative_change": 0.17163994202360022
+    },
+    {
+      "source": "benchmarks/results/kv_offload/20261010-101543/report.json",
+      "path": "variants.no_cache.vs_hbm_only.ttft_p50",
+      "verdict": "regressed",
+      "relative_change": 0.3413493031134475
+    },
+    {
+      "source": "benchmarks/results/kv_offload/20261010-101543/report.json",
+      "path": "variants.no_cache.vs_hbm_only.ttft_p95",
+      "verdict": "regressed",
+      "relative_change": 0.06429357710837443
+    },
+    {
+      "source": "benchmarks/results/kv_offload/20261010-101543/report.json",
+      "path": "variants.no_cache.vs_hbm_only.throughput",
+      "verdict": "regressed",
+      "relative_change": -0.17204464954521528
+    },
+    {
+      "source": "benchmarks/results/baseline/20261010-092402/report.json",
+      "path": "gateway_overhead.ttft_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.06250134407098279
+    },
+    {
+      "source": "benchmarks/results/baseline/20261010-092402/report.json",
+      "path": "gateway_overhead.ttft_p99",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.07975978006896947
+    },
+    {
+      "source": "benchmarks/results/baseline/20261010-092402/report.json",
+      "path": "gateway_overhead.e2e_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.0032879930890437107
+    },
+    {
+      "source": "benchmarks/results/baseline/20261010-092402/report.json",
+      "path": "gateway_overhead.output_tok_per_s",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.0035525895367548616
+    },
+    {
+      "source": "benchmarks/results/kv_pressure/20261010-103719/report.json",
+      "path": "pressure.3000.vs_largest_cache.ttft_p50",
+      "verdict": "regressed",
+      "relative_change": 1.0846978968591008
+    },
+    {
+      "source": "benchmarks/results/kv_pressure/20261010-103719/report.json",
+      "path": "pressure.3000.vs_largest_cache.throughput",
+      "verdict": "regressed",
+      "relative_change": -0.2924384233689597
+    },
+    {
+      "source": "benchmarks/results/kv_pressure/20261010-103719/report.json",
+      "path": "pressure.1200.vs_largest_cache.ttft_p50",
+      "verdict": "regressed",
+      "relative_change": 8.002699656649053
+    },
+    {
+      "source": "benchmarks/results/kv_pressure/20261010-103719/report.json",
+      "path": "pressure.1200.vs_largest_cache.throughput",
+      "verdict": "regressed",
+      "relative_change": -0.5610956195963774
+    },
+    {
+      "source": "benchmarks/results/quantization/20261010-095855/report.json",
+      "path": "variants.gptq_int8.vs_bf16.c32.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.008577801979369484
+    },
+    {
+      "source": "benchmarks/results/quantization/20261010-095855/report.json",
+      "path": "variants.gptq_int8.vs_bf16.c32.tpot_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.05013513514575652
+    },
+    {
+      "source": "benchmarks/results/quantization/20261010-095855/report.json",
+      "path": "variants.fp8.vs_bf16.c32.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.004382121886446521
+    },
+    {
+      "source": "benchmarks/results/kv_cache/20261010-093938/report.json",
+      "path": "reuse.ttft_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.3419356885595729
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.512.interference",
+      "verdict": "regressed",
+      "relative_change": 0.8018082727357227
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.512.interference_itl_p99",
+      "verdict": "regressed",
+      "relative_change": 3.7760911918536286
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.2048.interference",
+      "verdict": "regressed",
+      "relative_change": 0.9359676929102031
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.2048.interference_itl_p99",
+      "verdict": "regressed",
+      "relative_change": 8.288909235666505
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.8192.interference",
+      "verdict": "regressed",
+      "relative_change": 0.9827818141973683
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-102752/report.json",
+      "path": "budgets.8192.interference_itl_p99",
+      "verdict": "regressed",
+      "relative_change": 22.108225256851668
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-094747/report.json",
+      "path": "budgets.512.interference",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.0003235691321164575
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-094747/report.json",
+      "path": "budgets.2048.interference",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.0005797961415026363
+    },
+    {
+      "source": "benchmarks/results/interference/20261010-094747/report.json",
+      "path": "budgets.8192.interference",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.0013778562525617014
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.least_outstanding.ttft_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.6448886481330969
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.least_outstanding.ttft_p95",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.08986646201925447
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.least_outstanding.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.047299422865967805
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.prefix_affinity.ttft_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.5172796185364111
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.prefix_affinity.ttft_p95",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.10595798151253734
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.prefix_heavy.vs_round_robin.prefix_affinity.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.006474357264868093
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.least_outstanding.ttft_p50",
+      "verdict": "regressed",
+      "relative_change": 0.2406220103197959
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.least_outstanding.ttft_p95",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.019808405276970285
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.least_outstanding.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.006433601458920955
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.prefix_affinity.ttft_p50",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.0791895146335531
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.prefix_affinity.ttft_p95",
+      "verdict": "no_significant_difference",
+      "relative_change": 0.07310925508983321
+    },
+    {
+      "source": "benchmarks/results/routing/20261010-092925/report.json",
+      "path": "runs.chat_short.vs_round_robin.prefix_affinity.throughput",
+      "verdict": "no_significant_difference",
+      "relative_change": -0.01267648698519258
+    }
+  ],
+  "jd": [
+    {
+      "keyword": "NVIDIA Dynamo",
+      "scope": "attempted",
+      "deliverable": "Single-node Dynamo attempt (etcd/NATS as binaries); KV-aware routing implemented in our gateway as the measured stand-in",
+      "code": [
+        "inference/dynamo/try_dynamo.sh",
+        "gateway/api/router.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/dynamo_attempt/*/status.json",
+          "field": "frontend_serving",
+          "equals": true
+        }
+      ],
+      "limits": "No multi-node Dynamo; routing results come from our router, not Dynamo's",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/dynamo_attempt/20261010-232036/status.json frontend_serving=True"
+      ]
+    },
+    {
+      "keyword": "TensorRT-LLM",
+      "scope": "attempted",
+      "deliverable": "trtllm-serve benchmarked on the same workloads in its own runtime",
+      "code": [
+        "inference/exp_engines.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/engines/*-trtllm/report.json",
+          "field": "startup.healthy",
+          "equals": true
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/engines/20261010-221948-trtllm/report.json startup.healthy=True"
+      ]
+    },
+    {
+      "keyword": "Triton Inference Server",
+      "scope": "design_only",
+      "deliverable": "Reference model repository (vLLM backend); needs Docker + NGC image",
+      "code": [
+        "inference/README.md"
+      ],
+      "evidence": [],
+      "limits": "Not runnable on Colab; run on a Docker GPU host to evidence",
+      "status": "DESIGN-ONLY",
+      "details": []
+    },
+    {
+      "keyword": "vLLM",
+      "scope": "built",
+      "deliverable": "Primary backend: continuous batching, paged KV, prefix cache, chunked prefill measured",
+      "code": [
+        "benchmarks/runners/exp_baseline.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/baseline/*/report.json"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/baseline/20261010-092402/report.json"
+      ]
+    },
+    {
+      "keyword": "SGLang",
+      "scope": "built",
+      "deliverable": "Same workloads vs vLLM, separate runtime",
+      "code": [
+        "inference/exp_engines.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/engines/*-sglang/report.json",
+          "field": "startup.healthy",
+          "equals": true
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/engines/20261010-132504-sglang/report.json startup.healthy=True"
+      ]
+    },
+    {
+      "keyword": "Disaggregated inference",
+      "scope": "emulated",
+      "deliverable": "Prefill->decode interference measured; emulated split TTFT; vLLM KV-connector P/D attempt on one GPU; break-even model",
+      "code": [
+        "disaggregation/prefill/exp_interference.py",
+        "disaggregation/decode/vllm_disagg_attempt.py",
+        "disaggregation/nixl-benchmarks/kv_transfer_bench.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/interference/*/report.json"
+        },
+        {
+          "glob": "benchmarks/results/kv_transfer/*/report.json"
+        }
+      ],
+      "limits": "No separate prefill/decode GPUs",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/interference/20261010-102752/report.json",
+        "benchmarks/results/kv_transfer/20261010-103616/report.json"
+      ]
+    },
+    {
+      "keyword": "NIXL",
+      "scope": "attempted",
+      "deliverable": "NIXL loopback transfer + vLLM NixlConnector attempt; measured transfer cost model",
+      "code": [
+        "disaggregation/nixl-benchmarks/kv_transfer_bench.py",
+        "disaggregation/decode/vllm_disagg_attempt.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/kv_transfer/*/report.json",
+          "field": "kv.rows.0.nixl.ok",
+          "equals": true
+        }
+      ],
+      "limits": "Loopback only; no RDMA hop",
+      "status": "CODE ONLY (not yet run)",
+      "details": [
+        "benchmarks/results/kv_transfer/20261010-103616/report.json kv.rows.0.nixl.ok=None"
+      ]
+    },
+    {
+      "keyword": "Multi-tier KV caching",
+      "scope": "built",
+      "deliverable": "HBM prefix cache + REAL CPU DRAM tier (vLLM offloading / LMCache) + localhost remote tier; eviction-policy simulator",
+      "code": [
+        "disaggregation/kv-cache/exp_kv_offload.py",
+        "disaggregation/kv-cache/exp_prefix_cache.py",
+        "disaggregation/kv-cache/kv_sim.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/kv_offload/*/report.json",
+          "field": "cpu_tier_working",
+          "equals": true
+        }
+      ],
+      "limits": "Remote tier runs on localhost",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/kv_offload/20261010-101543/report.json cpu_tier_working=True"
+      ]
+    },
+    {
+      "keyword": "Speculative decoding",
+      "scope": "built",
+      "deliverable": "HF draft/verify lossless check + vLLM draft-model and n-gram at c=1/16",
+      "code": [
+        "optimization/speculative-decoding/exp_specdec.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/speculative_decoding/*/report.json"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/speculative_decoding/20261010-105841/report.json"
+      ]
+    },
+    {
+      "keyword": "Quantization",
+      "scope": "built",
+      "deliverable": "BF16 vs AWQ-INT4 vs GPTQ-INT8 vs FP8 weight-only: memory, speed, quality",
+      "code": [
+        "optimization/quantization/exp_quant.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/quantization/*/report.json"
+        }
+      ],
+      "limits": "A100 lacks FP8 tensor cores",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/quantization/20261010-095855/report.json"
+      ]
+    },
+    {
+      "keyword": "Custom kernels",
+      "scope": "built",
+      "deliverable": "Triton FlashAttention-style forward + fused add/RMSNorm, correctness + roofline-style benchmarks",
+      "code": [
+        "optimization/triton-kernels/flash_attention.py",
+        "optimization/triton-kernels/fused_add_rmsnorm.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/triton_attention/*/report.json",
+          "field": "all_correct",
+          "equals": true
+        },
+        {
+          "glob": "benchmarks/results/triton_kernel/*/report.json",
+          "field": "all_correct",
+          "equals": true
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/triton_attention/20261010-101024/report.json all_correct=True",
+        "benchmarks/results/triton_kernel/20261010-100951/report.json all_correct=True"
+      ]
+    },
+    {
+      "keyword": "Kubernetes",
+      "scope": "built",
+      "deliverable": "kind cluster: anti-affinity scheduling, pod-kill recovery under load, HPA scale-up, NetworkPolicy",
+      "code": [
+        "infrastructure/kind/k8s_evidence.py",
+        "infrastructure/kind/manifests.yaml",
+        "infrastructure/kubernetes/inferscale.yaml",
+        "infrastructure/helm/inferscale"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/k8s_kind/*/report.json",
+          "field": "all_pass",
+          "equals": true
+        }
+      ],
+      "limits": "CPU mock backends; GPU scheduling (GPU Operator) is reference only",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/k8s_kind/20261010-034938/report.json all_pass=True"
+      ]
+    },
+    {
+      "keyword": "Compute fabrics (RDMA/InfiniBand)",
+      "scope": "design_only",
+      "deliverable": "Fabric-aware sizing: measured PCIe alpha/beta, NVLink/IB extrapolated break-even, cluster reference design",
+      "code": [
+        "docs/capacity-planning/README.md",
+        "disaggregation/nixl-benchmarks/kv_transfer_bench.py"
+      ],
+      "evidence": [],
+      "limits": "No RDMA/IB hardware; no nccl-tests diagnostics",
+      "status": "DESIGN-ONLY",
+      "details": []
+    },
+    {
+      "keyword": "Agent design",
+      "scope": "built",
+      "deliverable": "RAG + tools + memory + multi-step JSON-action loop through the gateway",
+      "code": [
+        "agents/agent.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/agents/*live/report.json"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/agents/20261010-101332-live/report.json"
+      ]
+    },
+    {
+      "keyword": "Sandboxing",
+      "scope": "built",
+      "deliverable": "Process isolation, rlimits, PEP 578 audit hooks, escape suite",
+      "code": [
+        "agents/sandbox/sandbox.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/agents/*/report.json",
+          "field": "security_adversarial_scripted.all_blocked",
+          "equals": true
+        }
+      ],
+      "limits": "Not gVisor/Firecracker",
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/agents/20261010-101332-live/report.json security_adversarial_scripted.all_blocked=True"
+      ]
+    },
+    {
+      "keyword": "Evaluation",
+      "scope": "built",
+      "deliverable": "Retrieval (recall@k, MRR, nDCG), agent task success vs RAG, latency, safety suites",
+      "code": [
+        "agents/eval/retrieval_eval.py",
+        "agents/eval/run_eval.py"
+      ],
+      "evidence": [
+        {
+          "glob": "benchmarks/results/retrieval/*/report.json"
+        },
+        {
+          "glob": "benchmarks/results/agents/*live/report.json"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "benchmarks/results/retrieval/20261010-101058/report.json",
+        "benchmarks/results/agents/20261010-101332-live/report.json"
+      ]
+    },
+    {
+      "keyword": "Skills and governance",
+      "scope": "built",
+      "deliverable": "Versioned hash-locked skills, permission engine, taint tracking, hash-chained audit",
+      "code": [
+        "agents/skills/registry.py",
+        "agents/governance/policy.py"
+      ],
+      "evidence": [
+        {
+          "glob": "tests/results/junit-unit.xml"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "tests/results/junit-unit.xml"
+      ]
+    },
+    {
+      "keyword": "SFT, DPO, GRPO, RLVR",
+      "scope": "built",
+      "deliverable": "LoRA runs on Qwen2.5-0.5B with held-out eval and serving-token cost",
+      "code": [
+        "training/"
+      ],
+      "evidence": [
+        {
+          "glob": "training/runs/eval_report.json"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "training/runs/eval_report.json"
+      ]
+    },
+    {
+      "keyword": "Data curation",
+      "scope": "partial",
+      "deliverable": "Dedup, train/eval leakage check, lineage hashes (synthetic verifiable data)",
+      "code": [
+        "training/data-curation/build_datasets.py"
+      ],
+      "evidence": [
+        {
+          "glob": "training/data/lineage.json",
+          "field": "leakage_check.pass",
+          "equals": true
+        }
+      ],
+      "limits": "No real-world noisy data / quality classifiers",
+      "status": "EVIDENCED",
+      "details": [
+        "training/data/lineage.json leakage_check.pass=True"
+      ]
+    },
+    {
+      "keyword": "Grove",
+      "scope": "design_only",
+      "deliverable": "Evaluation plan for gang-scheduled prefill/decode groups",
+      "code": [
+        "infrastructure/grove-experiments/README.md"
+      ],
+      "evidence": [],
+      "limits": "Needs a GPU K8s cluster",
+      "status": "DESIGN-ONLY",
+      "details": []
+    },
+    {
+      "keyword": "Solutions architecture",
+      "scope": "built",
+      "deliverable": "ADRs, deployment guide, runbooks, capacity/cost model, workshop + exec briefing, public demo endpoint",
+      "code": [
+        "docs/partner-deployment-guide.md",
+        "docs/decisions/",
+        "demos/",
+        "scripts/colab_public_endpoint.sh"
+      ],
+      "evidence": [
+        {
+          "file_contains": "docs/CLAIMS.md",
+          "text": "evidence: `benchmarks/results/baseline"
+        }
+      ],
+      "status": "EVIDENCED",
+      "details": [
+        "docs/CLAIMS.md contains 'evidence: `benchmarks/results/baseline': True"
+      ]
+    },
+    {
+      "keyword": "Open source",
+      "scope": "partial",
+      "deliverable": "Public-repo scaffolding, published results page, upstream contribution tracker",
+      "code": [
+        "CONTRIBUTING.md",
+        "docs/upstream-contributions.md",
+        "scripts/publish_results.py"
+      ],
+      "evidence": [
+        {
+          "file_contains": "docs/RESULTS.md",
+          "text": "source: `"
+        },
+        {
+          "file_contains": "docs/upstream-contributions.md",
+          "text": "| merged |"
+        }
+      ],
+      "limits": "Contributions themselves are yours to make",
+      "status": "PARTIALLY EVIDENCED",
+      "details": [
+        "docs/RESULTS.md contains 'source: `': True",
+        "docs/upstream-contributions.md contains '| merged |': False"
+      ]
+    }
+  ]
+}

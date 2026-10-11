@@ -1,0 +1,6 @@
+name: smoke
+num_requests: 20
+warmup_requests: 2
+concurrency: 4
+input_tokens: 64
+output_tokens: 32

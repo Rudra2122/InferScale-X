@@ -1,0 +1,3 @@
+# SGLang engine comparison - FRESH runtime (conflicts with vLLM's torch pin).
+-r dev.txt
+sglang>=0.4.6   # not [all]: that adds diffusion extras we never use

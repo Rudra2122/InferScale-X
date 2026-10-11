@@ -1,0 +1,3308 @@
+{
+  "phase": "crash",
+  "kind": "vllm",
+  "rate_rps": 8.0,
+  "duration_s": 90.0,
+  "victim": "replica-b",
+  "time_to_detect_s": 0.23264288902282715,
+  "backend_restart_s": 55.638216733932495,
+  "time_to_readmit_from_restart_s": 56.09976506233215,
+  "total_failed": 3,
+  "total_requests": 720,
+  "per_window": {
+    "before_kill": {
+      "requests": 218,
+      "failed": 3,
+      "midstream_broken": 3,
+      "status_counts": {
+        "200": 218
+      },
+      "ttft_s": {
+        "n": 215,
+        "mean": 0.04212804697673312,
+        "std": 0.005329461594653232,
+        "min": 0.02161350999995193,
+        "p50": 0.04262611800004379,
+        "p90": 0.04772881999979291,
+        "p95": 0.04950728690000687,
+        "p99": 0.051323180080107694,
+        "max": 0.05547653299981903
+      },
+      "served_by": {
+        "replica-a": 109,
+        "replica-b": 109
+      }
+    },
+    "outage": {
+      "requests": 502,
+      "failed": 0,
+      "midstream_broken": 0,
+      "status_counts": {
+        "200": 502
+      },
+      "ttft_s": {
+        "n": 502,
+        "mean": 0.025662992254984127,
+        "std": 0.0050010452263991425,
+        "min": 0.0195088109999233,
+        "p50": 0.024096469999904002,
+        "p90": 0.032517052300272554,
+        "p95": 0.03670914089964298,
+        "p99": 0.04572099836010695,
+        "max": 0.05856794700002865
+      },
+      "served_by": {
+        "replica-a": 502,
+        "replica-b": 0
+      }
+    },
+    "after_readmit": {
+      "requests": 0,
+      "failed": 0,
+      "midstream_broken": 0,
+      "status_counts": {},
+      "ttft_s": {
+        "n": 0
+      },
+      "served_by": {
+        "replica-a": 0,
+        "replica-b": 0
+      }
+    }
+  },
+  "summary": {
+    "workload": "crash",
+    "n_requests": 720,
+    "n_ok": 717,
+    "error_rate": 0.004166666666666652,
+    "statuses": {
+      "200": 720
+    },
+    "requests_by_backend": {
+      "replica-a": 611,
+      "replica-b": 109
+    },
+    "wall_s": 90.14925482299986,
+    "req_per_s": 7.9534767248799385,
+    "output_tok_per_s": 509.02251039231606,
+    "ttft_s": {
+      "n": 717,
+      "mean": 0.030600212290097146,
+      "std": 0.009109582389876515,
+      "min": 0.0195088109999233,
+      "p50": 0.025815397999849665,
+      "p90": 0.04513547119977374,
+      "p95": 0.04684057859976746,
+      "p99": 0.0503309253999214,
+      "max": 0.05856794700002865
+    },
+    "tpot_s": {
+      "n": 717,
+      "mean": 0.005805064900445031,
+      "std": 0.002380951802897394,
+      "min": 0.004035113841267062,
+      "p50": 0.004288325492058311,
+      "p90": 0.009562443749203498,
+      "p95": 0.009693534180951245,
+      "p99": 0.009943739896503498,
+      "max": 0.010256636396827652
+    },
+    "itl_s": {
+      "n": 45153,
+      "mean": 0.005798896475162258,
+      "std": 0.002947044821390344,
+      "min": 5.3904000196780544e-05,
+      "p50": 0.004242990999955509,
+      "p90": 0.009669371799918737,
+      "p95": 0.010880064199955087,
+      "p99": 0.015745905040039383,
+      "max": 0.030539844000031735
+    },
+    "e2e_s": {
+      "n": 717,
+      "mean": 0.39631930101813406,
+      "std": 0.15758944577027234,
+      "min": 0.27781676999984484,
+      "p50": 0.29591201299990644,
+      "p90": 0.6467689505997442,
+      "p95": 0.6544591820000277,
+      "p99": 0.6663687123202362,
+      "max": 0.6855264389996591
+    },
+    "mean_prompt_tokens": 299.59693165969315,
+    "cached_token_fraction": null,
+    "per_tenant": {
+      "acme": {
+        "ok": 717,
+        "output_tokens": 45888,
+        "tok_per_s": 509.02251039231606,
+        "ttft_s": {
+          "n": 717,
+          "mean": 0.030600212290097146,
+          "std": 0.009109582389876515,
+          "min": 0.0195088109999233,
+          "p50": 0.025815397999849665,
+          "p90": 0.04513547119977374,
+          "p95": 0.04684057859976746,
+          "p99": 0.0503309253999214,
+          "max": 0.05856794700002865
+        },
+        "weight": 1.0
+      }
+    },
+    "jain_fairness_weighted": null,
+    "errors_sample": [
+      "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}",
+      "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}",
+      "{'message': 'backend stream interrupted', 'type': 'backend_error', 'code': 502}"
+    ]
+  },
+  "events_relative_s": {
+    "kill": 27.00062870979309,
+    "restart_begin": 54.114967823028564,
+    "restart_healthy": 109.75318455696106,
+    "detected_unhealthy": 27.233271598815918,
+    "readmitted": 110.21473288536072
+  },
+  "t0_epoch": 1791625055.4593437,
+  "health_timeline": [
+    [
+      0.08,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      0.33,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      0.59,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      0.84,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      1.09,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      1.34,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      1.59,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      1.84,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      2.09,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      2.35,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      2.6,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      2.85,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      3.1,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      3.35,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      3.6,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      3.85,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      4.11,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      4.36,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      4.61,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      4.86,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      5.11,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      5.36,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      5.61,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      5.86,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      6.12,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      6.37,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      6.62,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      6.87,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      7.12,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      7.37,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      7.62,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      7.88,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      8.13,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      8.38,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      8.63,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      8.88,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      9.13,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      9.39,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      9.64,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      9.89,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      10.14,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      10.39,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      10.64,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      10.89,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      11.15,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      11.4,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      11.65,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      11.9,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      12.15,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      12.4,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      12.65,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      12.9,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      13.16,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      13.41,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      13.66,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      13.91,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      14.16,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      14.41,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      14.66,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      14.92,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      15.17,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      15.42,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      15.67,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      15.92,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      16.17,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      16.42,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      16.67,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      16.93,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      17.18,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      17.43,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      17.68,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      17.93,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      18.18,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      18.43,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      18.69,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      18.94,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      19.19,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      19.44,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      19.69,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      19.94,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      20.2,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      20.45,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      20.7,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      20.95,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      21.2,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      21.45,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      21.7,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      21.96,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      22.21,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      22.46,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      22.71,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      22.96,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      23.21,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      23.46,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      23.71,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      23.97,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      24.22,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      24.47,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      24.72,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      24.97,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      25.22,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      25.47,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      25.73,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      25.98,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      26.23,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      26.48,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      26.73,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      26.98,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      27.23,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      27.48,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      27.74,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      27.99,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      28.24,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      28.49,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      28.74,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      28.99,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      29.24,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      29.5,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      29.75,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      30.0,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      30.25,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      30.5,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      30.75,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      31.0,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      31.25,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      31.51,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      31.76,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      32.01,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      32.26,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      32.51,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      32.76,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      33.01,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      33.27,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      33.52,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      33.77,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      34.02,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      34.27,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      34.52,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      34.77,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      35.03,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      35.28,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      35.53,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      35.78,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      36.03,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      36.28,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      36.53,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      36.79,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      37.04,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      37.29,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      37.54,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      37.79,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      38.04,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      38.29,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      38.55,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      38.8,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      39.05,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      39.3,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      39.55,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      39.8,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      40.05,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      40.3,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      40.56,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      40.81,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      41.06,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      41.31,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      41.56,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      41.81,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      42.06,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      42.32,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      42.57,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      42.82,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      43.07,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      43.32,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      43.57,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      43.82,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      44.08,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      44.33,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      44.58,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      44.83,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      45.08,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      45.33,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      45.58,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      45.84,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      46.09,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      46.34,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      46.59,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      46.84,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      47.09,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      47.34,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      47.6,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      47.85,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      48.1,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      48.35,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      48.6,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      48.85,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      49.1,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      49.35,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      49.61,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      49.86,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      50.11,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      50.36,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      50.61,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      50.86,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      51.11,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      51.36,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      51.62,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      51.87,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      52.12,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      52.37,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      52.62,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      52.87,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      53.12,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      53.37,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      53.63,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      53.88,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      54.13,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      54.38,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      54.63,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      54.88,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      55.13,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      55.39,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      55.64,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      55.89,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      56.14,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      56.39,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      56.64,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      56.9,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      57.15,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      57.4,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      57.65,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      57.9,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      58.15,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      58.41,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      58.66,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      58.91,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      59.16,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      59.41,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      59.66,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      59.92,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      60.17,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      60.42,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      60.67,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      60.92,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      61.17,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      61.42,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      61.68,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      61.93,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      62.18,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      62.43,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      62.68,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      62.93,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      63.18,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      63.43,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      63.69,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      63.94,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      64.19,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      64.44,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      64.69,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      64.94,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      65.2,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      65.45,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      65.7,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      65.95,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      66.2,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      66.45,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      66.71,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      66.96,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      67.21,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      67.46,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      67.71,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      67.96,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      68.22,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      68.47,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      68.72,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      68.97,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      69.22,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      69.47,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      69.72,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      69.97,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      70.23,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      70.48,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      70.73,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      70.98,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      71.23,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      71.48,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      71.73,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      71.98,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      72.24,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      72.49,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      72.74,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      72.99,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      73.24,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      73.49,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      73.75,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      74.0,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      74.25,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      74.5,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      74.75,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      75.0,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      75.25,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      75.51,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      75.76,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      76.01,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      76.26,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      76.51,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      76.76,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      77.01,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      77.27,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      77.52,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      77.77,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      78.02,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      78.27,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      78.52,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      78.77,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      79.03,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      79.28,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      79.53,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      79.78,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      80.03,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      80.28,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      80.53,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      80.79,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      81.04,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      81.29,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      81.54,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      81.79,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      82.04,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      82.29,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      82.54,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      82.8,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      83.05,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      83.3,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      83.55,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      83.8,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      84.05,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      84.31,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      84.56,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      84.81,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      85.06,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      85.31,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      85.56,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      85.82,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      86.07,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      86.32,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      86.57,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      86.82,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      87.07,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      87.32,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      87.58,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      87.83,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      88.08,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      88.33,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      88.58,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      88.83,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      89.09,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      89.34,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      89.59,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      89.84,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      90.09,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      90.35,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      90.6,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      90.85,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      91.1,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      91.35,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      91.6,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      91.85,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      92.11,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      92.36,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      92.61,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      92.86,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      93.11,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      93.36,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      93.62,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      93.87,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      94.12,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      94.37,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      94.62,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      94.87,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      95.12,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      95.38,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      95.63,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      95.88,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      96.13,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      96.38,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      96.63,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      96.89,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      97.14,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      97.39,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      97.64,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      97.89,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      98.14,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      98.39,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      98.65,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      98.9,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      99.15,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      99.4,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      99.65,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      99.9,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      100.15,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      100.41,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      100.66,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      100.91,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      101.16,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      101.41,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      101.66,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      101.91,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      102.17,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      102.42,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      102.67,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      102.92,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      103.17,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      103.42,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      103.68,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      103.93,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      104.18,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      104.43,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      104.68,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      104.93,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      105.19,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      105.44,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      105.69,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      105.94,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      106.19,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      106.44,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      106.69,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      106.95,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      107.2,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      107.45,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      107.7,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      107.95,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      108.2,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      108.45,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      108.71,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      108.96,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      109.21,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      109.46,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      109.71,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      109.96,
+      {
+        "replica-a": true,
+        "replica-b": false
+      }
+    ],
+    [
+      110.21,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      110.47,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      110.72,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      110.97,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      111.22,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      111.47,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ],
+    [
+      111.72,
+      {
+        "replica-a": true,
+        "replica-b": true
+      }
+    ]
+  ],
+  "backend_restart_info": {
+    "name": "replica-b",
+    "pid": 12807,
+    "port": 8002,
+    "cmd": [
+      "vllm",
+      "serve",
+      "Qwen/Qwen2.5-1.5B-Instruct",
+      "--port",
+      "8002",
+      "--host",
+      "127.0.0.1",
+      "--gpu-memory-utilization",
+      "0.42",
+      "--max-model-len",
+      "4096"
+    ],
+    "started": 1791625109.5748417,
+    "log": "/content/InferScale-X/logs/replica-b.log",
+    "ready_after_s": 55.64,
+    "healthy": true,
+    "model_load_gib": 2.98
+  }
+}

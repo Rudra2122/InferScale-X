@@ -1,0 +1,15 @@
+[project]
+name = "inferscale-x"
+version = "2.0.0"
+description = "Reproducible, evidence-first LLM inference reference platform (single-A100 edition)"
+requires-python = ">=3.10"
+authors = [{ name = "Rudra Brahmbhatt" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["slow: takes > 10 s"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"

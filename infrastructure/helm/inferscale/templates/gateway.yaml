@@ -1,0 +1,55 @@
+{{- if not .Values.gateway.existingSecret }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-gateway-config
+type: Opaque
+stringData:
+  gateway.yaml: |
+    gateway:
+      routing_policy: {{ .Values.gateway.routingPolicy }}
+      inject_cache_salt: {{ .Values.gateway.injectCacheSalt }}
+      cache_salt_secret: {{ randAlphaNum 32 | quote }}
+    backends:
+    {{- range $i, $_ := until (int .Values.vllm.replicas) }}
+      - name: vllm-{{ $i }}
+        url: http://{{ $.Release.Name }}-vllm-{{ $i }}.{{ $.Release.Name }}-vllm.{{ $.Release.Namespace }}.svc.cluster.local:8000
+        model: {{ $.Values.vllm.model }}
+    {{- end }}
+    tenants: {{- toYaml .Values.gateway.tenants | nindent 6 }}
+---
+{{- end }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-gateway
+spec:
+  replicas: {{ .Values.gateway.replicas }}
+  selector:
+    matchLabels: {app: {{ .Release.Name }}-gateway}
+  template:
+    metadata:
+      labels: {app: {{ .Release.Name }}-gateway}
+      annotations: {prometheus.io/scrape: "true", prometheus.io/port: "9000"}
+    spec:
+      securityContext: {runAsNonRoot: true, runAsUser: 10001}
+      containers:
+        - name: gateway
+          image: {{ .Values.gateway.image }}
+          env: [{name: INFERSCALE_GATEWAY_CONFIG, value: /etc/inferscale/gateway.yaml}]
+          ports: [{containerPort: 9000}]
+          readinessProbe: {httpGet: {path: /ready, port: 9000}, periodSeconds: 5}
+          securityContext: {readOnlyRootFilesystem: true, allowPrivilegeEscalation: false}
+          volumeMounts: [{name: cfg, mountPath: /etc/inferscale, readOnly: true}]
+      volumes:
+        - name: cfg
+          secret:
+            secretName: {{ .Values.gateway.existingSecret | default (printf "%s-gateway-config" .Release.Name) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-gateway
+spec:
+  selector: {app: {{ .Release.Name }}-gateway}
+  ports: [{port: 80, targetPort: 9000}]

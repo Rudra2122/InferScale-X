@@ -1,0 +1,14 @@
+name: Bug report
+description: Something broke (including an engine flag that changed between versions)
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes: {label: What happened, description: "Include the failing command and logs/<name>.log tail"}
+    validations: {required: true}
+  - type: textarea
+    id: env
+    attributes: {label: Environment, description: "Paste benchmarks/results/env-*.json or `python -m benchmarks.runners.env_capture`", render: json}
+  - type: dropdown
+    id: where
+    attributes: {label: Where, options: [Colab A100, Mac (kind / compose), Linux CPU, CI, Other]}
